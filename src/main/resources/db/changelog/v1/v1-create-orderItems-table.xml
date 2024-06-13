@@ -1,0 +1,35 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+
+    <changeSet id="v1-1" author="Urbanait Konstantin">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="OrderItems"/>
+            </not>
+        </preConditions>
+
+        <createTable tableName="OrderItems">
+            <column name="id" type="bigint" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="product_id" type="bigint">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="v1-2" author="Urbanait Konstantin">
+        <preConditions onFail="MARK_RAN">
+            <tableIsEmpty tableName="OrderItems"/>
+        </preConditions>
+        <insert tableName="OrderItems">
+            <column name="order_id" value ="1"/>
+            <column name="product_id" value ="1"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
