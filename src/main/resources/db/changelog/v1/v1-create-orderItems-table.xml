@@ -27,7 +27,7 @@
             <tableIsEmpty tableName="OrderItems"/>
         </preConditions>
         <insert tableName="OrderItems">
-            <column name="order_id" value ="1"/>
+            <column name="id" value ="1"/>
             <column name="product_id" value ="1"/>
         </insert>
     </changeSet>

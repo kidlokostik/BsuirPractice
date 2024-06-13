@@ -11,11 +11,11 @@
             </not>
         </preConditions>
 
-        <createTable tableName="orders">
+        <createTable tableName="Orders">
             <column name="order_id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
-            <column name="usre_id" type="integer">
+            <column name="user_id" type="integer">
                 <constraints nullable="true"/>
             </column>
             <column name="price" type="varchar(40)">
