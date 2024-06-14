@@ -15,6 +15,9 @@
             <column name="product_id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
+            <column name="category_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
             <column name="product_name" type="varchar(40)">
                 <constraints nullable="false"/>
             </column>
@@ -28,7 +31,8 @@
         </preConditions>
         <insert tableName="Products">
             <column name="product_id" value ="1"/>
-            <column name="product_name" value ="Пицца"/>
+            <column name="categoty_id" value="1"/>
+            <column name="product_name" value ="4 Сыра"/>
         </insert>
     </changeSet>
 
