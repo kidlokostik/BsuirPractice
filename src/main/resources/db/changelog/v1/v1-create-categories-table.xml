@@ -31,5 +31,8 @@
         </insert>
     </changeSet>
 
+    <changeSet id="v1-3" author="Urbanait Konstantin">
+        <addUniqueConstraint columnNames="category_id" constraintName="unique_category_id_constraint" tableName="Сategories"/>
+    </changeSet>
 
 </databaseChangeLog>
