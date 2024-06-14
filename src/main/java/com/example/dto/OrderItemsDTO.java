@@ -3,7 +3,7 @@ package com.example.dto;
 import lombok.Data;
 
 @Data
-public class OrderDTO {
+public class OrderItemsDTO {
     Long order_id;
     Long product_id;
 
