@@ -11,7 +11,7 @@
             </not>
         </preConditions>
 
-        <createTable tableName="Orders">
+        <createTable tableName="orders">
             <column name="order_id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
@@ -37,6 +37,15 @@
             <column name="address" value="Ботаническая д.17"/>
             <column name="price" value="50.0"/>
         </insert>
+    </changeSet>
+
+    <changeSet id="v1-3" author="Urbanait Konstantin">
+        <addForeignKeyConstraint
+                baseColumnNames="user_id"
+                baseTableName="Orders"
+                constraintName="fk_toorders_to_users"
+        referencedColumnNames="user_id"
+        referencedTableName="Users"/>
     </changeSet>
 
 
