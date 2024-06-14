@@ -7,11 +7,11 @@
     <changeSet id="v1-1" author="Urbanait Konstantin">
         <preConditions onFail="MARK_RAN">
             <not>
-                <tableExists tableName="orders"/>
+                <tableExists tableName="Orders"/>
             </not>
         </preConditions>
 
-        <createTable tableName="orders">
+        <createTable tableName="Orders">
             <column name="order_id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
