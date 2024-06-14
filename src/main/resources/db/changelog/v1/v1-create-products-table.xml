@@ -31,7 +31,7 @@
         </preConditions>
         <insert tableName="Products">
             <column name="product_id" value ="1"/>
-            <column name="categoty_id" value="1"/>
+            <column name="category_id" value="1"/>
             <column name="product_name" value ="4 Сыра"/>
         </insert>
     </changeSet>
