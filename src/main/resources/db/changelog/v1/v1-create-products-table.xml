@@ -36,5 +36,15 @@
         </insert>
     </changeSet>
 
+    <changeSet id="v1-3" author="Urbanait Konstantin">
+        <addForeignKeyConstraint baseTableName="Products"
+                                 baseColumnNames="category_id"
+                                 constraintName="fk_proproducts_categories"
+                                 referencedTableName="Сategories"
+                                 referencedColumnNames="category_id"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"/>
+    </changeSet>
+
 
 </databaseChangeLog>
