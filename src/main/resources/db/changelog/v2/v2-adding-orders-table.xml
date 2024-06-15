@@ -1,0 +1,54 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="v2-1" author="Urbanait Konstantin">
+        <preConditions onFail="MARK_RAN">
+            <tableIsEmpty tableName="Orders"/>
+        </preConditions>
+        <insert tableName="Orders">
+            <column name="order_id" value ="2"/>
+            <column name="user_id" value ="2"/>
+            <column name="address" value="Красноармейская д.21"/>
+            <column name="price" value="46.6"/>
+        </insert>
+        <insert tableName="Orders">
+            <column name="order_id" value ="3"/>
+            <column name="user_id" value ="3"/>
+            <column name="address" value="Розы Люксембург д.14"/>
+            <column name="price" value="64.2"/>
+        </insert>
+        <insert tableName="Orders">
+            <column name="order_id" value ="4"/>
+            <column name="user_id" value ="4"/>
+            <column name="address" value="Гикало д.19"/>
+            <column name="price" value="36.6"/>
+        </insert>
+        <insert tableName="Orders">
+            <column name="order_id" value ="5"/>
+            <column name="user_id" value ="5"/>
+            <column name="address" value="Дзержинского д.14"/>
+            <column name="price" value="37.5"/>
+        </insert>
+        <insert tableName="Orders">
+            <column name="order_id" value ="6"/>
+            <column name="user_id" value ="6"/>
+            <column name="address" value="Независимости д.173"/>
+            <column name="price" value="44.7"/>
+        </insert>
+        <insert tableName="Orders">
+            <column name="order_id" value ="7"/>
+            <column name="user_id" value ="7"/>
+            <column name="address" value="Б.Хмельницкого д.52"/>
+            <column name="price" value="79.8"/>
+        </insert>
+        <insert tableName="Orders">
+            <column name="order_id" value ="8"/>
+            <column name="user_id" value ="28"/>
+            <column name="address" value="Дерюго д.111"/>
+            <column name="price" value="36.7"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
