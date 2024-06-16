@@ -43,10 +43,13 @@
         <addForeignKeyConstraint
                 baseColumnNames="user_id"
                 baseTableName="Orders"
-                constraintName="fk_toorders_to_users"
-        referencedColumnNames="user_id"
-        referencedTableName="Users"/>
+                constraintName="fk_Orders_to_users"
+                referencedColumnNames="user_id"
+                referencedTableName="Users"/>
     </changeSet>
 
+    <changeSet id="v1-4" author="Urbanait Konstantin">
+        <addUniqueConstraint columnNames="order_id" constraintName="unique_Order_id_constraint" tableName="Orders"/>
+    </changeSet>
 
 </databaseChangeLog>

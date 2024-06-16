@@ -8,5 +8,5 @@
     <include file="v2-adding-users-table.xml" relativeToChangelogFile="true"/>
     <include file="v2-adding-orders-table.xml" relativeToChangelogFile="true"/>
     <include file="v2-adding-orderItems-table.xml" relativeToChangelogFile="true"/>
-  
+
 </databaseChangeLog>

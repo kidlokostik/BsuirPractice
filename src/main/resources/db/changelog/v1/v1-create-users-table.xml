@@ -45,5 +45,4 @@
         </insert>
     </changeSet>
 
-
 </databaseChangeLog>

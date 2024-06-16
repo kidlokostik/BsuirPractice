@@ -4,9 +4,6 @@
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <changeSet id="v2-1" author="Urbanait Konstantin">
-        <preConditions onFail="MARK_RAN">
-            <tableIsEmpty tableName="Orders"/>
-        </preConditions>
         <insert tableName="Orders">
             <column name="order_id" value ="2"/>
             <column name="user_id" value ="2"/>
@@ -45,10 +42,14 @@
         </insert>
         <insert tableName="Orders">
             <column name="order_id" value ="8"/>
-            <column name="user_id" value ="28"/>
+            <column name="user_id" value ="8"/>
             <column name="address" value="Дерюго д.111"/>
             <column name="price" value="36.7"/>
         </insert>
+    </changeSet>
+
+    <changeSet id="v2-2" author="Urbanait Konstantin">
+        <addUniqueConstraint columnNames="order_id" constraintName="unique_Oorder_id_constraint" tableName="Orders"/>
     </changeSet>
 
 </databaseChangeLog>
