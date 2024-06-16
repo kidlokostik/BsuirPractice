@@ -4,9 +4,9 @@
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <include file="v2-adding-categories-table.xml" relativeToChangelogFile="true"/>
+    <include file="v2-adding-products-table.xml" relativeToChangelogFile="true"/>
     <include file="v2-adding-users-table.xml" relativeToChangelogFile="true"/>
     <include file="v2-adding-orders-table.xml" relativeToChangelogFile="true"/>
-    <include file="v2-adding-products-table.xml" relativeToChangelogFile="true"/>
     <include file="v2-adding-orderItems-table.xml" relativeToChangelogFile="true"/>
-
+  
 </databaseChangeLog>
