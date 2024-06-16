@@ -4,9 +4,6 @@
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <changeSet id="v2-1" author="Urbanait Konstantin">
-        <preConditions onFail="MARK_RAN">
-            <tableIsEmpty tableName="Users"/>
-        </preConditions>
         <insert tableName="Users">
             <column name="user_id" value="2"/>
             <column name="phone" value="+375291233211"/>
