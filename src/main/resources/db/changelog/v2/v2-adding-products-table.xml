@@ -351,286 +351,294 @@
         </insert>
     </changeSet>
 
-    <changeSet id="2-2" author="Urbanait Konstantin">
+    <changeSet author="Urbanait Konstantin" id="v2-2">
+        <addColumn tableName="Products">
+            <column name="product_price"
+                    type="double">
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="v2-3" author="Urbanait Konstantin">
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="16.9"/>
-            <where>"product_id"=1</where>
+            <where>id=1</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="21.9"/>
-            <where>"product_id"=2</where>
+            <where>id=2</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="24.9"/>
-            <where>product_id=3</where>
+            <where>id=3</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="22.9"/>
-            <where>product_id=4</where>
+            <where>id=4</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="18.9"/>
-            <where>product_id=5</where>
+            <where>id=5</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="21.9"/>
-            <where>product_id=6</where>
+            <where>id=6</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="20.9"/>
-            <where>product_id=7</where>
+            <where>id=7</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="17.9"/>
-            <where>product_id=8</where>
+            <where>id=8</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="16.9"/>
-            <where>product_id=9</where>
+            <where>id=9</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="18.9"/>
-            <where>product_id=10</where>
+            <where>id=10</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="21.9"/>
-            <where>product_id=11</where>
+            <where>id=11</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="19.9"/>
-            <where>product_id=12</where>
+            <where>id=12</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="24.9"/>
-            <where>product_id=13</where>
+            <where>id=13</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="24.9"/>
-            <where>product_id=14</where>
+            <where>id=14</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="9.9"/>
-            <where>product_id=15</where>
+            <where>id=15</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="10.9"/>
-            <where>product_id=16</where>
+            <where>id=16</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="13.9"/>
-            <where>product_id=17</where>
+            <where>id=17</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="10"/>
-            <where>product_id=18</where>
+            <where>id=18</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="8.9"/>
-            <where>product_id=19</where>
+            <where>id=19</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="10.9"/>
-            <where>product_id=20</where>
+            <where>id=20</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="11.9"/>
-            <where>product_id=21</where>
+            <where>id=21</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="11.9"/>
-            <where>product_id=22</where>
+            <where>id=22</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="11.9"/>
-            <where>product_id=23</where>
+            <where>id=23</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="8.9"/>
-            <where>product_id=24</where>
+            <where>id=24</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="8.9"/>
-            <where>product_id=25</where>
+            <where>id=25</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="8.9"/>
-            <where>product_id=26</where>
+            <where>id=26</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="2"/>
-            <where>product_id=27</where>
+            <where>id=27</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="2"/>
-            <where>product_id=28</where>
+            <where>id=28</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="2"/>
-            <where>product_id=29</where>
+            <where>id=29</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="4"/>
-            <where>product_id=30</where>
+            <where>id=30</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="4"/>
-            <where>product_id=31</where>
+            <where>id=31</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="3"/>
-            <where>product_id=32</where>
+            <where>id=32</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="3"/>
-            <where>product_id=33</where>
+            <where>id=33</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="6"/>
-            <where>product_id=34</where>
+            <where>id=34</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="5"/>
-            <where>product_id=35</where>
+            <where>id=35</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="5"/>
-            <where>product_id=36</where>
+            <where>id=36</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="5"/>
-            <where>product_id=37</where>
+            <where>id=37</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="4"/>
-            <where>product_id=38</where>
+            <where>id=38</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="6"/>
-            <where>product_id=39</where>
+            <where>id=39</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="6"/>
-            <where>product_id=40</where>
+            <where>id=40</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="6"/>
-            <where>product_id=41</where>
+            <where>id=41</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="6"/>
-            <where>product_id=42</where>
+            <where>id=42</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="6"/>
-            <where>product_id=43</where>
+            <where>id=43</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="5"/>
-            <where>product_id=44</where>
+            <where>id=44</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="5"/>
-            <where>product_id=45</where>
+            <where>id=45</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="5"/>
-            <where>product_id=46</where>
+            <where>id=46</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="5"/>
-            <where>product_id=47</where>
+            <where>id=47</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="6"/>
-            <where>product_id=48</where>
+            <where>id=48</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="6"/>
-            <where>product_id=49</where>
+            <where>id=49</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="6"/>
-            <where>product_id=50</where>
+            <where>id=50</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="6"/>
-            <where>product_id=51</where>
+            <where>id=51</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="6"/>
-            <where>product_id=52</where>
+            <where>id=52</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="6"/>
-            <where>product_id=53</where>
+            <where>id=53</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="4"/>
-            <where>product_id=54</where>
+            <where>id=54</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="4"/>
-            <where>product_id=55</where>
+            <where>id=55</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="4"/>
-            <where>product_id=56</where>
+            <where>id=56</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="4"/>
-            <where>product_id=57</where>
+            <where>id=57</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="5.5"/>
-            <where>product_id=58</where>
+            <where>id=58</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="5.9"/>
-            <where>product_id=59</where>
+            <where>id=59</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="5.9"/>
-            <where>product_id=60</where>
+            <where>id=60</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="6.9"/>
-            <where>product_id=61</where>
+            <where>id=61</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="5.9"/>
-            <where>product_id=62</where>
+            <where>id=62</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="4.5"/>
-            <where>product_id=63</where>
+            <where>id=63</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="6"/>
-            <where>product_id=64</where>
+            <where>id=64</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="1"/>
-            <where>product_id=65</where>
+            <where>id=65</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="1"/>
-            <where>product_id=66</where>
+            <where>id=66</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="1"/>
-            <where>product_id=67</where>
+            <where>id=67</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="1"/>
-            <where>product_id=68</where>
+            <where>id=68</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="1"/>
-            <where>product_id=69</where>
+            <where>id=69</where>
         </update>
         <update schemaName="public" tableName="Products">
             <column name="product_price" value="1"/>
-            <where>product_id=70</where>
+            <where>id=70</where>
         </update>
 
 

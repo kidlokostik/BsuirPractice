@@ -5,7 +5,7 @@
 
     <changeSet id="v2-1" author="Urbanait Konstantin">
         <insert tableName="Users">
-            <column name="user_id" value="2"/>
+            <column name="id" value="2"/>
             <column name="phone" value="+375291233211"/>
             <column name="user_name" value="Kirill"/>
             <column name="password" value="535353"/>

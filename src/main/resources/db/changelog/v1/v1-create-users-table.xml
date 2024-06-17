@@ -11,7 +11,6 @@
                 <tableExists tableName="Users"/>
             </not>
         </preConditions>
-
         <createTable tableName="Users">
             <column name="user_id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true"/>
@@ -31,15 +30,19 @@
         </createTable>
     </changeSet>
 
+    <changeSet id="v1-2" author="Katya Pechko, Kirill Pavlov">
+        <renameColumn tableName="Users" oldColumnName="user_id" newColumnName="id" ></renameColumn>
+        <renameColumn tableName="Users" oldColumnName="user_name" newColumnName="name"></renameColumn>
+    </changeSet>
 
-    <changeSet id="v1-2" author="Urbanait Konstantin">
+    <changeSet id="v1-3" author="Urbanait Konstantin">
         <preConditions onFail="MARK_RAN">
             <tableIsEmpty tableName="Users"/>
         </preConditions>
         <insert tableName="Users">
-            <column name="user_id" value="1"/>
+            <column name="id" value="1"/>
             <column name="phone" value="+375257879632"/>
-            <column name="user_name" value="Костя"/>
+            <column name="name" value="Костя"/>
             <column name="password" value="525252"/>
             <column name="confirm_password" value="525252"/>
         </insert>

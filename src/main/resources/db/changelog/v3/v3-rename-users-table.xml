@@ -3,9 +3,5 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-    <changeSet id="v3-1" author="Katya Pechko, Kirill Pavlov">
-        <renameColumn tableName="Users" oldColumnName="user_id" newColumnName="id" ></renameColumn>
-        <renameColumn tableName="Users" oldColumnName="user_name" newColumnName="name"></renameColumn>
-    </changeSet>
 
 </databaseChangeLog>
