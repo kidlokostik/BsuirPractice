@@ -5,8 +5,6 @@ import com.example.pizzapp.models.Category;
 import org.mapstruct.Mapper;
 
 import java.util.List;
-import com.example.pizzapp.models.Order;
-import org.mapstruct.Mapper;
 
 
 @Mapper(componentModel = "spring")
