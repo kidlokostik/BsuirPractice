@@ -1,6 +1,6 @@
 package com.example.pizzapp.mappers;
 
-import com.example.pizzapp.dto.UserDTO;
+import com.example.pizzapp.dto.CategoryDTO;
 
 
 
