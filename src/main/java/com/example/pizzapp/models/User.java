@@ -8,11 +8,13 @@ import java.util.List;
 
 @Data
 @Entity
-public class Users {
+@Table(name = "Users")
+public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long user_id;
+    @Column(name = "user_id")
+    private Long id;
 
     @Column(nullable = false)
     private String phone;
@@ -27,6 +29,6 @@ public class Users {
     private String confirm_password;
 
     @OneToMany(mappedBy = "user")
-    private List<Orders> orders = new ArrayList<>();
+    private List<Order> orders = new ArrayList<>();
 
 }

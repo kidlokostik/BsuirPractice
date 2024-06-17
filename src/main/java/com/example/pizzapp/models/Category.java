@@ -8,15 +8,17 @@ import java.util.List;
 
 @Data
 @Entity
-public class Categories {
+@Table(name = "Categories")
+public class Category {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long category_id;
+    @Column (name = "category_id", nullable = false)
+    private Long id;
 
-    @Column(nullable = false)
-    private String category_name;
+    @Column(name = "category_name", nullable = false)
+    private String name;
 
     @OneToMany(mappedBy = "category")
-    private List<Products> products = new ArrayList<>();
+    private List<Product> product = new ArrayList<>();
 
 }
