@@ -7,7 +7,7 @@
     <changeSet id="v1-1" author="Urbanait Konstantin">
         <preConditions onFail="MARK_RAN">
             <not>
-                <tableExists tableName="orders"/>
+                <tableExists tableName="Orders"/>
             </not>
         </preConditions>
 
@@ -18,7 +18,7 @@
             <column name="user_id" type="integer">
                 <constraints nullable="true"/>
             </column>
-            <column name="price" type="varchar(40)">
+            <column name="price" type="double precision">
                 <constraints nullable="false"/>
             </column>
             <column name="address" type="varchar(40)">
@@ -35,8 +35,17 @@
             <column name="order_id" value ="1"/>
             <column name="user_id" value ="1"/>
             <column name="address" value="Ботаническая д.17"/>
-            <column name="price" value="500$"/>
+            <column name="price" value="50.0"/>
         </insert>
+    </changeSet>
+
+    <changeSet id="v1-3" author="Urbanait Konstantin">
+        <addForeignKeyConstraint
+                baseColumnNames="user_id"
+                baseTableName="Orders"
+                constraintName="fk_toorders_to_users"
+        referencedColumnNames="user_id"
+        referencedTableName="Users"/>
     </changeSet>
 
 
