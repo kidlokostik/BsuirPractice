@@ -1,7 +1,7 @@
 package com.example.pizzapp.mappers;
 
-import com.example.pizzapp.dto.UserDTO;
-import com.example.pizzapp.models.User;
+import com.example.pizzapp.dto.OrderDTO;
+import com.example.pizzapp.models.Order;
 import org.mapstruct.Mapper;
 
 import java.util.List;
@@ -11,5 +11,5 @@ public interface OrderMapper {
     OrderDTO toDTO(Order order);
     List<OrderDTO> toDTO(List<Order> orders);
 
-    User toEntity(OrderDTO orderDTO);
+    Order toEntity(OrderDTO orderDTO);
 }
