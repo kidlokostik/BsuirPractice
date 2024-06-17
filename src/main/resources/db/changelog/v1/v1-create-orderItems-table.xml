@@ -13,13 +13,13 @@
 
         <createTable tableName="OrderItems">
             <column name="order_id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true"/>
+                <constraints nullable="false"/>
             </column>
             <column name="product_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
             <column name="orderitems_id" type="bigint">
-                <constraints nullable="false"/>
+                <constraints primaryKey="true"/>
             </column>
         </createTable>
     </changeSet>
@@ -56,4 +56,6 @@
                 onDelete="CASCADE"
                 onUpdate="CASCADE"/>
     </changeSet>
+
+
 </databaseChangeLog>

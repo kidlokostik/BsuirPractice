@@ -7,49 +7,49 @@
         <insert tableName="Users">
             <column name="id" value="2"/>
             <column name="phone" value="+375291233211"/>
-            <column name="user_name" value="Kirill"/>
+            <column name="name" value="Kirill"/>
             <column name="password" value="535353"/>
             <column name="confirm_password" value="535353"/>
         </insert>
         <insert tableName="Users">
-            <column name="user_id" value="3"/>
+            <column name="id" value="3"/>
             <column name="phone" value="+375291233212"/>
-            <column name="user_name" value="Katya"/>
+            <column name="name" value="Katya"/>
             <column name="password" value="545454"/>
             <column name="confirm_password" value="545454"/>
         </insert>
         <insert tableName="Users">
-            <column name="user_id" value="4"/>
+            <column name="id" value="4"/>
             <column name="phone" value="+375291233213"/>
-            <column name="user_name" value="Roman"/>
+            <column name="name" value="Roman"/>
             <column name="password" value="555555"/>
             <column name="confirm_password" value="555555"/>
         </insert>
         <insert tableName="Users">
-            <column name="user_id" value="5"/>
+            <column name="id" value="5"/>
             <column name="phone" value="+375291233214"/>
-            <column name="user_name" value="Julia"/>
+            <column name="name" value="Julia"/>
             <column name="password" value="565656"/>
             <column name="confirm_password" value="565656"/>
         </insert>
         <insert tableName="Users">
-            <column name="user_id" value="6"/>
+            <column name="id" value="6"/>
             <column name="phone" value="+375291233215"/>
-            <column name="user_name" value="Romeo"/>
+            <column name="name" value="Romeo"/>
             <column name="password" value="575757"/>
             <column name="confirm_password" value="575757"/>
         </insert>
         <insert tableName="Users">
-            <column name="user_id" value="7"/>
+            <column name="id" value="7"/>
             <column name="phone" value="+375291233216"/>
-            <column name="user_name" value="Daniil"/>
+            <column name="name" value="Daniil"/>
             <column name="password" value="585858"/>
             <column name="confirm_password" value="585858"/>
         </insert>
         <insert tableName="Users">
-            <column name="user_id" value="8"/>
+            <column name="id" value="8"/>
             <column name="phone" value="+375291233211"/>
-            <column name="user_name" value="Boris"/>
+            <column name="name" value="Boris"/>
             <column name="password" value="595959"/>
             <column name="confirm_password" value="595959"/>
         </insert>

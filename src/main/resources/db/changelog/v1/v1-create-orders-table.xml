@@ -44,7 +44,7 @@
                 baseColumnNames="user_id"
                 baseTableName="Orders"
                 constraintName="fk_Orders_to_users"
-                referencedColumnNames="user_id"
+                referencedColumnNames="id"
                 referencedTableName="Users"/>
     </changeSet>
 
