@@ -16,7 +16,7 @@ public class UserDTO {
     private String phone;
 
     @NotBlank(message = "Имя пользователя не должно быть пустым")
-    private String name;
+    private String user_name;
 
     @NotBlank(message = "Пароль не должен быть пустым")
     @Size(min = 6, message = "Пароль должен содержать не менее 6 символов")
