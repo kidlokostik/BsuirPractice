@@ -1,7 +1,6 @@
 package com.example.pizzapp.dto;
 
 import com.example.pizzapp.models.Order;
-import jakarta.persistence.*;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
