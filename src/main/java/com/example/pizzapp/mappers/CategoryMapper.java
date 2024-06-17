@@ -14,5 +14,5 @@ public interface CategoryMapper {
     CategoryDTO toDTO(Category category);
     List<CategoryDTO> toDTO(List<Category> categorys);
 
-    User toEntity(CategoryDTO categorysDTO);
+    User toEntity(CategoryDTO categoryDTO);
 }
