@@ -8,11 +8,14 @@ import jakarta.validation.constraints.*;
 @Data
 @NoArgsConstructor
 public class OrderDTO {
+
     @NotNull(message = "Значение не может быть равно null")
     private Long id;
-    NotBlank(message = "Имя пользователя не должно быть пустым")
+
+    @NotBlank(message = "Имя пользователя не должно быть пустым")
     private Long user;
-    NotBlank(message = "Адресс пользователя не должен быть пустым")
+
+    @NotBlank(message = "Адресс пользователя не должен быть пустым")
     private String address;
 
     @NotNull(message = "Цена не должна быть null")
