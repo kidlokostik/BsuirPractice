@@ -1,0 +1,22 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="v3-1" author="Katya Pechko, Kirill Pavlov">
+        <renameColumn tableName="Products" oldColumnName="product_id" newColumnName="id" ></renameColumn>
+        <renameColumn tableName="Products" oldColumnName="product_name" newColumnName="name"></renameColumn>
+        <renameColumn tableName="Products" oldColumnName="product_price" newColumnName="price"></renameColumn>
+    </changeSet>
+
+    <changeSet id="v3-2" author="Urbanait Konstantin">
+        <addForeignKeyConstraint baseTableName="Products"
+                                 baseColumnNames="category_id"
+                                 constraintName="fk_Products_Category"
+                                 referencedTableName="Category"
+                                 referencedColumnNames="id"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"/>
+    </changeSet>
+
+</databaseChangeLog>

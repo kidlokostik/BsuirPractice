@@ -1,0 +1,20 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="v3-1" author="Katya Pechko, Kirill Pavlov">
+        <renameTable catalogName="tables" schemaName="public" oldTableName="Сategories" newTableName="Category"/>
+    </changeSet>
+
+    <changeSet id="v3-2" author="Katya Pechko, Kirill Pavlov">
+        <renameColumn  schemaName="public" tableName="Category" oldColumnName="category_id" newColumnName="id"/>
+        <renameColumn schemaName="public" tableName="Category" oldColumnName="category_name" newColumnName="name"/>
+    </changeSet>
+
+    <changeSet id="v3-3" author="Urbanait Konstantin">
+        <addUniqueConstraint columnNames="id" constraintName="unique_id_constraint" tableName="Category"/>
+    </changeSet>
+
+
+</databaseChangeLog>
