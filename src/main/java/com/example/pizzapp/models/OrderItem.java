@@ -2,8 +2,10 @@ package com.example.pizzapp.models;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
+@NoArgsConstructor
 @Entity
 @Table(name = "OrderItems")
 public class OrderItem {
