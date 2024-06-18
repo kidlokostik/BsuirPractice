@@ -11,5 +11,6 @@ public record ProductDto(
         @NotBlank(message = "{field.required}", groups = {OnUpdate.class, OnCreate.class})
         String name,
         @NotNull(message = "{field.null}", groups = {OnUpdate.class, OnCreate.class})
-        Long categoryId){}
+        Long categoryId
+){}
 

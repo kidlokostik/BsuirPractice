@@ -10,4 +10,5 @@ public record OrderItemDto(
         @NotNull(message = "{field.null}", groups = {OnUpdate.class, OnCreate.class})
         Long productId,
         @NotNull(message = "{field.null}", groups = {OnUpdate.class, OnCreate.class})
-        Long orderId){}
+        Long orderId
+){}

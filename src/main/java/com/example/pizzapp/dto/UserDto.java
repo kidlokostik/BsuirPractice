@@ -18,4 +18,5 @@ public record UserDto(
         String password,
         @NotBlank(message = "{field.required}", groups = {OnUpdate.class, OnCreate.class})
         @Size(min = 6, message = "{field.size}", groups = {OnUpdate.class, OnCreate.class})
-        String confirmPassword){}
+        String confirmPassword
+){}

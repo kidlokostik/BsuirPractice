@@ -9,4 +9,5 @@ public record CategoryDto(
         @NotNull(message = "{field.null}", groups = OnUpdate.class)
         Long id,
         @NotBlank(message = "{field.required}", groups = {OnUpdate.class, OnCreate.class})
-        String name){}
+        String name
+){}

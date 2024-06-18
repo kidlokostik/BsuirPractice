@@ -17,4 +17,5 @@ public record OrderDto(
         String address,
         @NotNull(message = "{field.null}", groups = {OnUpdate.class, OnCreate.class})
         @Positive(message = "{field.positive}", groups = {OnUpdate.class, OnCreate.class})
-        BigDecimal price){}
+        BigDecimal price
+){}
