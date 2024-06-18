@@ -7,16 +7,10 @@ import jakarta.validation.constraints.NotNull;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-@Data
-@NoArgsConstructor
-public class ProductDto {
 
-    @NotNull(message = "Значение не может быть равно null", groups = OnUpdate.class)
-    private Long id;
-
-    @NotBlank(message = "Название товара не должно быть пустым", groups = {OnUpdate.class, OnCreate.class})
-    private String name;
-
-    @NotNull(message = "Значение не может быть равно null", groups = {OnUpdate.class, OnCreate.class})
-    private Long category;
-}
+public record ProductDto(@NotNull(message = "Значение не может быть равно null", groups = OnUpdate.class)
+                         Long id,
+                         @NotBlank(message = "Название товара не должно быть пустым", groups = {OnUpdate.class, OnCreate.class})
+                         String name,
+                         @NotNull(message = "Значение не может быть равно null", groups = {OnUpdate.class, OnCreate.class})
+                         Long categoryId) {}

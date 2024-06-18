@@ -9,8 +9,8 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface OrderItemMapper {
-    @Mapping(source = "orderItem.order.id", target = "order")
-    @Mapping(source = "orderItem.product.id", target = "product")
+    @Mapping(source = "orderItem.order.id", target = "orderId")
+    @Mapping(source = "orderItem.product.id", target = "productId")
     OrderItemDto toDto(OrderItem orderItem);
     List<OrderItemDto> toDto(List<OrderItem> orderItems);
 

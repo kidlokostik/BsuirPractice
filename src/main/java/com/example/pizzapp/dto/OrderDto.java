@@ -9,21 +9,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigDecimal;
-@Data
-@NoArgsConstructor
-public class OrderDto {
 
-    @NotNull(message = "Значение не может быть равно null", groups = OnUpdate.class)
-    private Long id;
-
-    @NotBlank(message = "Имя пользователя не должно быть пустым", groups = {OnUpdate.class, OnCreate.class})
-    private Long user;
-
-    @NotBlank(message = "Адресс пользователя не должен быть пустым", groups = {OnUpdate.class, OnCreate.class})
-    private String address;
-
-    @NotNull(message = "Цена не должна быть null", groups = {OnUpdate.class, OnCreate.class})
-    @Positive(message = "Цена должна быть положительной", groups = {OnUpdate.class, OnCreate.class})
-    private BigDecimal price;
-
-}
+public record OrderDto(@NotNull(message = "Значение не может быть равно null", groups = OnUpdate.class)
+                       Long id,
+                       @NotBlank(message = "Имя пользователя не должно быть пустым", groups = {OnUpdate.class, OnCreate.class})
+                       Long user,
+                       @NotBlank(message = "Адресс пользователя не должен быть пустым", groups = {OnUpdate.class, OnCreate.class})
+                       String address,
+                       @NotNull(message = "Цена не должна быть null", groups = {OnUpdate.class, OnCreate.class})
+                       @Positive(message = "Цена должна быть положительной", groups = {OnUpdate.class, OnCreate.class})
+                       BigDecimal price) { }

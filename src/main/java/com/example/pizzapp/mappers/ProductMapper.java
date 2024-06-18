@@ -9,7 +9,7 @@ import java.util.List;
 
 @Mapper(componentModel = "spring")
 public interface ProductMapper {
-    @Mapping(source = "product.category.id", target = "category")
+    @Mapping(source = "product.category.id", target = "categoryId")
     ProductDto toDto(Product product);
 
     List<ProductDto> toDto(List<Product> products);
