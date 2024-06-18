@@ -8,12 +8,13 @@ import jakarta.validation.constraints.Positive;
 
 import java.math.BigDecimal;
 
-public record OrderDto(@NotNull(message = "{field.null}", groups = OnUpdate.class)
-                       Long id,
-                       @NotBlank(message = "{field.required}", groups = {OnUpdate.class, OnCreate.class})
-                       Long userId,
-                       @NotBlank(message = "{field.required}", groups = {OnUpdate.class, OnCreate.class})
-                       String address,
-                       @NotNull(message = "{field.null}", groups = {OnUpdate.class, OnCreate.class})
-                       @Positive(message = "{field.positive}", groups = {OnUpdate.class, OnCreate.class})
-                       BigDecimal price) { }
+public record OrderDto(
+        @NotNull(message = "{field.null}", groups = OnUpdate.class)
+        Long id,
+        @NotBlank(message = "{field.required}", groups = {OnUpdate.class, OnCreate.class})
+        Long userId,
+        @NotBlank(message = "{field.required}", groups = {OnUpdate.class, OnCreate.class})
+        String address,
+        @NotNull(message = "{field.null}", groups = {OnUpdate.class, OnCreate.class})
+        @Positive(message = "{field.positive}", groups = {OnUpdate.class, OnCreate.class})
+        BigDecimal price){}
