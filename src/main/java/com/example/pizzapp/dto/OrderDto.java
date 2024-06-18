@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 import java.math.BigDecimal;
 @Data
 @NoArgsConstructor
-public class OrderDTO {
+public class OrderDto {
 
     @NotNull(message = "Значение не может быть равно null", groups = OnUpdate.class)
     private Long id;

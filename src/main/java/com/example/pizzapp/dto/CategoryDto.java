@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class CategoryDTO {
+public class CategoryDto {
     @NotNull(message = "Значение не может быть равно 0", groups = OnUpdate.class)
     private Long id;
 

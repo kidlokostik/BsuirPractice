@@ -8,7 +8,7 @@ import jakarta.validation.constraints.*;
 
 @Data
 @NoArgsConstructor
-public class UserDTO {
+public class UserDto {
 
     @NotNull(message = "Значение не может быть равно null", groups = OnUpdate.class)
     private Long id;

@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor
-public class OrderItemDTO {
+public class OrderItemDto {
     @NotNull(message = "Значение id не может быть равно null", groups = OnUpdate.class)
     private Long id;
     @NotNull(message = "Значение product не может быть равно null", groups = {OnUpdate.class, OnCreate.class})
