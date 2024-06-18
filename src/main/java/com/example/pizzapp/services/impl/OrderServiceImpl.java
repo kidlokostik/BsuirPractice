@@ -16,12 +16,12 @@ public class OrderServiceImpl implements OrderService {
     private OrderRepository orderRepository;
     private OrderMapper orderMapper;
     @Override
-    public Order createProduct(Order order) {
+    public Order createOrder(Order order) {
         return orderRepository.createOrder(order);
     }
 
     @Override
-    public Order updateProduct(Order order) {
+    public Order updateOrder(Order order) {
         return orderRepository.updateOrder(order);
     }
 

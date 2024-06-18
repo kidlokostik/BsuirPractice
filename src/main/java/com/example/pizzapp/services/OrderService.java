@@ -9,9 +9,9 @@ import java.util.List;
 
 @Service
 public interface OrderService {
-    Order createProduct(Order createOrderRequest);
+    Order createOrder(Order createOrderRequest);
 
-    Order updateProduct(Order updateOrderRequest);
+    Order updateOrder(Order updateOrderRequest);
 
     void deleteOrder(Long id);
 
