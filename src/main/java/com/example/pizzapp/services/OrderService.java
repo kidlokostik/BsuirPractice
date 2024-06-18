@@ -1,9 +1,21 @@
 package com.example.pizzapp.services;
 
+import com.example.pizzapp.dto.OrderDto;
+import com.example.pizzapp.dto.ProductDto;
 import com.example.pizzapp.models.Order;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public interface OrderService {
-    Order getById(Long id);
+    Order createProduct(Order createOrderRequest);
+
+    Order updateProduct(Order updateOrderRequest);
+
+    void deleteOrder(Long id);
+
+    Order getOrderById(Long id);
+
+    List<OrderDto> getAllOrders();
 }
