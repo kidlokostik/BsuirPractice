@@ -11,7 +11,7 @@ import java.math.BigDecimal;
 public record OrderDto(@NotNull(message = "{field.null}", groups = OnUpdate.class)
                        Long id,
                        @NotBlank(message = "{field.required}", groups = {OnUpdate.class, OnCreate.class})
-                       Long user,
+                       Long userId,
                        @NotBlank(message = "{field.required}", groups = {OnUpdate.class, OnCreate.class})
                        String address,
                        @NotNull(message = "{field.null}", groups = {OnUpdate.class, OnCreate.class})
