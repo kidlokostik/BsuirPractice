@@ -16,5 +16,8 @@
         <addUniqueConstraint columnNames="id" constraintName="unique_id_constraint" tableName="Category"/>
     </changeSet>
 
+    <changeSet id="v3-4" author="Katya Pechko, Kirill Pavlov">
+        <renameTable catalogName="tables" schemaName="public" oldTableName="Category" newTableName="category"/>
+    </changeSet>
 
 </databaseChangeLog>

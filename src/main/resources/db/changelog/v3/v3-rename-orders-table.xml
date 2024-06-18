@@ -11,10 +11,13 @@
         <addForeignKeyConstraint
                 baseColumnNames="user_id"
                 baseTableName="Orders"
-                constraintName="fk_Orders_to_users"
+                constraintName="fk_Orders_to_Users"
                 referencedColumnNames="id"
-                referencedTableName="Users"/>
+                referencedTableName="users"/>
     </changeSet>
 
+    <changeSet id="v3-3" author="Katya Pechko, Kirill Pavlov">
+        <renameTable catalogName="tables" schemaName="public" oldTableName="Orders" newTableName="orders"/>
+    </changeSet>
 
 </databaseChangeLog>

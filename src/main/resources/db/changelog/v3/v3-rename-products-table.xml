@@ -13,10 +13,14 @@
         <addForeignKeyConstraint baseTableName="Products"
                                  baseColumnNames="category_id"
                                  constraintName="fk_Products_Category"
-                                 referencedTableName="Category"
+                                 referencedTableName="category"
                                  referencedColumnNames="id"
                                  onDelete="CASCADE"
                                  onUpdate="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="v3-3" author="Katya Pechko, Kirill Pavlov">
+        <renameTable catalogName="tables" schemaName="public" oldTableName="Products" newTableName="products"/>
     </changeSet>
 
 </databaseChangeLog>

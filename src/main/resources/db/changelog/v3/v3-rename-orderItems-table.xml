@@ -11,7 +11,7 @@
         <addForeignKeyConstraint baseTableName="OrderItems"
                                  baseColumnNames="product_id"
                                  constraintName="fk_Orderitems_Products"
-                                 referencedTableName="Products"
+                                 referencedTableName="products"
                                  referencedColumnNames="id"
                                  onDelete="CASCADE"
                                  onUpdate="CASCADE"/>
@@ -21,10 +21,14 @@
         <addForeignKeyConstraint baseTableName="OrderItems"
                                  baseColumnNames="order_id"
                                  constraintName="fk_Orderitems_new_Orders"
-                                 referencedTableName="Orders"
+                                 referencedTableName="orders"
                                  referencedColumnNames="id"
                                  onDelete="CASCADE"
                                  onUpdate="CASCADE"/>
+    </changeSet>
+
+    <changeSet id="v3-4" author="Katya Pechko, Kirill Pavlov">
+        <renameTable catalogName="tables" schemaName="public" oldTableName="OrderItems" newTableName="order_items"/>
     </changeSet>
 
 </databaseChangeLog>
