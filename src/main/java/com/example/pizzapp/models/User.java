@@ -10,25 +10,24 @@ import java.util.List;
 @Data
 @NoArgsConstructor
 @Entity
-@Table(name = "Users")
+@Table(name = "users")
 public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
     private Long id;
 
     @Column(nullable = false)
     private String phone;
 
     @Column(nullable = false)
-    private String user_name;
+    private String name;
 
     @Column(nullable = false)
     private String password;
 
     @Column(nullable = false)
-    private String confirm_password;
+    private String confirmPassword;
 
     @OneToMany(mappedBy = "user")
     private List<Order> orders = new ArrayList<>();
