@@ -1,13 +1,8 @@
 package com.example.pizzapp.services;
 
+import com.example.pizzapp.models.Category;
 import com.example.pizzapp.models.Product;
-import org.springframework.stereotype.Service;
 
-@Service
-public class ProductService {
-
-    Product getById(Long id) {
-        return null;
-    }
-
+public interface ProductService {
+    Product getById(Long id);
 }
