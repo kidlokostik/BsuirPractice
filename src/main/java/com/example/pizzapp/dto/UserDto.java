@@ -2,8 +2,6 @@ package com.example.pizzapp.dto;
 
 import com.example.pizzapp.dto.validation.OnCreate;
 import com.example.pizzapp.dto.validation.OnUpdate;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 import jakarta.validation.constraints.*;
 
 

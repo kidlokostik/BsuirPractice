@@ -3,8 +3,6 @@ package com.example.pizzapp.dto;
 import com.example.pizzapp.dto.validation.OnCreate;
 import com.example.pizzapp.dto.validation.OnUpdate;
 import jakarta.validation.constraints.NotNull;
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 public record OrderItemDto(@NotNull(message = "Значение id не может быть равно null", groups = OnUpdate.class)
                            Long id,
