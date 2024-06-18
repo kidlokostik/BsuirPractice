@@ -27,7 +27,7 @@ public class User {
     private String password;
 
     @Column(nullable = false)
-    private String confirm_password;
+    private String confirmPassword;
 
     @OneToMany(mappedBy = "user")
     private List<Order> orders = new ArrayList<>();
