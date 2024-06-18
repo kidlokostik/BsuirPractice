@@ -5,9 +5,9 @@ import com.example.pizzapp.dto.validation.OnUpdate;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
-public record ProductDto(@NotNull(message = "Значение не может быть равно null", groups = OnUpdate.class)
+public record ProductDto(@NotNull(message = "{field.null}", groups = OnUpdate.class)
                          Long id,
-                         @NotBlank(message = "Название товара не должно быть пустым", groups = {OnUpdate.class, OnCreate.class})
+                         @NotBlank(message = "{field.required}", groups = {OnUpdate.class, OnCreate.class})
                          String name,
-                         @NotNull(message = "Значение не может быть равно null", groups = {OnUpdate.class, OnCreate.class})
+                         @NotNull(message = "{field.null}", groups = {OnUpdate.class, OnCreate.class})
                          Long categoryId) {}

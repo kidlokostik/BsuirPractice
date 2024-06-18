@@ -6,7 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 
 public record CategoryDto(
-        @NotNull(message = "Значение не может быть равно 0", groups = OnUpdate.class)
+        @NotNull(message = "{field.null}", groups = OnUpdate.class)
         Long id,
-        @NotBlank(message = "Введите имя пользователя", groups = {OnUpdate.class, OnCreate.class})
+        @NotBlank(message = "{field.required}", groups = {OnUpdate.class, OnCreate.class})
         String name) {}
