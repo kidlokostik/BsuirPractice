@@ -1,0 +1,23 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="v3-1" author="Katya Pechko, Kirill Pavlov">
+        <renameColumn tableName="Orders" oldColumnName="order_id" newColumnName="id" ></renameColumn>
+    </changeSet>
+
+    <changeSet id="v3-2" author="Urbanait Konstantin">
+        <addForeignKeyConstraint
+                baseColumnNames="user_id"
+                baseTableName="Orders"
+                constraintName="fk_Orders_to_Users"
+                referencedColumnNames="id"
+                referencedTableName="users"/>
+    </changeSet>
+
+    <changeSet id="v3-3" author="Katya Pechko, Kirill Pavlov">
+        <renameTable catalogName="tables" schemaName="public" oldTableName="Orders" newTableName="orders"/>
+    </changeSet>
+
+</databaseChangeLog>

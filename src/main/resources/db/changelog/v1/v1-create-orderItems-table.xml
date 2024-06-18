@@ -12,14 +12,14 @@
         </preConditions>
 
         <createTable tableName="OrderItems">
-            <column name="orderItems_id" type="bigint" autoIncrement="true">
-                <constraints primaryKey="true"/>
+            <column name="order_id" type="bigint" autoIncrement="true">
+                <constraints nullable="false"/>
             </column>
             <column name="product_id" type="bigint">
                 <constraints nullable="false"/>
             </column>
-            <column name="order_id" type="bigint">
-                <constraints nullable="false"/>
+            <column name="orderitems_id" type="bigint">
+                <constraints primaryKey="true"/>
             </column>
         </createTable>
     </changeSet>
@@ -30,16 +30,16 @@
             <tableIsEmpty tableName="OrderItems"/>
         </preConditions>
         <insert tableName="OrderItems">
-            <column name="orderItems_id" value ="1"/>
-            <column name="product_id" value ="1"/>
             <column name="order_id" value ="1"/>
+            <column name="product_id" value ="1"/>
+            <column name="orderitems_id" value ="1"/>
         </insert>
     </changeSet>
 
     <changeSet id="v1-3" author="Urbanait Konstantin">
         <addForeignKeyConstraint baseTableName="OrderItems"
                                  baseColumnNames="order_id"
-                                 constraintName="fk_porderitems_orders"
+                                 constraintName="fk_Orderitems_orders"
                                  referencedTableName="Orders"
                                  referencedColumnNames="order_id"
                                  onDelete="CASCADE"
@@ -50,11 +50,12 @@
         <addForeignKeyConstraint
                 baseTableName="OrderItems"
                 baseColumnNames="product_id"
-                constraintName="fk_porderitems_products"
+                constraintName="fk_Orderitems_products"
                 referencedTableName="Products"
                 referencedColumnNames="product_id"
                 onDelete="CASCADE"
                 onUpdate="CASCADE"/>
     </changeSet>
+
 
 </databaseChangeLog>

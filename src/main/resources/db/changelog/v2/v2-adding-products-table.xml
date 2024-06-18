@@ -1,0 +1,649 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="v2-1" author="Urbanait Konstantin">
+        <insert tableName="Products">
+            <column name="product_id" value ="2"/>
+            <column name="category_id" value="1"/>
+            <column name="product_name" value ="Карбонара"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="3"/>
+            <column name="category_id" value="1"/>
+            <column name="product_name" value ="4 Сезона"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="4"/>
+            <column name="category_id" value="1"/>
+            <column name="product_name" value ="Острая"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="5"/>
+            <column name="category_id" value="1"/>
+            <column name="product_name" value ="Ветчина и сыр"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="6"/>
+            <column name="category_id" value="1"/>
+            <column name="product_name" value ="Мясная"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="7"/>
+            <column name="category_id" value="1"/>
+            <column name="product_name" value ="Домашняя"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="8"/>
+            <column name="category_id" value="1"/>
+            <column name="product_name" value ="Деревенская"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="9"/>
+            <column name="category_id" value="1"/>
+            <column name="product_name" value ="С овощами и грибами"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="10"/>
+            <column name="category_id" value="1"/>
+            <column name="product_name" value ="Итальянская"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="11"/>
+            <column name="category_id" value="1"/>
+            <column name="product_name" value ="Песто"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="12"/>
+            <column name="category_id" value="1"/>
+            <column name="product_name" value ="Маргарита"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="13"/>
+            <column name="category_id" value="1"/>
+            <column name="product_name" value ="Дьябло"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="14"/>
+            <column name="category_id" value="1"/>
+            <column name="product_name" value ="Микс 4ех"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="15"/>
+            <column name="category_id" value="1"/>
+            <column name="product_name" value ="Студенческая"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="16"/>
+            <column name="category_id" value="2"/>
+            <column name="product_name" value ="Картофель из печи"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="17"/>
+            <column name="category_id" value="2"/>
+            <column name="product_name" value ="Куриные Крылья"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="18"/>
+            <column name="category_id" value="2"/>
+            <column name="product_name" value ="Куриные наггетсы"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="19"/>
+            <column name="category_id" value="2"/>
+            <column name="product_name" value ="Блинчики с сыром и грибами"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="20"/>
+            <column name="category_id" value="2"/>
+            <column name="product_name" value ="Блинчики с ветчиной и сыром"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="21"/>
+            <column name="category_id" value="2"/>
+            <column name="product_name" value ="Паста Карбонара"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="22"/>
+            <column name="category_id" value="2"/>
+            <column name="product_name" value ="Паста Песто"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="23"/>
+            <column name="category_id" value="2"/>
+            <column name="product_name" value ="Паста Мясная"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="24"/>
+            <column name="category_id" value="2"/>
+            <column name="product_name" value ="Салат Греческий"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="25"/>
+            <column name="category_id" value="2"/>
+            <column name="product_name" value ="Салат Цезарь"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="26"/>
+            <column name="category_id" value="2"/>
+            <column name="product_name" value ="Салат Оливье"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="27"/>
+            <column name="category_id" value="3"/>
+            <column name="product_name" value ="Pepsi 0,5"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="28"/>
+            <column name="category_id" value="3"/>
+            <column name="product_name" value ="Fanta 0,5"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="29"/>
+            <column name="category_id" value="3"/>
+            <column name="product_name" value ="Coca-Cola 0,5"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="30"/>
+            <column name="category_id" value="3"/>
+            <column name="product_name" value ="Черный чай"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="31"/>
+            <column name="category_id" value="3"/>
+            <column name="product_name" value ="Зеленый чай"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="32"/>
+            <column name="category_id" value="3"/>
+            <column name="product_name" value ="Лидский Квас светлый"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="33"/>
+            <column name="category_id" value="3"/>
+            <column name="product_name" value ="Лидский Квас темный"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="34"/>
+            <column name="category_id" value="3"/>
+            <column name="product_name" value ="Домашний Узвар"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="35"/>
+            <column name="category_id" value="3"/>
+            <column name="product_name" value ="Брусничный Морс"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="36"/>
+            <column name="category_id" value="3"/>
+            <column name="product_name" value ="Клюквенный морс"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="37"/>
+            <column name="category_id" value="3"/>
+            <column name="product_name" value ="Кофе (на выбор)"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="38"/>
+            <column name="category_id" value="3"/>
+            <column name="product_name" value ="Какао"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="39"/>
+            <column name="category_id" value="3"/>
+            <column name="product_name" value ="Лимонад Кабзеги"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="40"/>
+            <column name="category_id" value="3"/>
+            <column name="product_name" value ="Мацони Домашний"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="41"/>
+            <column name="category_id" value="3"/>
+            <column name="product_name" value ="Лимонад Тархун"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="42"/>
+            <column name="category_id" value="3"/>
+            <column name="product_name" value ="Натахтари"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="43"/>
+            <column name="category_id" value="4"/>
+            <column name="product_name" value ="Пина Колада"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="44"/>
+            <column name="category_id" value="4"/>
+            <column name="product_name" value ="Молочный Коктейль"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="45"/>
+            <column name="category_id" value="4"/>
+            <column name="product_name" value ="Шоколадный молочный коктейль"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="46"/>
+            <column name="category_id" value="4"/>
+            <column name="product_name" value ="Клубничный молочный коктейль"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="47"/>
+            <column name="category_id" value="4"/>
+            <column name="product_name" value ="Молочный коктейль с кусочками Орео"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="48"/>
+            <column name="category_id" value="4"/>
+            <column name="product_name" value ="Грейпфрутовый лимонад"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="49"/>
+            <column name="category_id" value="4"/>
+            <column name="product_name" value ="Малиновый лимонад"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="50"/>
+            <column name="category_id" value="4"/>
+            <column name="product_name" value ="Тропический лимонад"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="51"/>
+            <column name="category_id" value="4"/>
+            <column name="product_name" value ="Клубничный лимонад"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="52"/>
+            <column name="category_id" value="4"/>
+            <column name="product_name" value ="Ягодный лимонад"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="53"/>
+            <column name="category_id" value="4"/>
+            <column name="product_name" value ="Классический лимонад"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="54"/>
+            <column name="category_id" value="5"/>
+            <column name="product_name" value ="Мороженое Пломбир"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="55"/>
+            <column name="category_id" value="5"/>
+            <column name="product_name" value ="Мороженое Соленая карамель"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="56"/>
+            <column name="category_id" value="5"/>
+            <column name="product_name" value ="Мороженое Шоколадное"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="57"/>
+            <column name="category_id" value="5"/>
+            <column name="product_name" value ="Мороженое Клубничное"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="58"/>
+            <column name="category_id" value="5"/>
+            <column name="product_name" value ="Классический Чизкейк"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="59"/>
+            <column name="category_id" value="5"/>
+            <column name="product_name" value ="Банановый Чизкейк"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="60"/>
+            <column name="category_id" value="5"/>
+            <column name="product_name" value ="Чизкейк с кокосом"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="61"/>
+            <column name="category_id" value="5"/>
+            <column name="product_name" value ="Торт Наполеон"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="62"/>
+            <column name="category_id" value="5"/>
+            <column name="product_name" value ="Венский Пирог"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="63"/>
+            <column name="category_id" value="5"/>
+            <column name="product_name" value ="Медовик"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="64"/>
+            <column name="category_id" value="5"/>
+            <column name="product_name" value ="Сырники"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="65"/>
+            <column name="category_id" value="6"/>
+            <column name="product_name" value ="Сырный соус"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="66"/>
+            <column name="category_id" value="6"/>
+            <column name="product_name" value ="Кисло-сладкий соус"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="67"/>
+            <column name="category_id" value="6"/>
+            <column name="product_name" value ="Чесночный соус"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="68"/>
+            <column name="category_id" value="6"/>
+            <column name="product_name" value ="Соус Барбекю"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="69"/>
+            <column name="category_id" value="6"/>
+            <column name="product_name" value ="Соус Табаско"/>
+        </insert>
+        <insert tableName="Products">
+            <column name="product_id" value ="70"/>
+            <column name="category_id" value="6"/>
+            <column name="product_name" value ="Соус Тартар"/>
+        </insert>
+    </changeSet>
+
+    <changeSet author="Urbanait Konstantin" id="v2-2">
+        <addColumn tableName="Products">
+            <column name="product_price"
+                    type="double">
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="v2-3" author="Urbanait Konstantin">
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="16.9"/>
+            <where>product_id=1</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="21.9"/>
+            <where>product_id=2</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="24.9"/>
+            <where>product_id=3</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="22.9"/>
+            <where>product_id=4</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="18.9"/>
+            <where>product_id=5</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="21.9"/>
+            <where>product_id=6</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="20.9"/>
+            <where>product_id=7</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="17.9"/>
+            <where>product_id=8</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="16.9"/>
+            <where>product_id=9</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="18.9"/>
+            <where>product_id=10</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="21.9"/>
+            <where>product_id=11</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="19.9"/>
+            <where>product_id=12</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="24.9"/>
+            <where>product_id=13</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="24.9"/>
+            <where>product_id=14</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="9.9"/>
+            <where>product_id=15</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="10.9"/>
+            <where>product_id=16</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="13.9"/>
+            <where>product_id=17</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="10"/>
+            <where>product_id=18</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="8.9"/>
+            <where>product_id=19</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="10.9"/>
+            <where>product_id=20</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="11.9"/>
+            <where>product_id=21</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="11.9"/>
+            <where>product_id=22</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="11.9"/>
+            <where>product_id=23</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="8.9"/>
+            <where>product_id=24</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="8.9"/>
+            <where>product_id=25</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="8.9"/>
+            <where>product_id=26</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="2"/>
+            <where>product_id=27</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="2"/>
+            <where>product_id=28</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="2"/>
+            <where>product_id=29</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="4"/>
+            <where>product_id=30</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="4"/>
+            <where>product_id=31</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="3"/>
+            <where>product_id=32</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="3"/>
+            <where>product_id=33</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="6"/>
+            <where>product_id=34</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="5"/>
+            <where>product_id=35</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="5"/>
+            <where>product_id=36</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="5"/>
+            <where>product_id=37</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="4"/>
+            <where>product_id=38</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="6"/>
+            <where>product_id=39</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="6"/>
+            <where>product_id=40</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="6"/>
+            <where>product_id=41</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="6"/>
+            <where>product_id=42</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="6"/>
+            <where>product_id=43</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="5"/>
+            <where>product_id=44</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="5"/>
+            <where>product_id=45</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="5"/>
+            <where>product_id=46</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="5"/>
+            <where>product_id=47</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="6"/>
+            <where>product_id=48</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="6"/>
+            <where>product_id=49</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="6"/>
+            <where>product_id=50</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="6"/>
+            <where>product_id=51</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="6"/>
+            <where>product_id=52</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="6"/>
+            <where>product_id=53</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="4"/>
+            <where>product_id=54</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="4"/>
+            <where>product_id=55</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="4"/>
+            <where>product_id=56</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="4"/>
+            <where>product_id=57</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="5.5"/>
+            <where>product_id=58</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="5.9"/>
+            <where>product_id=59</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="5.9"/>
+            <where>product_id=60</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="6.9"/>
+            <where>product_id=61</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="5.9"/>
+            <where>product_id=62</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="4.5"/>
+            <where>product_id=63</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="6"/>
+            <where>product_id=64</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="1"/>
+            <where>product_id=65</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="1"/>
+            <where>product_id=66</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="1"/>
+            <where>product_id=67</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="1"/>
+            <where>product_id=68</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="1"/>
+            <where>product_id=69</where>
+        </update>
+        <update schemaName="public" tableName="Products">
+            <column name="product_price" value="1"/>
+            <where>product_id=70</where>
+        </update>
+
+
+
+    </changeSet>
+
+
+</databaseChangeLog>

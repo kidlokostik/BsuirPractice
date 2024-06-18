@@ -3,7 +3,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-     <changeSet id="v1-1" author="Urbanait Konstantin">
+    <changeSet id="v1-1" author="Urbanait Konstantin">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="Сategories"/>
@@ -31,5 +31,8 @@
         </insert>
     </changeSet>
 
+    <changeSet id="v1-3" author="Urbanait Konstantin">
+        <addUniqueConstraint columnNames="category_id" constraintName="unique_Category_id_constraint" tableName="Сategories"/>
+    </changeSet>
 
 </databaseChangeLog>
