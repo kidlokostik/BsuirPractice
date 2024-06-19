@@ -7,15 +7,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface OrderService {
     Order createOrder(Order createOrderRequest);
-
     Order updateOrder(Order updateOrderRequest);
-
     void deleteOrder(Long id);
-
     Order getOrderById(Long id);
-
     List<OrderDto> getAllOrders();
 }

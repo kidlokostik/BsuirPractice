@@ -7,10 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface OrderItemService {
-
-
      OrderItem createOrder(OrderItem orderItem);
      OrderItem updateOrder(Long id, OrderItem updateOrder) ;
      void deleteOrder(Long id);

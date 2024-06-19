@@ -6,15 +6,10 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-@Service
 public interface ProductService {
     Product createProduct(Product product);
-
     Product updateProduct(Product product);
-
     void deleteProduct(Long id);
-
     Product getProductId(Long id);
-
     List<ProductDto> getAllProducts();
 }
