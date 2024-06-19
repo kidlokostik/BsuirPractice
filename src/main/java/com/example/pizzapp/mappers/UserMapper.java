@@ -1,6 +1,5 @@
 package com.example.pizzapp.mappers;
 
-import com.example.pizzapp.dto.UserDto;
 import com.example.pizzapp.dto.request.create.UserCreateRequest;
 import com.example.pizzapp.dto.request.update.UserUpdateRequest;
 import com.example.pizzapp.dto.response.UserResponse;

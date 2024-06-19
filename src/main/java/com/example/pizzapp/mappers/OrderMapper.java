@@ -2,9 +2,11 @@ package com.example.pizzapp.mappers;
 
 import com.example.pizzapp.dto.OrderDto;
 import com.example.pizzapp.dto.request.create.OrderCreateRequest;
+import com.example.pizzapp.dto.request.create.ProductCreateRequest;
 import com.example.pizzapp.dto.request.update.OrderUpdateRequest;
 import com.example.pizzapp.dto.response.OrderResponse;
 import com.example.pizzapp.models.Order;
+import com.example.pizzapp.models.Product;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
