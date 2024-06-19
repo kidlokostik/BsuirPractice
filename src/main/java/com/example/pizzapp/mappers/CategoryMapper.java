@@ -1,6 +1,5 @@
 package com.example.pizzapp.mappers;
 
-import com.example.pizzapp.dto.CategoryDto;
 import com.example.pizzapp.models.Category;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;

@@ -1,6 +1,5 @@
 package com.example.pizzapp.mappers;
 
-import com.example.pizzapp.dto.UserDto;
 import com.example.pizzapp.models.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;

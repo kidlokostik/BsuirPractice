@@ -1,6 +1,5 @@
 package com.example.pizzapp.mappers;
 
-import com.example.pizzapp.dto.OrderDto;
 import com.example.pizzapp.models.Order;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
