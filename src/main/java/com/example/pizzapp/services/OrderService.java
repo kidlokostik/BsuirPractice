@@ -1,16 +1,18 @@
 package com.example.pizzapp.services;
 
-import com.example.pizzapp.dto.OrderDto;
-import com.example.pizzapp.dto.ProductDto;
+import com.example.pizzapp.dto.request.create.OrderCreateRequest;
+import com.example.pizzapp.dto.request.update.OrderUpdateRequest;
+import com.example.pizzapp.dto.response.OrderResponse;
 import com.example.pizzapp.models.Order;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+@Service
 public interface OrderService {
-    Order createOrder(Order createOrderRequest);
-    Order updateOrder(Order updateOrderRequest);
+    OrderResponse createOrder(OrderCreateRequest createOrderRequest);
+    OrderResponse updateOrder(OrderUpdateRequest updateOrderRequest);
     void deleteOrder(Long id);
-    Order getOrderById(Long id);
-    List<OrderDto> getAllOrders();
+    OrderResponse getOrderById(Long id);
+    List<OrderResponse> getAllOrders();
 }

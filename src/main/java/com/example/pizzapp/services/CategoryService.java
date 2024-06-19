@@ -1,15 +1,15 @@
 package com.example.pizzapp.services;
 
-import com.example.pizzapp.dto.CategoryDto;
-import com.example.pizzapp.models.Category;
-import org.springframework.stereotype.Service;
+import com.example.pizzapp.dto.request.create.CategoryCreateRequest;
+import com.example.pizzapp.dto.request.update.CategoryUpdateRequest;
+import com.example.pizzapp.dto.response.CategoryResponse;
 
 import java.util.List;
 
 public interface CategoryService {
-    Category createCategory(Category createCategoryRequest);
-    Category updateCategory(Long id, Category updateCategoryRequest);
+    CategoryResponse createCategory(CategoryCreateRequest createCategoryRequest);
+    CategoryResponse updateCategory(Long id, CategoryUpdateRequest updateCategoryRequest);
     void deleteCategory(Long id);
-    Category getCategoryById(Long id);
-    List<CategoryDto> getAllCategories();
+    CategoryResponse getCategoryById(Long id);
+    List<CategoryResponse> getAllCategories();
 }
