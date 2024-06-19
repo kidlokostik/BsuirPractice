@@ -1,7 +1,9 @@
 package com.example.pizzapp.services.impl;
 
-import com.example.pizzapp.dto.OrderDto;
-import com.example.pizzapp.dto.OrderItemDto;
+import com.example.pizzapp.dto.request.create.OrderItemCreateRequest;
+import com.example.pizzapp.dto.request.update.OrderUpdateRequest;
+import com.example.pizzapp.dto.response.OrderItemResponse;
+import com.example.pizzapp.exception.ResourceNotFoundException;
 import com.example.pizzapp.mappers.OrderItemMapper;
 import com.example.pizzapp.models.OrderItem;
 import com.example.pizzapp.repositories.OrderItemRepository;
@@ -17,31 +19,50 @@ public class OrderItemServiceImpl implements OrderItemService {
 
     private OrderItemRepository orderItemRepository;
     private OrderItemMapper orderItemMapper;
+
     @Override
-    public OrderItem createOrder(OrderItem order) {
-        return orderItemRepository.createOrder(order);
+    public OrderItemResponse createOrderItem(OrderItemCreateRequest orderItemCreateRequest) {
+        OrderItem orderItem = orderItemMapper.createRequestToEntity(orderItemCreateRequest);
+        return orderItemMapper.toResponse(orderItemRepository.save(orderItem));
+
     }
 
     @Override
-    public OrderItem updateOrder(Long id, OrderItem order) {
-        return orderItemRepository.updateOrder(order);
+    public OrderItemResponse updateOrderItem(Long id, OrderUpdateRequest updateOrderRequest) {
+        OrderItem newestOrderItem = findOrderItemByIdOrThrow(id);
+        orderItemMapper.toUpdateRequest(newestOrderItem);
+
+        OrderItem updateOrderItem = orderItemRepository.save(newestOrderItem);
+        return orderItemMapper.toResponse(updateOrderItem);
     }
 
     @Override
-    public void deleteOrder(Long id) {
-     orderItemRepository.deleteById(id);
+    public void deleteOrderItem(Long id) {
+        orderItemRepository.deleteById(id);
     }
 
     @Override
-    public OrderItem getOrderById(Long id) {
-        return orderItemRepository.getById(id);
+    public OrderItemResponse getOrderItemById(Long id) {
+        OrderItem orderItem = findOrderItemByIdOrThrow(id);
+        return orderItemMapper.toResponse(orderItem);
     }
 
     @Override
-    public List<OrderItemDto> getAllOrders() {
+    public List<OrderItemResponse> getAllOrderItem() {
         return orderItemRepository.findAll().stream()
-                .map(orderItemMapper::toDto)
+                .map(orderItemMapper::toResponse)
                 .toList();
+    }
+
+    @Override
+    public List<OrderItemResponse> getAllOrderItems() {
+        return orderItemRepository.findAll().stream()
+                .map(orderItemMapper::toResponse)
+                .toList();
+    }
+
+    private OrderItem findOrderItemByIdOrThrow(Long id){
+        return orderItemRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(""));
     }
 }
 
