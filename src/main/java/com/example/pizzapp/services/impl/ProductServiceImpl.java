@@ -28,14 +28,14 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductResponse updateProduct(Long id, ProductUpdateRequest updateProductRequest) {
-        Product newestProduct = findProductyByIdOrThrow(id);
+        Product newestProduct = findProductByIdOrThrow(id);
         productMapper.toUpdateRequest(newestProduct);
 
         Product updateProduct = productRepository.save(newestProduct);
         return productMapper.toResponse(updateProduct);
     }
 
-    private Product findProductyByIdOrThrow(Long id) {
+    private Product findProductByIdOrThrow(Long id) {
         return productRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException(""));
     }
 
@@ -46,7 +46,7 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductResponse getProductById(Long id) {
-        Product product = findProductyByIdOrThrow(id);
+        Product product = findProductByIdOrThrow(id);
         return productMapper.toResponse(product);
     }
 

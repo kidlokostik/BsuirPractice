@@ -47,12 +47,6 @@ public class OrderItemServiceImpl implements OrderItemService {
         return orderItemMapper.toResponse(orderItem);
     }
 
-    @Override
-    public List<OrderItemResponse> getAllOrderItem() {
-        return orderItemRepository.findAll().stream()
-                .map(orderItemMapper::toResponse)
-                .toList();
-    }
 
     @Override
     public List<OrderItemResponse> getAllOrderItems() {
