@@ -12,7 +12,4 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     Optional<User> findByName(String name);
 
-    User createUser(User user);
-
-    User updateUser(User user);
 }

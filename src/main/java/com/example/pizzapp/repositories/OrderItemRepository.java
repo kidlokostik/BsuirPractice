@@ -10,6 +10,4 @@ import java.util.Optional;
 @Repository
 public interface OrderItemRepository extends JpaRepository<OrderItem, Long> {
 
-    OrderItem createOrder(OrderItem orderItem);
-    OrderItem updateOrder(OrderItem orderItem);
 }
