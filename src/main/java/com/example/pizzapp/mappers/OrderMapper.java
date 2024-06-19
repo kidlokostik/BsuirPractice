@@ -18,18 +18,23 @@ public interface OrderMapper {
     OrderCreateRequest toCreateRequest(Order order);
     List<OrderCreateRequest> toCreateRequest(List<Order> orders);
     @Mapping(target = "user", ignore = true)
+    @Mapping(target = "orderItem", ignore = true)
     Order createRequestToEntity(OrderCreateRequest orderCreateRequest);
+    List<Order> createRequestToEntity(List<OrderCreateRequest> orderCreateRequests);
 
     @Mapping(source = "order.user.id", target = "userId")
     OrderUpdateRequest toUpdateRequest(Order order);
     List<OrderUpdateRequest> toUpdateRequest(List<Order> orders);
     @Mapping(target = "user", ignore = true)
+    @Mapping(target = "orderItem", ignore = true)
     Order updateRequestToEntity(OrderUpdateRequest orderUpdateRequest);
+    List<Order> updateRequestToEntity(List<OrderUpdateRequest> orderUpdateRequests);
 
     @Mapping(source = "order.user.id", target = "userId")
     OrderResponse toResponse(Order order);
     List<OrderResponse> toResponse(List<Order> orders);
     @Mapping(target = "user", ignore = true)
+    @Mapping(target = "orderItem", ignore = true)
     Order responseToEntity(OrderResponse orderResponse);
-
+    List<Order> responseToEntity(List<OrderResponse> orderResponses);
 }
