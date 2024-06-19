@@ -23,7 +23,6 @@ public interface OrderItemMapper {
     @Mapping(target = "product", ignore = true)
     @Mapping(target = "order", ignore = true)
     OrderItem createRequestToEntity(OrderItemCreateRequest orderItemCreateRequest);
-    List<OrderItem> createRequestToEntity(List<OrderItemCreateRequest> orderItemCreateRequests);
 
     @Mapping(source = "orderItem.order.id", target = "orderId")
     @Mapping(source = "orderItem.product.id", target = "productId")
@@ -32,16 +31,13 @@ public interface OrderItemMapper {
     @Mapping(target = "product", ignore = true)
     @Mapping(target = "order", ignore = true)
     OrderItem updateRequestToEntity(OrderItemUpdateRequest orderItemUpdateRequest);
-    List<OrderItem> updateRequestToEntity(List<OrderItemUpdateRequest> orderItemUpdateRequests);
 
     @Mapping(source = "orderItem.order.id", target = "orderId")
     @Mapping(source = "orderItem.product.id", target = "productId")
     OrderItemResponse toResponse(OrderItem orderItem);
-    List<OrderItem> updateRequestToEntity(List<OrderItemUpdateRequest> orderItemUpdateRequests);
 
     @Mapping(target = "product", ignore = true)
     @Mapping(target = "order", ignore = true)
     OrderItem responseToEntity(OrderItemResponse orderItemResponse);
-    List<OrderItem> responseToEntity(List<OrderItemResponse> orderItemResponses);
 }
 
