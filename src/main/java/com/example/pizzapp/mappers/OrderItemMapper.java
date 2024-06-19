@@ -28,8 +28,7 @@ public interface OrderItemMapper {
     @Mapping(source = "orderItem.order.id", target = "orderId")
     @Mapping(source = "orderItem.product.id", target = "productId")
     OrderItemUpdateRequest toUpdateRequest(OrderItem orderItem);
-    List<OrderItemUpdateRequest> toUpdateRequest(List<OrderItem> orderItems);
-
+    List<OrderItem> createRequestToEntity(List<OrderItemCreateRequest> orderItemCreateRequests);
     @Mapping(target = "product", ignore = true)
     @Mapping(target = "order", ignore = true)
     OrderItem updateRequestToEntity(OrderItemUpdateRequest orderItemUpdateRequest);
@@ -38,7 +37,7 @@ public interface OrderItemMapper {
     @Mapping(source = "orderItem.order.id", target = "orderId")
     @Mapping(source = "orderItem.product.id", target = "productId")
     OrderItemResponse toResponse(OrderItem orderItem);
-    List<OrderItemResponse> toResponse(List<OrderItem> orderItems);
+    List<OrderItem> updateRequestToEntity(List<OrderItemUpdateRequest> orderItemUpdateRequests);
 
     @Mapping(target = "product", ignore = true)
     @Mapping(target = "order", ignore = true)

@@ -15,7 +15,6 @@ import java.util.List;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ProductMapper {
     @Mapping(source = "product.category.id", target = "categoryId")
-    ProductCreateRequest toCreateRequest(Product product);
     List<ProductCreateRequest> toCreateRequest(List<Product> products);
 
     @Mapping(target = "category", ignore = true)
