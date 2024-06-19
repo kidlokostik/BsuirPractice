@@ -6,11 +6,13 @@ import com.example.pizzapp.mappers.OrderItemMapper;
 import com.example.pizzapp.models.OrderItem;
 import com.example.pizzapp.repositories.OrderItemRepository;
 import com.example.pizzapp.services.OrderItemService;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
 @Service
+@RequiredArgsConstructor
 public class OrderItemServiceImpl implements OrderItemService {
 
     private OrderItemRepository orderItemRepository;
