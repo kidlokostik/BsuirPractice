@@ -7,8 +7,6 @@ import jakarta.validation.constraints.Positive;
 import java.math.BigDecimal;
 
 public record OrderCreateRequest(
-        @NotNull(message = "{field.null}")
-        Long id,
         @NotBlank(message = "{field.required}")
         Long userId,
         @NotBlank(message = "{field.required}")
