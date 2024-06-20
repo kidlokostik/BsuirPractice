@@ -16,9 +16,9 @@ public interface OrderService {
 
     OrderResponse getOrderById(Long id);
 
-    List<OrderResponse> getAllOrders();
+    void getAllOrders();
 
-    OrderItemResponse addOrderItem(Long id, OrderItemCreateRequest orderItemCreateRequest);
+    void addOrderItem(Long orderId, OrderItemCreateRequest orderItemCreateRequest);
 
-    List<OrderItemResponse> addOrderItems(Long id, List<OrderItemCreateRequest> orderItemCreateRequests);
+    List<OrderItemResponse> addOrderItems(Long orderId, List<OrderItemCreateRequest> orderItemCreateRequests);
 }

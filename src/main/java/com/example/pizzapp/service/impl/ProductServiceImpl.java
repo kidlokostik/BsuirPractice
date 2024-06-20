@@ -9,7 +9,7 @@ import com.example.pizzapp.repositories.ProductRepository;
 import com.example.pizzapp.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import static com.example.pizzapp.error_message.Error.NOT_FOUND_MESSAGE;
+import static com.example.pizzapp.util.ErrorMessages.NOT_FOUND_MESSAGE;
 
 import java.util.List;
 

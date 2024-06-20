@@ -14,9 +14,8 @@ import com.example.pizzapp.repositories.OrderRepository;
 import com.example.pizzapp.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import static com.example.pizzapp.error_message.Error.NOT_FOUND_MESSAGE;
+import static com.example.pizzapp.util.ErrorMessages.NOT_FOUND_MESSAGE;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -36,19 +35,16 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderItemResponse addOrderItem(Long OrderId, OrderItemCreateRequest orderItemCreateRequest) {
-        Order order = findOrderByIdOrThrow(OrderId);
+    public void addOrderItem(Long orderId, OrderItemCreateRequest orderItemCreateRequest) {
+        Order order = findOrderByIdOrThrow(orderId);
         OrderItem orderItem = orderItemMapper.createRequestToEntity(orderItemCreateRequest);
-        orderItem.setOrder(order);
-        OrderItem savedOrderItem = orderItemRepository.save(orderItem);
-        order.getOrderItems().add(savedOrderItem);
+        order.addOrderItem(orderItem);
         orderRepository.save(order);
-        return orderItemMapper.toResponse(savedOrderItem);
     }
 
     @Override
-    public List<OrderItemResponse> addOrderItems(Long Orderid, List<OrderItemCreateRequest> orderItemCreateRequests) {
-        Order order = findOrderByIdOrThrow(Orderid);
+    public List<OrderItemResponse> addOrderItems(Long orderId, List<OrderItemCreateRequest> orderItemCreateRequests) {
+        Order order = findOrderByIdOrThrow(orderId);
         List<OrderItem> items = orderItemCreateRequests.stream()
                 .map(request -> buildOrderItem(order, request))
                 .collect(Collectors.toList());
@@ -71,8 +67,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<OrderResponse> getAllOrders() {
-        return orderRepository.findAll().stream()
+    public void getAllOrders() {
+        orderRepository.findAll().stream()
                 .map(orderMapper::toResponse)
                 .toList();
     }
