@@ -43,14 +43,14 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public List<OrderItemResponse> addOrderItems(Long orderId, List<OrderItemCreateRequest> orderItemCreateRequests) {
+    public void addOrderItems(Long orderId, List<OrderItemCreateRequest> orderItemCreateRequests) {
         Order order = findOrderByIdOrThrow(orderId);
         List<OrderItem> items = orderItemCreateRequests.stream()
                 .map(request -> buildOrderItem(order, request))
                 .collect(Collectors.toList());
         order.getOrderItems().addAll(items);
         orderRepository.save(order);
-        return items.stream()
+        items.stream()
                 .map(orderItemMapper::toResponse)
                 .collect(Collectors.toList());
     }
@@ -67,8 +67,8 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public void getAllOrders() {
-        orderRepository.findAll().stream()
+    public List<OrderResponse> getAllOrders() {
+        return orderRepository.findAll().stream()
                 .map(orderMapper::toResponse)
                 .toList();
     }
