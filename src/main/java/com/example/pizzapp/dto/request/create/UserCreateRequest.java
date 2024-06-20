@@ -7,8 +7,6 @@ import jakarta.validation.constraints.Size;
 
 
 public record UserCreateRequest(
-        @NotNull(message = "{field.null}")
-        Long id,
         @NotBlank(message = "{field.required}")
         @Pattern(regexp = "\\+?[0-9]{7,15}", message = "{field.phone}")
         String phone,
