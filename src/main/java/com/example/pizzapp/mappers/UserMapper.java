@@ -17,11 +17,6 @@ public interface UserMapper {
 
     List<User> createRequestToEntity(List<UserCreateRequest> userCreateRequests);
 
-    @Mapping(target = "orders", ignore = true)
-    User updateRequestToEntity(UserUpdateRequest userUpdateRequest);
-
-    List<User> updateRequestToEntity(List<UserUpdateRequest> userUpdateRequests);
-
     UserResponse toResponse(User user);
 
     List<UserResponse> toResponse(List<User> users);

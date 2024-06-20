@@ -18,12 +18,6 @@ public interface OrderItemMapper{
 
     List<OrderItem> createRequestToEntity(List<OrderItemCreateRequest> orderItemCreateRequests);
 
-    @Mapping(target = "product", ignore = true)
-    @Mapping(target = "order", ignore = true)
-    OrderItem updateRequestToEntity(OrderItemUpdateRequest orderItemUpdateRequest);
-
-    List<OrderItem> updateRequestToEntity(List<OrderItemUpdateRequest> orderItemUpdateRequests);
-
     @Mapping(source = "orderItem.order.id", target = "orderId")
     @Mapping(source = "orderItem.product.id", target = "productId")
     OrderItemResponse toResponse(OrderItem orderItem);

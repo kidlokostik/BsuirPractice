@@ -20,12 +20,6 @@ public interface ProductMapper {
 
     List<Product> createRequestToEntity(List<ProductCreateRequest> productCreateRequests);
 
-    @Mapping(target = "category", ignore = true)
-    @Mapping(target = "orderItems", ignore = true)
-    Product updateRequestToEntity(ProductUpdateRequest productUpdateRequest);
-
-    List<Product> updateRequestToEntity(List<ProductUpdateRequest> productUpdateRequests);
-
     @Mapping(source = "product.category.id", target = "categoryId")
     ProductResponse toResponse(Product product);
 

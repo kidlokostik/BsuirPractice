@@ -18,11 +18,6 @@ public interface CategoryMapper {
 
     List<Category> createRequestToEntity(List<CategoryCreateRequest> categoryCreateRequests);
 
-    @Mapping(target = "product", ignore = true)
-    Category updateRequestToEntity(CategoryUpdateRequest categoryUpdateRequest);
-
-    List<Category> updateRequestToEntity(List<CategoryUpdateRequest> categoryUpdateRequests);
-
     CategoryResponse toResponse(Category category);
 
     List<CategoryResponse> toResponse(List<Category> categories);
