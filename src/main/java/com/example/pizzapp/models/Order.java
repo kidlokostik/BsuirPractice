@@ -29,5 +29,5 @@ public class Order {
     private BigDecimal price;
 
     @OneToMany(mappedBy = "order")
-    private List<OrderItem> orderItem = new ArrayList<>();
+    private List<OrderItem> orderItems = new ArrayList<>();
 }

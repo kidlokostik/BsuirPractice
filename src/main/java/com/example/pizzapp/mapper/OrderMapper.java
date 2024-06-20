@@ -13,7 +13,6 @@ import java.util.List;
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface OrderMapper {
     @Mapping(target = "user", ignore = true)
-    @Mapping(target = "orderItem", ignore = true)
     Order createRequestToEntity(OrderCreateRequest orderCreateRequest);
 
     List<Order> createRequestToEntity(List<OrderCreateRequest> orderCreateRequests);

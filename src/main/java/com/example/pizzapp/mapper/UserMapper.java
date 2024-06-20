@@ -11,7 +11,6 @@ import java.util.List;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface UserMapper {
-    @Mapping(target = "orders", ignore = true)
     User createRequestToEntity(UserCreateRequest userCreateRequest);
 
     List<User> createRequestToEntity(List<UserCreateRequest> userCreateRequests);
