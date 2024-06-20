@@ -1,4 +1,4 @@
-package com.example.pizzapp.mappers;
+package com.example.pizzapp.mapper;
 
 import com.example.pizzapp.dto.request.create.UserCreateRequest;
 import com.example.pizzapp.dto.response.UserResponse;
