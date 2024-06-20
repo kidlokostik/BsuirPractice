@@ -23,11 +23,5 @@ public interface OrderItemMapper{
     OrderItemResponse toResponse(OrderItem orderItem);
 
     List<OrderItemResponse> toResponse(List<OrderItem> orderItems);
-
-    @Mapping(target = "product", ignore = true)
-    @Mapping(target = "order", ignore = true)
-    OrderItem responseToEntity(OrderItemResponse orderItemResponse);
-
-    List<OrderItem> responseToEntity(List<OrderItemResponse> orderItemResponses);
 }
 

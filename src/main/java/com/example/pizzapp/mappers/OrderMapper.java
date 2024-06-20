@@ -23,10 +23,4 @@ public interface OrderMapper {
     OrderResponse toResponse(Order order);
 
     List<OrderResponse> toResponse(List<Order> orders);
-
-    @Mapping(target = "user", ignore = true)
-    @Mapping(target = "orderItem", ignore = true)
-    Order responseToEntity(OrderResponse orderResponse);
-
-    List<Order> responseToEntity(List<OrderResponse> orderResponses);
 }

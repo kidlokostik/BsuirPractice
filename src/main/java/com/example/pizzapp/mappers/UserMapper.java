@@ -20,11 +20,6 @@ public interface UserMapper {
     UserResponse toResponse(User user);
 
     List<UserResponse> toResponse(List<User> users);
-
-    @Mapping(target = "orders", ignore = true)
-    User responseToEntity(UserResponse userResponse);
-
-    List<User> responseToEntity(List<UserResponse> userResponses);
 }
 
 

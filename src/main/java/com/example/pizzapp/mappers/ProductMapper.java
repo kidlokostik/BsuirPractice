@@ -24,10 +24,4 @@ public interface ProductMapper {
     ProductResponse toResponse(Product product);
 
     List<ProductResponse> toResponse(List<Product> products);
-
-    @Mapping(target = "category", ignore = true)
-    @Mapping(target = "orderItems", ignore = true)
-    Product responseToEntity(ProductResponse productResponse);
-
-    List<Product> responseToEntity(List<ProductResponse> productResponses);
 }

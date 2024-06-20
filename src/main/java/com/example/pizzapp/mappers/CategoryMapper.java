@@ -22,9 +22,4 @@ public interface CategoryMapper {
 
     List<CategoryResponse> toResponse(List<Category> categories);
 
-    @Mapping(target = "product", ignore = true)
-    Category responseToEntity(CategoryResponse categoryResponse);
-
-    List<Category> responseToEntity(List<CategoryResponse> categoryResponses);
-
 }
