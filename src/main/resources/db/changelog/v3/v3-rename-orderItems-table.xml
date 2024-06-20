@@ -249,4 +249,8 @@
         </update>
     </changeSet>
 
+    <changeSet id="v3-7" author="Urbanait Konstantin">
+        <renameColumn  schemaName="public" tableName="order_items" oldColumnName="number" newColumnName="quantity"/>
+    </changeSet>
+
 </databaseChangeLog>
