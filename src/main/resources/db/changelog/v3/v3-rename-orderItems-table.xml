@@ -31,4 +31,222 @@
         <renameTable catalogName="tables" schemaName="public" oldTableName="OrderItems" newTableName="order_items"/>
     </changeSet>
 
+    <changeSet author="Urbanait Konstantin" id="v3-5">
+        <addColumn tableName="order_items">
+            <column name="number"
+                    type="integer">
+            </column>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="v3-6" author="Urbanait Konstantin">
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="3"/>
+            <where>id=1</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=4</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=5</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=6</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=7</where>
+        </update>
+
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=8</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=9</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=10</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=11</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=12</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=13</where>
+        </update>
+
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=14</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=15</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=16</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=17</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=18</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=19</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=20</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=21</where>
+        </update>
+
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=22</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=23</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=24</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=25</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=26</where>
+        </update>
+
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=27</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=28</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=29</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=30</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=31</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=32</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=33</where>
+        </update>
+
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=34</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=35</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=36</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=37</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=38</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=39</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=40</where>
+        </update>
+
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=41</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=42</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=43</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=44</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=45</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=46</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=47</where>
+        </update>
+
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=48</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=49</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=50</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=51</where>
+        </update>
+        <update schemaName="public" tableName="order_items">
+            <column name="number" value="1"/>
+            <where>id=52</where>
+        </update>
+    </changeSet>
+
 </databaseChangeLog>

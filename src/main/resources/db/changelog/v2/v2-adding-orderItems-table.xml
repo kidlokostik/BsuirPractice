@@ -13,16 +13,6 @@
     <changeSet id="v2-2" author="Urbanait Konstantin">
         <insert tableName="OrderItems">
             <column name="order_id" value="1"/>
-            <column name="product_id" value="18"/>
-            <column name="orderitems_id" value="2"/>
-        </insert>
-        <insert tableName="OrderItems">
-            <column name="order_id" value="1"/>
-            <column name="product_id" value="18"/>
-            <column name="orderitems_id" value="3"/>
-        </insert>
-        <insert tableName="OrderItems">
-            <column name="order_id" value="1"/>
             <column name="product_id" value="57"/>
             <column name="orderitems_id" value="4"/>
         </insert>
