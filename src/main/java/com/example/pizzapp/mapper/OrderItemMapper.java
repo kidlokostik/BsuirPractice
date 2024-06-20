@@ -17,8 +17,6 @@ public interface OrderItemMapper{
 
     List<OrderItem> createRequestToEntity(List<OrderItemCreateRequest> orderItemCreateRequests);
 
-    @Mapping(source = "orderItem.order.id", target = "orderId")
-    @Mapping(source = "orderItem.product.id", target = "productId")
     OrderItemResponse toResponse(OrderItem orderItem);
 
     List<OrderItemResponse> toResponse(List<OrderItem> orderItems);
