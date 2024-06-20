@@ -14,9 +14,11 @@ import com.example.pizzapp.repositories.OrderRepository;
 import com.example.pizzapp.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import static com.example.pizzapp.error_message.Error.NOT_FOUND_MESSAGE;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -34,28 +36,27 @@ public class OrderServiceImpl implements OrderService {
     }
 
     @Override
-    public OrderItemResponse addOrderItem(Long id, OrderItemCreateRequest orderItemCreateRequest) {
-        Order newestOrder = findOrderByIdOrThrow(id);
+    public OrderItemResponse addOrderItem(Long OrderId, OrderItemCreateRequest orderItemCreateRequest) {
+        Order order = findOrderByIdOrThrow(OrderId);
         OrderItem orderItem = orderItemMapper.createRequestToEntity(orderItemCreateRequest);
-        orderItem.setOrder(newestOrder);
-        return orderItemMapper.toResponse(orderItemRepository.save(orderItem));
+        orderItem.setOrder(order);
+        OrderItem savedOrderItem = orderItemRepository.save(orderItem);
+        order.getOrderItems().add(savedOrderItem);
+        orderRepository.save(order);
+        return orderItemMapper.toResponse(savedOrderItem);
     }
 
     @Override
-    public List<OrderItemResponse> addOrderItems(Long id, List<OrderItemCreateRequest> orderItemCreateRequests) {
-        Order newestOrder = findOrderByIdOrThrow(id);
-        List<OrderItemResponse> orderItemResponses = new ArrayList<>();
-        for (OrderItemCreateRequest orderItemCreateRequest : orderItemCreateRequests) {
-            OrderItem orderItem = orderItemMapper.createRequestToEntity(orderItemCreateRequest);
-            orderItem.setOrder(newestOrder);
-            orderItemResponses.add(orderItemMapper.toResponse(orderItem));
-        }
-        return orderItemResponses;
-    }
-
-    private Order findOrderByIdOrThrow(Long id) {
-        return orderRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Order not found."));
+    public List<OrderItemResponse> addOrderItems(Long Orderid, List<OrderItemCreateRequest> orderItemCreateRequests) {
+        Order order = findOrderByIdOrThrow(Orderid);
+        List<OrderItem> items = orderItemCreateRequests.stream()
+                .map(request -> buildOrderItem(order, request))
+                .collect(Collectors.toList());
+        order.getOrderItems().addAll(items);
+        orderRepository.save(order);
+        return items.stream()
+                .map(orderItemMapper::toResponse)
+                .collect(Collectors.toList());
     }
 
     @Override
@@ -74,5 +75,18 @@ public class OrderServiceImpl implements OrderService {
         return orderRepository.findAll().stream()
                 .map(orderMapper::toResponse)
                 .toList();
+    }
+
+    private OrderItem buildOrderItem(Order order, OrderItemCreateRequest request) {
+        OrderItem orderItem = orderItemMapper.createRequestToEntity(request);
+        orderItem.setOrder(order);
+        return orderItem;
+    }
+
+    private Order findOrderByIdOrThrow(Long id) {
+        return orderRepository.findById(id)
+                .orElseThrow(
+                        () -> new ResourceNotFoundException(String.format(NOT_FOUND_MESSAGE, "Order", id))
+                );
     }
 }

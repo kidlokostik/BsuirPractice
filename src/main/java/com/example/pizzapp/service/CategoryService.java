@@ -6,6 +6,7 @@ import com.example.pizzapp.dto.response.CategoryResponse;
 import java.util.List;
 
 public interface CategoryService {
+
     CategoryResponse createCategory(CategoryCreateRequest createCategoryRequest);
 
     void deleteCategory(Long id);

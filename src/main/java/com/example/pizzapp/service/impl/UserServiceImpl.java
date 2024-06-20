@@ -9,6 +9,7 @@ import com.example.pizzapp.repositories.UserRepository;
 import com.example.pizzapp.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import static com.example.pizzapp.error_message.Error.NOT_FOUND_MESSAGE;
 
 import java.util.List;
 
@@ -23,11 +24,6 @@ public class UserServiceImpl implements UserService {
     public UserResponse createUser(UserCreateRequest createUserRequest) {
         User user = userMapper.createRequestToEntity(createUserRequest);
         return userMapper.toResponse(userRepository.save(user));
-    }
-
-    private User findUserByIdOrThrow(Long id) {
-        return userRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("User is not found."));
     }
 
     @Override
@@ -46,5 +42,12 @@ public class UserServiceImpl implements UserService {
         return userRepository.findAll().stream()
                 .map(userMapper::toResponse)
                 .toList();
+    }
+
+    private User findUserByIdOrThrow(Long id) {
+        return userRepository.findById(id)
+                .orElseThrow(
+                        () -> new ResourceNotFoundException(String.format(NOT_FOUND_MESSAGE, "User", id))
+                );
     }
 }

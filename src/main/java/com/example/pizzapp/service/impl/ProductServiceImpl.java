@@ -9,6 +9,7 @@ import com.example.pizzapp.repositories.ProductRepository;
 import com.example.pizzapp.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import static com.example.pizzapp.error_message.Error.NOT_FOUND_MESSAGE;
 
 import java.util.List;
 
@@ -23,11 +24,6 @@ public class ProductServiceImpl implements ProductService {
     public ProductResponse createProduct(ProductCreateRequest createProductRequest) {
         Product product = productMapper.createRequestToEntity(createProductRequest);
         return productMapper.toResponse(productRepository.save(product));
-    }
-
-    private Product findProductByIdOrThrow(Long id) {
-        return productRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Product not found."));
     }
 
     @Override
@@ -46,5 +42,12 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll().stream()
                 .map(productMapper::toResponse)
                 .toList();
+    }
+
+    private Product findProductByIdOrThrow(Long id) {
+        return productRepository.findById(id)
+                .orElseThrow(
+                        () -> new ResourceNotFoundException(String.format(NOT_FOUND_MESSAGE, "Product", id))
+                );
     }
 }

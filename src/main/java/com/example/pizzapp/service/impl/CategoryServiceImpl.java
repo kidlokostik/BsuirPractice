@@ -9,8 +9,10 @@ import com.example.pizzapp.repositories.CategoryRepository;
 import com.example.pizzapp.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
+import static com.example.pizzapp.error_message.Error.NOT_FOUND_MESSAGE;
 import java.util.List;
+
+
 
 @Service
 @RequiredArgsConstructor
@@ -45,7 +47,8 @@ public class CategoryServiceImpl implements CategoryService {
 
     private Category findCategoryByIdOrThrow(Long id){
         return categoryRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Category not found."));
+                .orElseThrow(
+                        () -> new ResourceNotFoundException(String.format(NOT_FOUND_MESSAGE, "Category", id))
+                );
     }
-
 }
