@@ -7,8 +7,6 @@ import jakarta.validation.constraints.Positive;
 import java.math.BigDecimal;
 
 public record ProductUpdateRequest(
-        @NotNull(message = "{field.null}")
-        Long id,
         @NotBlank(message = "{field.required}")
         String name,
         @NotNull(message = "{field.null}")
