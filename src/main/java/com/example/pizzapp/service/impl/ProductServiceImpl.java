@@ -17,8 +17,8 @@ import java.util.List;
 @RequiredArgsConstructor
 public class ProductServiceImpl implements ProductService {
 
-    private ProductRepository productRepository;
-    private ProductMapper productMapper;
+    private final ProductRepository productRepository;
+    private final ProductMapper productMapper;
 
     @Override
     public ProductResponse createProduct(ProductCreateRequest createProductRequest) {
