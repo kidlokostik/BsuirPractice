@@ -1,0 +1,24 @@
+package com.example.pizzapp.mapper;
+
+import com.example.pizzapp.dto.request.create.ProductCreateRequest;
+import com.example.pizzapp.dto.response.ProductResponse;
+import com.example.pizzapp.models.Product;
+import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
+import org.mapstruct.MappingConstants;
+
+import java.util.List;
+
+@Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
+public interface ProductMapper {
+    @Mapping(target = "category", ignore = true)
+    @Mapping(target = "orderItems", ignore = true)
+    Product createRequestToEntity(ProductCreateRequest productCreateRequest);
+
+    List<Product> createRequestToEntity(List<ProductCreateRequest> productCreateRequests);
+
+    @Mapping(source = "product.category.id", target = "categoryId")
+    ProductResponse toResponse(Product product);
+
+    List<ProductResponse> toResponse(List<Product> products);
+}
