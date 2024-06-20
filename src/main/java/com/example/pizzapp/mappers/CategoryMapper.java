@@ -1,7 +1,6 @@
 package com.example.pizzapp.mappers;
 
 import com.example.pizzapp.dto.request.create.CategoryCreateRequest;
-import com.example.pizzapp.dto.request.update.CategoryUpdateRequest;
 import com.example.pizzapp.dto.response.CategoryResponse;
 import com.example.pizzapp.models.Category;
 import org.mapstruct.Mapper;

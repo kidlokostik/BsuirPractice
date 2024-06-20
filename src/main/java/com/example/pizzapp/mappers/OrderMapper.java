@@ -1,7 +1,6 @@
 package com.example.pizzapp.mappers;
 
 import com.example.pizzapp.dto.request.create.OrderCreateRequest;
-import com.example.pizzapp.dto.request.update.OrderUpdateRequest;
 import com.example.pizzapp.dto.response.OrderResponse;
 import com.example.pizzapp.models.Order;
 import org.mapstruct.Mapper;
