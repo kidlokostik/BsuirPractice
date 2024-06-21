@@ -2,11 +2,9 @@ package com.example.pizzapp.mapper;
 
 import com.example.pizzapp.dto.request.create.OrderItemCreateRequest;
 import com.example.pizzapp.dto.response.OrderItemResponse;
-import com.example.pizzapp.models.OrderItem;
+import com.example.pizzapp.model.OrderItem;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingConstants;
-
-import java.util.List;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface OrderItemMapper{

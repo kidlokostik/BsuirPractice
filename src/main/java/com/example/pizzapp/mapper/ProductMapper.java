@@ -2,12 +2,10 @@ package com.example.pizzapp.mapper;
 
 import com.example.pizzapp.dto.request.create.ProductCreateRequest;
 import com.example.pizzapp.dto.response.ProductResponse;
-import com.example.pizzapp.models.Product;
+import com.example.pizzapp.model.Product;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
-
-import java.util.List;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ProductMapper {

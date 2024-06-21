@@ -1,4 +1,4 @@
-package com.example.pizzapp.models;
+package com.example.pizzapp.model;
 
 import jakarta.persistence.*;
 import lombok.Data;

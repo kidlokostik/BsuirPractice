@@ -1,7 +1,7 @@
-package com.example.pizzapp.repositories;
+package com.example.pizzapp.repository;
 
 
-import com.example.pizzapp.models.Product;
+import com.example.pizzapp.model.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 

@@ -2,9 +2,7 @@ package com.example.pizzapp.service;
 
 import com.example.pizzapp.dto.request.create.OrderCreateRequest;
 import com.example.pizzapp.dto.request.create.OrderItemCreateRequest;
-import com.example.pizzapp.dto.response.OrderItemResponse;
 import com.example.pizzapp.dto.response.OrderResponse;
-import com.example.pizzapp.models.OrderItem;
 
 import java.util.List;
 

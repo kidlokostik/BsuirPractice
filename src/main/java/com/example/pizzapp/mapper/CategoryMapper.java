@@ -2,12 +2,10 @@ package com.example.pizzapp.mapper;
 
 import com.example.pizzapp.dto.request.create.CategoryCreateRequest;
 import com.example.pizzapp.dto.response.CategoryResponse;
-import com.example.pizzapp.models.Category;
+import com.example.pizzapp.model.Category;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
-
-import java.util.List;
 
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
