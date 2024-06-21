@@ -12,7 +12,7 @@ import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/order")
+@RequestMapping("/api/v1/orders")
 public class OrderController {
 
     private final OrderService orderService;
@@ -42,7 +42,7 @@ public class OrderController {
         orderService.addOrderItem(orderId, orderItemCreateRequest);
     }
 
-    @PutMapping("/{orderId}")
+    @PostMapping("/{orderId}")
     public void addOrderItems(Long orderId, List<OrderItemCreateRequest> orderItemCreateRequests) {
         orderService.addOrderItems(orderId, orderItemCreateRequests);
     }
