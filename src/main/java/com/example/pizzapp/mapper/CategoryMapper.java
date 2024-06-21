@@ -7,6 +7,7 @@ import com.example.pizzapp.model.Category;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
+import org.mapstruct.MappingTarget;
 
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
@@ -14,8 +15,7 @@ public interface CategoryMapper {
     @Mapping(target = "product", ignore = true)
     Category createRequestToEntity(CategoryCreateRequest categoryCreateRequest);
 
-    @Mapping(target = "product", ignore = true)
-    Category updateRequestToEntity(Long id, CategoryUpdateRequest categoryUpdateRequest);
+    void updateCategoryFromUpdateRequest(CategoryUpdateRequest categoryUpdateRequest, @MappingTarget Category category);
 
     CategoryResponse toResponse(Category category);
 }

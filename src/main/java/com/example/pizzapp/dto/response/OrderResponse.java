@@ -9,6 +9,5 @@ public record OrderResponse(
         Long id,
         Long userId,
         String address,
-        BigDecimal price,
-        List<OrderItem> orderItems
+        BigDecimal price
 ){}

@@ -28,9 +28,9 @@ public class ProductServiceImpl implements ProductService {
     }
 
     @Override
-    public ProductResponse updateProduct(Long id, ProductUpdateRequest productUpdateRequest){
+    public ProductResponse updateProduct(Long id, ProductUpdateRequest productUpdateRequest) {
         Product product = findProductByIdOrThrow(id);
-        product = productMapper.updateRequestToEntity(id, productUpdateRequest);
+        productMapper.updateProductFromUpdateRequest(productUpdateRequest,product);
         return productMapper.toResponse(productRepository.save(product));
     }
 

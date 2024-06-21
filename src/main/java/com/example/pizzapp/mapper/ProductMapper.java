@@ -7,6 +7,7 @@ import com.example.pizzapp.model.Product;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.MappingConstants;
+import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface ProductMapper {
@@ -14,7 +15,7 @@ public interface ProductMapper {
     @Mapping(target = "orderItems", ignore = true)
     Product createRequestToEntity(ProductCreateRequest productCreateRequest);
 
-    Product updateRequestToEntity(Long id, ProductUpdateRequest productUpdateRequest);
+    void updateProductFromUpdateRequest(ProductUpdateRequest productUpdateRequest, @MappingTarget Product product);
 
     @Mapping(source = "product.category.id", target = "categoryId")
     ProductResponse toResponse(Product product);

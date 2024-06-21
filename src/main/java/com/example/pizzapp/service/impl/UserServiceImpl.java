@@ -30,7 +30,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponse updateUser(Long id, UserUpdateRequest userUpdateRequest) {
         User user = findUserByIdOrThrow(id);
-        userMapper.updateRequestToEntity(id,userUpdateRequest);
+        userMapper.updateUserFromUpdateRequest(userUpdateRequest,user);
         return userMapper.toResponse(userRepository.save(user));
     }
 
