@@ -1,6 +1,7 @@
 package com.example.pizzapp.service.impl;
 
 import com.example.pizzapp.dto.request.create.CategoryCreateRequest;
+import com.example.pizzapp.dto.request.update.CategoryUpdateRequest;
 import com.example.pizzapp.dto.response.CategoryResponse;
 import com.example.pizzapp.exception.ResourceNotFoundException;
 import com.example.pizzapp.mapper.CategoryMapper;
@@ -24,6 +25,13 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryResponse createCategory(CategoryCreateRequest createCategoryRequest) {
         Category category = categoryMapper.createRequestToEntity(createCategoryRequest);
+        return categoryMapper.toResponse(categoryRepository.save(category));
+    }
+
+    @Override
+    public CategoryResponse updateCategory(Long id, CategoryUpdateRequest categoryUpdateRequest){
+        Category category = findCategoryByIdOrThrow(id);
+        category = categoryMapper.updateRequestToEntity(id, categoryUpdateRequest);
         return categoryMapper.toResponse(categoryRepository.save(category));
     }
 
