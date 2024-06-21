@@ -1,6 +1,7 @@
 package com.example.pizzapp.service.impl;
 
 import com.example.pizzapp.dto.request.create.UserCreateRequest;
+import com.example.pizzapp.dto.request.update.UserUpdateRequest;
 import com.example.pizzapp.dto.response.UserResponse;
 import com.example.pizzapp.exception.ResourceNotFoundException;
 import com.example.pizzapp.mapper.UserMapper;
@@ -23,6 +24,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponse createUser(UserCreateRequest createUserRequest) {
         User user = userMapper.createRequestToEntity(createUserRequest);
+        return userMapper.toResponse(userRepository.save(user));
+    }
+
+    @Override
+    public UserResponse updateUser(Long id, UserUpdateRequest userUpdateRequest) {
+        User user = findUserByIdOrThrow(id);
+        userMapper.updateRequestToEntity(id,userUpdateRequest);
         return userMapper.toResponse(userRepository.save(user));
     }
 

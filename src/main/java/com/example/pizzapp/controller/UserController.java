@@ -1,6 +1,7 @@
 package com.example.pizzapp.controller;
 
 import com.example.pizzapp.dto.request.create.UserCreateRequest;
+import com.example.pizzapp.dto.request.update.UserUpdateRequest;
 import com.example.pizzapp.dto.response.UserResponse;
 import com.example.pizzapp.service.UserService;
 import jakarta.validation.Valid;
@@ -19,6 +20,11 @@ public class UserController {
     @PostMapping
     public UserResponse createUser(@RequestBody @Valid UserCreateRequest userCreateRequest) {
         return userService.createUser(userCreateRequest);
+    }
+
+    @PutMapping("/{id}")
+    public UserResponse updateUser(@PathVariable Long id ,@RequestBody @Valid UserUpdateRequest userUpdateRequest) {
+        return userService.updateUser(id, userUpdateRequest);
     }
 
     @GetMapping("/{id}")

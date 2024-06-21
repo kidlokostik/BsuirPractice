@@ -1,6 +1,7 @@
 package com.example.pizzapp.service.impl;
 
 import com.example.pizzapp.dto.request.create.ProductCreateRequest;
+import com.example.pizzapp.dto.request.update.ProductUpdateRequest;
 import com.example.pizzapp.dto.response.ProductResponse;
 import com.example.pizzapp.exception.ResourceNotFoundException;
 import com.example.pizzapp.mapper.ProductMapper;
@@ -23,6 +24,13 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductResponse createProduct(ProductCreateRequest createProductRequest) {
         Product product = productMapper.createRequestToEntity(createProductRequest);
+        return productMapper.toResponse(productRepository.save(product));
+    }
+
+    @Override
+    public ProductResponse updateProduct(Long id, ProductUpdateRequest productUpdateRequest){
+        Product product = findProductByIdOrThrow(id);
+        product = productMapper.updateRequestToEntity(id, productUpdateRequest);
         return productMapper.toResponse(productRepository.save(product));
     }
 

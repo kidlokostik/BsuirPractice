@@ -2,6 +2,7 @@ package com.example.pizzapp.controller;
 
 import com.example.pizzapp.dto.request.create.OrderCreateRequest;
 import com.example.pizzapp.dto.request.create.OrderItemCreateRequest;
+import com.example.pizzapp.dto.request.update.OrderUpdateRequest;
 import com.example.pizzapp.dto.response.OrderResponse;
 import com.example.pizzapp.service.OrderService;
 import jakarta.validation.Valid;
@@ -20,6 +21,11 @@ public class OrderController {
     @PostMapping
     public OrderResponse createOrder(@RequestBody @Valid OrderCreateRequest orderCreateRequest) {
         return orderService.createOrder(orderCreateRequest);
+    }
+
+    @PutMapping("/{id}")
+    public OrderResponse updateOrder(@PathVariable Long id, @RequestBody @Valid OrderUpdateRequest orderUpdateRequest) {
+        return orderService.updateOrder(id,orderUpdateRequest);
     }
 
     @GetMapping("/{id}")
