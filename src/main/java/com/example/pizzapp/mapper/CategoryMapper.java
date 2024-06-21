@@ -15,10 +15,5 @@ public interface CategoryMapper {
     @Mapping(target = "product", ignore = true)
     Category createRequestToEntity(CategoryCreateRequest categoryCreateRequest);
 
-    List<Category> createRequestToEntity(List<CategoryCreateRequest> categoryCreateRequests);
-
     CategoryResponse toResponse(Category category);
-
-    List<CategoryResponse> toResponse(List<Category> categories);
-
 }
