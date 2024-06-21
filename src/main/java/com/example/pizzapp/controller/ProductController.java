@@ -2,12 +2,9 @@ package com.example.pizzapp.controller;
 
 import com.example.pizzapp.dto.request.create.ProductCreateRequest;
 import com.example.pizzapp.dto.response.ProductResponse;
-import com.example.pizzapp.mapper.ProductMapper;
-import com.example.pizzapp.models.Product;
 import com.example.pizzapp.service.ProductService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

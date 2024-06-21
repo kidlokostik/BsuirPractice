@@ -1,6 +1,6 @@
 package com.example.pizzapp.dto.response;
 
-import com.example.pizzapp.models.OrderItem;
+import com.example.pizzapp.model.OrderItem;
 
 import java.math.BigDecimal;
 import java.util.List;

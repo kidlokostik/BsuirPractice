@@ -1,4 +1,4 @@
-package com.example.pizzapp.configs;
+package com.example.pizzapp.config;
 
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
