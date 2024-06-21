@@ -29,9 +29,9 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
-    public CategoryResponse updateCategory(Long id, CategoryUpdateRequest categoryUpdateRequest){
+    public CategoryResponse updateCategory(Long id, CategoryUpdateRequest categoryUpdateRequest) {
         Category category = findCategoryByIdOrThrow(id);
-        category = categoryMapper.updateRequestToEntity(id, categoryUpdateRequest);
+        categoryMapper.updateCategoryFromUpdateRequest(categoryUpdateRequest,category);
         return categoryMapper.toResponse(categoryRepository.save(category));
     }
 

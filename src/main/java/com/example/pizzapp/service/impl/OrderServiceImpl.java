@@ -37,7 +37,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderResponse updateOrder(Long id, OrderUpdateRequest orderUpdateRequest) {
         Order order = findOrderByIdOrThrow(id);
-        order = orderMapper.updateRequestToEntity(id, orderUpdateRequest);
+        orderMapper.updateOrderFromUpdateRequest(orderUpdateRequest,order);
         return orderMapper.toResponse(orderRepository.save(order));
     }
 
