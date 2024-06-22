@@ -18,4 +18,13 @@ public class ControllerAdvice {
                 e.getMessage())
                 .build();
     }
+
+    @ExceptionHandler(Exception.class)
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    public ErrorResponse handleGenericException(Exception e) {
+        return ErrorResponse.builder(e,
+                        HttpStatus.INTERNAL_SERVER_ERROR,
+                        "An unexpected error occurred")
+                        .build();
+    }
 }
