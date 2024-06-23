@@ -2,7 +2,9 @@ package com.example.pizzapp.service;
 
 import com.example.pizzapp.dto.request.create.OrderCreateRequest;
 import com.example.pizzapp.dto.request.create.OrderItemCreateRequest;
+import com.example.pizzapp.dto.request.create.UserCreateRequest;
 import com.example.pizzapp.dto.request.update.OrderUpdateRequest;
+import com.example.pizzapp.dto.request.update.UserUpdateRequest;
 import com.example.pizzapp.dto.response.OrderResponse;
 
 import java.util.List;
@@ -11,7 +13,7 @@ public interface OrderService {
 
     OrderResponse createOrder(OrderCreateRequest createOrderRequest);
 
-    OrderResponse updateOrder(Long orderId, OrderUpdateRequest orderUpdateRequest);
+    OrderResponse updateOrder(Long orderId, OrderUpdateRequest updateOrderRequest);
 
     void deleteOrder(Long id);
 

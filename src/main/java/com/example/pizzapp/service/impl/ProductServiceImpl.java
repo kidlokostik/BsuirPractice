@@ -3,13 +3,17 @@ package com.example.pizzapp.service.impl;
 import com.example.pizzapp.dto.request.create.ProductCreateRequest;
 import com.example.pizzapp.dto.request.update.ProductUpdateRequest;
 import com.example.pizzapp.dto.response.ProductResponse;
+import com.example.pizzapp.exception.DuplicateFoundException;
 import com.example.pizzapp.exception.ResourceNotFoundException;
 import com.example.pizzapp.mapper.ProductMapper;
 import com.example.pizzapp.model.Product;
 import com.example.pizzapp.repository.ProductRepository;
 import com.example.pizzapp.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
+
+import static com.example.pizzapp.util.ErrorMessages.DUPLICATE_FOUND;
 import static com.example.pizzapp.util.ErrorMessages.NOT_FOUND_MESSAGE;
 
 import java.util.List;
@@ -23,14 +27,24 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductResponse createProduct(ProductCreateRequest createProductRequest) {
+        if (uniqueProductCheck(createProductRequest)) {
+            throw new DuplicateKeyException(String.format(DUPLICATE_FOUND, "product", createProductRequest.name()));
+        }
         Product product = productMapper.createRequestToEntity(createProductRequest);
         return productMapper.toResponse(productRepository.save(product));
     }
 
     @Override
-    public ProductResponse updateProduct(Long id, ProductUpdateRequest productUpdateRequest) {
+    public ProductResponse updateProduct(Long id, ProductUpdateRequest updateProductRequest) {
         Product product = findProductByIdOrThrow(id);
-        productMapper.updateProductFromUpdateRequest(productUpdateRequest,product);
+        if (product.getName().equals(updateProductRequest.name().toString())) {
+            productMapper.updateProductFromUpdateRequest(updateProductRequest,product);
+            return productMapper.toResponse(productRepository.save(product));
+        }
+        if (uniqueProductCheck(updateProductRequest)) {
+            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND, "product", updateProductRequest.name()));
+        }
+        productMapper.updateProductFromUpdateRequest(updateProductRequest,product);
         return productMapper.toResponse(productRepository.save(product));
     }
 
@@ -50,6 +64,16 @@ public class ProductServiceImpl implements ProductService {
         return productRepository.findAll().stream()
                 .map(productMapper::toResponse)
                 .toList();
+    }
+
+    @Override
+    public boolean uniqueProductCheck(ProductCreateRequest createProductRequest) {
+        return productRepository.existsByName(createProductRequest.name());
+    }
+
+    @Override
+    public boolean uniqueProductCheck(ProductUpdateRequest updateProductRequest) {
+        return productRepository.existsByName(updateProductRequest.name());
     }
 
     private Product findProductByIdOrThrow(Long id) {
