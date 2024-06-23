@@ -23,4 +23,5 @@ public class JwtTokenProvider {
     public void init(){
         this.key = Keys.hmacShaKeyFor(jwtProperties.getSecret().getBytes());
     }
+
 }
