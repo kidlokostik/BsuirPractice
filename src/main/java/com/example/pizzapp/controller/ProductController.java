@@ -23,7 +23,10 @@ public class ProductController {
     }
 
     @PutMapping("/{id}")
-    public ProductResponse updateProduct(@PathVariable Long id, @RequestBody @Valid ProductUpdateRequest productUpdateRequest) {
+    public ProductResponse updateProduct(
+            @PathVariable Long id,
+            @RequestBody @Valid ProductUpdateRequest productUpdateRequest
+    ) {
         return productService.updateProduct(id, productUpdateRequest);
     }
 

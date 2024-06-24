@@ -24,7 +24,10 @@ public class OrderController {
     }
 
     @PutMapping("/{id}")
-    public OrderResponse updateOrder(@PathVariable Long id, @RequestBody @Valid OrderUpdateRequest orderUpdateRequest) {
+    public OrderResponse updateOrder(
+            @PathVariable Long id,
+            @RequestBody @Valid OrderUpdateRequest orderUpdateRequest
+    ) {
         return orderService.updateOrder(id,orderUpdateRequest);
     }
 
