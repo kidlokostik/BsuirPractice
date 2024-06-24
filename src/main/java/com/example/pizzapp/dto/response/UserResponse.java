@@ -1,4 +1,7 @@
 package com.example.pizzapp.dto.response;
+import com.example.pizzapp.model.Gender;
+
+import java.time.LocalDate;
 
 public record UserResponse(
         Long id,
@@ -6,7 +9,7 @@ public record UserResponse(
         String name,
         String login,
         String email,
-        String gender,
-        java.util.Date birthDate,
+        Gender gender,
+        LocalDate birthDate,
         String role
 ){}

@@ -38,7 +38,8 @@ public class User {
     private String email;
 
     @Column(nullable = false)
-    private String gender;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
 
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)

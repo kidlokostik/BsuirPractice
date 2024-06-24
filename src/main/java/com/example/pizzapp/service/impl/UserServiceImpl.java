@@ -8,6 +8,7 @@ import com.example.pizzapp.exception.ResourceNotFoundException;
 import com.example.pizzapp.exception.ValidationException;
 import com.example.pizzapp.mapper.UserMapper;
 import com.example.pizzapp.model.Role;
+import com.example.pizzapp.model.RoleType;
 import com.example.pizzapp.model.User;
 import com.example.pizzapp.repository.RoleRepository;
 import com.example.pizzapp.repository.UserRepository;
@@ -37,14 +38,9 @@ public class UserServiceImpl implements UserService {
     public UserResponse createUser(UserCreateRequest createUserRequest) {
         checkUniqueUserPhone(createUserRequest);
         validatePassword(createUserRequest.password(), createUserRequest.confirmPassword());
-        if (userRepository.existsByLogin(createUserRequest.login())) {
-            throw new IllegalArgumentException("Login is already in use");
-        }
-        if (userRepository.existsByEmail(createUserRequest.email())) {
-            throw new IllegalArgumentException("Email is already in use");
-        }
-        Role customerRole = roleRepository.findByRole("CUSTOMER")
-                .orElseThrow(() -> new ResourceNotFoundException("Role not found"));
+        validateUniqueFields(createUserRequest.login(), createUserRequest.email());
+        Role customerRole = roleRepository.findByName(RoleType.CUSTOMER)
+                .orElseThrow(() -> new ResourceNotFoundException(ROLE_NOT_FOUND));
         User user = userMapper.createRequestToEntity(createUserRequest);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(customerRole);
@@ -111,6 +107,15 @@ public class UserServiceImpl implements UserService {
     private void validatePassword(String password, String confirmPassword) {
         if (!password.equals(confirmPassword)) {
             throw new ValidationException("Passwords do not match");
+        }
+    }
+
+    private void validateUniqueFields(String login, String email) {
+        if (userRepository.existsByLogin(login)) {
+            throw new IllegalArgumentException(String.format(ALREADY_USED, login));
+        }
+        if (userRepository.existsByEmail(email)) {
+            throw new IllegalArgumentException(String.format(ALREADY_USED, email));
         }
     }
 }

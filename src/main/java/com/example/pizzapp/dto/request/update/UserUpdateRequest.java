@@ -1,8 +1,9 @@
 package com.example.pizzapp.dto.request.update;
 
+import com.example.pizzapp.model.Gender;
 import jakarta.validation.constraints.*;
 
-import java.util.Date;
+import java.time.LocalDate;
 
 
 public record UserUpdateRequest(
@@ -29,9 +30,9 @@ public record UserUpdateRequest(
         String email,
 
         @NotBlank(message = "{field.required}")
-        String gender,
+        Gender gender,
 
         @NotNull(message = "{field.required}")
         @Past(message = "{field.past}")
-        Date birthDate
+        LocalDate birthDate
         ){}
