@@ -18,7 +18,4 @@ public interface ProductService {
 
     List<ProductResponse> getAllProducts();
 
-    boolean uniqueProductCheck(ProductCreateRequest createProductRequest);
-
-    boolean uniqueProductCheck(ProductUpdateRequest updateProductRequest);
 }

@@ -36,13 +36,11 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductResponse updateProduct(Long id, ProductUpdateRequest updateProductRequest) {
         Product product = findProductByIdOrThrow(id);
-        if (product.getName().equals(updateProductRequest.name().toString())) {
-            productMapper.updateProductFromUpdateRequest(updateProductRequest,product);
-            return productMapper.toResponse(productRepository.save(product));
-        }
-        if (uniqueProductCheck(updateProductRequest)) {
+
+        if (uniqueProductCheck(updateProductRequest, product.getName())) {
             throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "product", updateProductRequest.name()));
         }
+
         productMapper.updateProductFromUpdateRequest(updateProductRequest,product);
         return productMapper.toResponse(productRepository.save(product));
     }
@@ -65,14 +63,14 @@ public class ProductServiceImpl implements ProductService {
                 .toList();
     }
 
-    @Override
-    public boolean uniqueProductCheck(ProductCreateRequest createProductRequest) {
+    private boolean uniqueProductCheck(ProductCreateRequest createProductRequest) {
         return productRepository.existsByName(createProductRequest.name());
     }
 
-    @Override
-    public boolean uniqueProductCheck(ProductUpdateRequest updateProductRequest) {
-        return productRepository.existsByName(updateProductRequest.name());
+    private boolean uniqueProductCheck(ProductUpdateRequest updateProductRequest, String existingName) {
+        return updateProductRequest.name() != null &&
+                !updateProductRequest.name().equals(existingName) &&
+                productRepository.existsByName(updateProductRequest.name());
     }
 
     private Product findProductByIdOrThrow(Long id) {

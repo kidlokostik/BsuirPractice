@@ -37,10 +37,12 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryResponse updateCategory(Long id, CategoryUpdateRequest updateCategoryRequest) {
         Category category = findCategoryByIdOrThrow(id);
-        if (uniqueCategoryCheck(updateCategoryRequest)) {
+
+        if (uniqueCategoryCheck(updateCategoryRequest, category.getName())) {
             throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "category", updateCategoryRequest.name()));
         }
-        categoryMapper.updateCategoryFromUpdateRequest(updateCategoryRequest,category);
+
+        categoryMapper.updateCategoryFromUpdateRequest(updateCategoryRequest, category);
         return categoryMapper.toResponse(categoryRepository.save(category));
     }
 
@@ -66,8 +68,10 @@ public class CategoryServiceImpl implements CategoryService {
         return categoryRepository.existsByName(createCategoryRequest.name());
     }
 
-    private boolean uniqueCategoryCheck(CategoryUpdateRequest updateCategoryRequest) {
-        return categoryRepository.existsByName(updateCategoryRequest.name());
+    private boolean uniqueCategoryCheck(CategoryUpdateRequest updateCategoryRequest, String existingName) {
+        return updateCategoryRequest.name() != null &&
+                !updateCategoryRequest.name().equals(existingName) &&
+                categoryRepository.existsByName(updateCategoryRequest.name());
     }
 
     private Category findCategoryByIdOrThrow(Long id){

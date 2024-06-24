@@ -18,7 +18,4 @@ public interface UserService {
 
     List<UserResponse> getAllUsers();
 
-    boolean uniqueUserCheck(UserCreateRequest createUserRequest);
-
-    boolean uniqueUserCheck(UserUpdateRequest updateUserRequest);
 }
