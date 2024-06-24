@@ -7,40 +7,76 @@
     <changeSet id="v4-1" author="Katya Pechko">
         <addColumn tableName="users">
             <column name="role_id" type="bigint"/>
+            <column name="login" type="varchar(50)"/>
+            <column name="email" type="varchar(100)"/>
+            <column name="gender" type="varchar(10)"/>
+            <column name="date_of_birth" type="date"/>
         </addColumn>
     </changeSet>
 
     <changeSet id="v4-2" author="Katya Pechko">
         <update tableName="users">
             <column name="role_id" value="1"/>
+            <column name="login" value="12"/>
+            <column name="email" value="kostya@gmail.com"/>
+            <column name="gender" value="Male"/>
+            <column name="date_of_birth" value="2004-05-12"/>
             <where>id = 1</where>
         </update>
         <update tableName="users">
             <column name="role_id" value="1"/>
+            <column name="login" value="123"/>
+            <column name="email" value="kirill@gmail.com"/>
+            <column name="gender" value="Male"/>
+            <column name="date_of_birth" value="2004-02-26"/>
             <where>id = 2</where>
         </update>
         <update tableName="users">
             <column name="role_id" value="2"/>
+            <column name="login" value="1234"/>
+            <column name="email" value="katya@gmail.com"/>
+            <column name="gender" value="Female"/>
+            <column name="date_of_birth" value="2003-04-11"/>
             <where>id = 3</where>
         </update>
         <update tableName="users">
             <column name="role_id" value="1"/>
+            <column name="login" value="12345"/>
+            <column name="email" value="roma@gmail.com"/>
+            <column name="gender" value="Male"/>
+            <column name="date_of_birth" value="2004-02-14"/>
             <where>id = 4</where>
         </update>
         <update tableName="users">
             <column name="role_id" value="2"/>
+            <column name="login" value="123456"/>
+            <column name="email" value="julia@gmail.com"/>
+            <column name="gender" value="Female"/>
+            <column name="date_of_birth" value="2004-07-17"/>
             <where>id = 5</where>
         </update>
         <update tableName="users">
             <column name="role_id" value="2"/>
+            <column name="login" value="1234567"/>
+            <column name="email" value="romeo@gmail.com"/>
+            <column name="gender" value="Male"/>
+            <column name="date_of_birth" value="2003-10-23"/>
             <where>id = 6</where>
         </update>
         <update tableName="users">
             <column name="role_id" value="2"/>
+            <column name="login" value="12345678"/>
+            <column name="email" value="danil@gmail.com"/>
+            <column name="gender" value="Male"/>
+            <column name="date_of_birth" value="2004-06-02"/>
             <where>id = 7</where>
         </update>
         <update tableName="users">
             <column name="role_id" value="2"/>
+            <column name="login" value="123456789"/>
+            <column name="email" value="boris@gmail.com"/>
+            <column name="gender" value="Male"/>
+            <column name="date_of_birth" value="2003-11-10"/>
             <where>id = 8</where>
         </update>
     </changeSet>
