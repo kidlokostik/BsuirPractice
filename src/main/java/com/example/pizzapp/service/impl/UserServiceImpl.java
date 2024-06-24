@@ -13,10 +13,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
-import static com.example.pizzapp.util.ErrorMessages.DUPLICATE_FOUND;
-import static com.example.pizzapp.util.ErrorMessages.NOT_FOUND_MESSAGE;
-
 import java.util.List;
+
+import static com.example.pizzapp.util.ErrorMessages.*;
 
 @Service
 @RequiredArgsConstructor
@@ -28,7 +27,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponse createUser(UserCreateRequest createUserRequest) {
         if (uniqueUserCheck(createUserRequest)) {
-            throw new DuplicateKeyException(String.format(DUPLICATE_FOUND, "user", createUserRequest.phone()));
+            throw new DuplicateKeyException(String.format(DUPLICATE_FOUND_MESSAGE, "user", createUserRequest.phone()));
         }
         User user = userMapper.createRequestToEntity(createUserRequest);
         return userMapper.toResponse(userRepository.save(user));
@@ -42,7 +41,7 @@ public class UserServiceImpl implements UserService {
             return userMapper.toResponse(userRepository.save(user));
         }
         if (uniqueUserCheck(updateUserRequest)) {
-            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND, "user", updateUserRequest.phone()));
+            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "user", updateUserRequest.phone()));
         }
         userMapper.updateUserFromUpdateRequest(updateUserRequest,user);
         return userMapper.toResponse(userRepository.save(user));
