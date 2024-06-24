@@ -3,7 +3,7 @@
                    xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
-    <changeSet id="v1-1" author="Katya Pechko">
+    <changeSet id="v4-1" author="Katya Pechko">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="roles"/>
@@ -19,7 +19,7 @@
         </createTable>
     </changeSet>
 
-    <changeSet id="v4-1" author="Katya Pechko">
+    <changeSet id="v4-2" author="Katya Pechko">
         <preConditions onFail="MARK_RAN">
             <tableIsEmpty tableName="roles"/>
         </preConditions>
