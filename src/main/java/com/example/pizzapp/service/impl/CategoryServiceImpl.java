@@ -27,9 +27,8 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryResponse createCategory(CategoryCreateRequest createCategoryRequest) {
-        if (uniqueCategoryCheck(createCategoryRequest)) {
-            throw new DuplicateKeyException(String.format(DUPLICATE_FOUND_MESSAGE, "category", createCategoryRequest.name()));
-        }
+        checkUniqueCategoryName(createCategoryRequest);
+
         Category category = categoryMapper.createRequestToEntity(createCategoryRequest);
         return categoryMapper.toResponse(categoryRepository.save(category));
     }
@@ -38,9 +37,7 @@ public class CategoryServiceImpl implements CategoryService {
     public CategoryResponse updateCategory(Long id, CategoryUpdateRequest updateCategoryRequest) {
         Category category = findCategoryByIdOrThrow(id);
 
-        if (uniqueCategoryCheck(updateCategoryRequest, category.getName())) {
-            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "category", updateCategoryRequest.name()));
-        }
+        checkUniqueCategoryName(updateCategoryRequest, category.getName());
 
         categoryMapper.updateCategoryFromUpdateRequest(updateCategoryRequest, category);
         return categoryMapper.toResponse(categoryRepository.save(category));
@@ -72,6 +69,18 @@ public class CategoryServiceImpl implements CategoryService {
         return updateCategoryRequest.name() != null &&
                 !updateCategoryRequest.name().equals(existingName) &&
                 categoryRepository.existsByName(updateCategoryRequest.name());
+    }
+
+    private void checkUniqueCategoryName(CategoryCreateRequest createCategoryRequest) {
+        if (uniqueCategoryCheck(createCategoryRequest)) {
+            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "category", createCategoryRequest.name()));
+        }
+    }
+
+    private void checkUniqueCategoryName(CategoryUpdateRequest updateCategoryRequest, String existingName) {
+        if (uniqueCategoryCheck(updateCategoryRequest, existingName)) {
+            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "category", updateCategoryRequest.name()));
+        }
     }
 
     private Category findCategoryByIdOrThrow(Long id){

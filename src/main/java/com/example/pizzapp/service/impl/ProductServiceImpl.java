@@ -1,6 +1,8 @@
 package com.example.pizzapp.service.impl;
 
+import com.example.pizzapp.dto.request.create.CategoryCreateRequest;
 import com.example.pizzapp.dto.request.create.ProductCreateRequest;
+import com.example.pizzapp.dto.request.update.CategoryUpdateRequest;
 import com.example.pizzapp.dto.request.update.ProductUpdateRequest;
 import com.example.pizzapp.dto.response.ProductResponse;
 import com.example.pizzapp.exception.DuplicateFoundException;
@@ -26,9 +28,8 @@ public class ProductServiceImpl implements ProductService {
 
     @Override
     public ProductResponse createProduct(ProductCreateRequest createProductRequest) {
-        if (uniqueProductCheck(createProductRequest)) {
-            throw new DuplicateKeyException(String.format(DUPLICATE_FOUND_MESSAGE, "product", createProductRequest.name()));
-        }
+        checkUniqueProductName(createProductRequest);
+
         Product product = productMapper.createRequestToEntity(createProductRequest);
         return productMapper.toResponse(productRepository.save(product));
     }
@@ -37,9 +38,7 @@ public class ProductServiceImpl implements ProductService {
     public ProductResponse updateProduct(Long id, ProductUpdateRequest updateProductRequest) {
         Product product = findProductByIdOrThrow(id);
 
-        if (uniqueProductCheck(updateProductRequest, product.getName())) {
-            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "product", updateProductRequest.name()));
-        }
+        checkUniqueProductName(updateProductRequest, product.getName());
 
         productMapper.updateProductFromUpdateRequest(updateProductRequest,product);
         return productMapper.toResponse(productRepository.save(product));
@@ -71,6 +70,18 @@ public class ProductServiceImpl implements ProductService {
         return updateProductRequest.name() != null &&
                 !updateProductRequest.name().equals(existingName) &&
                 productRepository.existsByName(updateProductRequest.name());
+    }
+
+    private void checkUniqueProductName(ProductCreateRequest createProductRequest) {
+        if (uniqueProductCheck(createProductRequest)) {
+            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "product", createProductRequest.name()));
+        }
+    }
+
+    private void checkUniqueProductName(ProductUpdateRequest updateProductRequest, String existingName) {
+        if (uniqueProductCheck(updateProductRequest, existingName)) {
+            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "product", updateProductRequest.name()));
+        }
     }
 
     private Product findProductByIdOrThrow(Long id) {

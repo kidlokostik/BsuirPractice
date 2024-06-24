@@ -26,9 +26,8 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserResponse createUser(UserCreateRequest createUserRequest) {
-        if (uniqueUserCheck(createUserRequest)) {
-            throw new DuplicateKeyException(String.format(DUPLICATE_FOUND_MESSAGE, "user", createUserRequest.phone()));
-        }
+        checkUniqueUserPhone(createUserRequest);
+
         User user = userMapper.createRequestToEntity(createUserRequest);
         return userMapper.toResponse(userRepository.save(user));
     }
@@ -37,9 +36,7 @@ public class UserServiceImpl implements UserService {
     public UserResponse updateUser(Long id, UserUpdateRequest updateUserRequest) {
         User user = findUserByIdOrThrow(id);
 
-        if (uniqueUserCheck(updateUserRequest, user.getPhone())) {
-            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "user", updateUserRequest.phone()));
-        }
+        checkUniqueUserPhone(updateUserRequest, user.getPhone());
 
         userMapper.updateUserFromUpdateRequest(updateUserRequest, user);
         return userMapper.toResponse(userRepository.save(user));
@@ -71,6 +68,18 @@ public class UserServiceImpl implements UserService {
         return updateUserRequest.phone() != null &&
                 !updateUserRequest.phone().equals(existingPhone) &&
                 userRepository.existsByPhone(updateUserRequest.phone());
+    }
+
+    private void checkUniqueUserPhone(UserCreateRequest createUserRequest) {
+        if (uniqueUserCheck(createUserRequest)) {
+            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "user", createUserRequest.phone()));
+        }
+    }
+
+    private void checkUniqueUserPhone(UserUpdateRequest updateUserRequest, String existingName) {
+        if (uniqueUserCheck(updateUserRequest, existingName)) {
+            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "user", updateUserRequest.phone()));
+        }
     }
 
     private User findUserByIdOrThrow(Long id) {
