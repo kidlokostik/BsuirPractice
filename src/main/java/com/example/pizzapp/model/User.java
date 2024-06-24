@@ -5,8 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.math.BigInteger;
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Data
@@ -43,7 +43,7 @@ public class User {
 
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
-    private Date birthDate;
+    private LocalDate birthDate;
 
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
