@@ -1,7 +1,8 @@
 package com.example.pizzapp.security;
 
+import com.example.pizzapp.dto.Role;
 import com.example.pizzapp.dto.response.UserResponse;
-import com.example.pizzapp.mapper.UserMapper;
+import com.example.pizzapp.exception.AccessDeniedException;
 import com.example.pizzapp.security.dto.JwtResponse;
 import com.example.pizzapp.security.prop.JwtProperties;
 import com.example.pizzapp.service.UserService;
@@ -11,7 +12,6 @@ import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.access.AccessDeniedException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -49,10 +49,6 @@ public class JwtTokenProvider {
                 .setExpiration(validity)
                 .signWith(key)
                 .compact();
-    }
-
-    public enum Role{ //Потом удалить
-        ADMIN, CUSTOMER
     }
 
     public String createRefreshToken(Long userId, String username){
