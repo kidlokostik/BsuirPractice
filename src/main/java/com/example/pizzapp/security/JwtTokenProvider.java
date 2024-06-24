@@ -52,7 +52,22 @@ public class JwtTokenProvider {
                 .collect(Collectors.toList());
     }
 
-    public enum Role{
+    public enum Role{ //Потом удалить
         ADMIN, CUSTOMER
+    }
+
+    public String createRefreshToken(Long userId, String username){
+        Claims claims = Jwts.claims()
+                .setSubject(username)
+                .build();
+        claims.put("id", userId);
+        Date now = new Date();
+        Date validity = new Date(now.getTime() + jwtProperties.getRefresh());
+        return Jwts.builder()
+                .setClaims(claims)
+                .setIssuedAt(now)
+                .setExpiration(validity)
+                .signWith(key)
+                .compact();
     }
 }
