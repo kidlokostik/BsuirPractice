@@ -1,7 +1,9 @@
 package com.example.pizzapp.service.impl;
 
 import com.example.pizzapp.dto.request.create.CategoryCreateRequest;
+import com.example.pizzapp.dto.request.update.CategoryUpdateRequest;
 import com.example.pizzapp.dto.response.CategoryResponse;
+import com.example.pizzapp.exception.DuplicateFoundException;
 import com.example.pizzapp.exception.ResourceNotFoundException;
 import com.example.pizzapp.mapper.CategoryMapper;
 import com.example.pizzapp.model.Category;
@@ -9,9 +11,10 @@ import com.example.pizzapp.repository.CategoryRepository;
 import com.example.pizzapp.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import static com.example.pizzapp.util.ErrorMessages.NOT_FOUND_MESSAGE;
+
 import java.util.List;
 
+import static com.example.pizzapp.util.ErrorMessages.*;
 
 
 @Service
@@ -23,7 +26,19 @@ public class CategoryServiceImpl implements CategoryService {
 
     @Override
     public CategoryResponse createCategory(CategoryCreateRequest createCategoryRequest) {
+        checkUniqueCategoryName(createCategoryRequest);
+
         Category category = categoryMapper.createRequestToEntity(createCategoryRequest);
+        return categoryMapper.toResponse(categoryRepository.save(category));
+    }
+
+    @Override
+    public CategoryResponse updateCategory(Long id, CategoryUpdateRequest updateCategoryRequest) {
+        Category category = findCategoryByIdOrThrow(id);
+
+        checkUniqueCategoryName(updateCategoryRequest, category.getName());
+
+        categoryMapper.updateCategoryFromUpdateRequest(updateCategoryRequest, category);
         return categoryMapper.toResponse(categoryRepository.save(category));
     }
 
@@ -43,6 +58,28 @@ public class CategoryServiceImpl implements CategoryService {
        return categoryRepository.findAll().stream()
                .map(categoryMapper::toResponse)
                .toList();
+    }
+
+    private boolean uniqueCategoryCheck(CategoryCreateRequest createCategoryRequest) {
+        return categoryRepository.existsByName(createCategoryRequest.name());
+    }
+
+    private boolean uniqueCategoryCheck(CategoryUpdateRequest updateCategoryRequest, String existingName) {
+        return updateCategoryRequest.name() != null &&
+                !updateCategoryRequest.name().equals(existingName) &&
+                categoryRepository.existsByName(updateCategoryRequest.name());
+    }
+
+    private void checkUniqueCategoryName(CategoryCreateRequest createCategoryRequest) {
+        if (uniqueCategoryCheck(createCategoryRequest)) {
+            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "category", createCategoryRequest.name()));
+        }
+    }
+
+    private void checkUniqueCategoryName(CategoryUpdateRequest updateCategoryRequest, String existingName) {
+        if (uniqueCategoryCheck(updateCategoryRequest, existingName)) {
+            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "category", updateCategoryRequest.name()));
+        }
     }
 
     private Category findCategoryByIdOrThrow(Long id){

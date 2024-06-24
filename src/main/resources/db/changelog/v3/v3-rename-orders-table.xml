@@ -20,4 +20,14 @@
         <renameTable catalogName="tables" schemaName="public" oldTableName="Orders" newTableName="orders"/>
     </changeSet>
 
+    <changeSet author="Kostya Urbanait" id="v3-4">
+        <addAutoIncrement catalogName="tables"
+                          columnDataType="int"
+                          columnName="id"
+                          incrementBy="1"
+                          schemaName="public"
+                          startWith="9"
+                          tableName="orders"/>
+    </changeSet>
+
 </databaseChangeLog>

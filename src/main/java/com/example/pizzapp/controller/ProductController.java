@@ -1,6 +1,7 @@
 package com.example.pizzapp.controller;
 
 import com.example.pizzapp.dto.request.create.ProductCreateRequest;
+import com.example.pizzapp.dto.request.update.ProductUpdateRequest;
 import com.example.pizzapp.dto.response.ProductResponse;
 import com.example.pizzapp.service.ProductService;
 import jakarta.validation.Valid;
@@ -19,6 +20,14 @@ public class ProductController {
     @PostMapping
     public ProductResponse createProduct(@RequestBody @Valid ProductCreateRequest productCreateRequest) {
         return productService.createProduct(productCreateRequest);
+    }
+
+    @PutMapping("/{id}")
+    public ProductResponse updateProduct(
+            @PathVariable Long id,
+            @RequestBody @Valid ProductUpdateRequest productUpdateRequest
+    ) {
+        return productService.updateProduct(id, productUpdateRequest);
     }
 
     @GetMapping("/{id}")

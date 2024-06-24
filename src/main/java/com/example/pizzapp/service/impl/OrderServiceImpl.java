@@ -2,6 +2,7 @@ package com.example.pizzapp.service.impl;
 
 import com.example.pizzapp.dto.request.create.OrderCreateRequest;
 import com.example.pizzapp.dto.request.create.OrderItemCreateRequest;
+import com.example.pizzapp.dto.request.update.OrderUpdateRequest;
 import com.example.pizzapp.dto.response.OrderResponse;
 import com.example.pizzapp.exception.ResourceNotFoundException;
 import com.example.pizzapp.mapper.OrderMapper;
@@ -30,6 +31,13 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderResponse createOrder(OrderCreateRequest createOrderRequest) {
         Order order = orderMapper.createRequestToEntity(createOrderRequest);
+        return orderMapper.toResponse(orderRepository.save(order));
+    }
+
+    @Override
+    public OrderResponse updateOrder(Long id, OrderUpdateRequest orderUpdateRequest) {
+        Order order = findOrderByIdOrThrow(id);
+        orderMapper.updateOrderFromUpdateRequest(orderUpdateRequest,order);
         return orderMapper.toResponse(orderRepository.save(order));
     }
 

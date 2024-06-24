@@ -12,7 +12,7 @@
         </preConditions>
 
         <createTable tableName="Orders">
-            <column name="order_id" type="integer" autoIncrement="true">
+            <column name="order_id" type="integer">
                 <constraints primaryKey="true"/>
             </column>
             <column name="user_id" type="integer">

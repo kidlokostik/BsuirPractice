@@ -7,7 +7,7 @@ import jakarta.validation.constraints.Positive;
 import java.math.BigDecimal;
 
 public record OrderUpdateRequest(
-        @NotBlank(message = "{field.required}")
+        @NotNull(message = "{field.null}")
         Long userId,
         @NotBlank(message = "{field.required}")
         String address,
