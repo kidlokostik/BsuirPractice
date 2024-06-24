@@ -36,14 +36,12 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponse updateUser(Long id, UserUpdateRequest updateUserRequest) {
         User user = findUserByIdOrThrow(id);
-        if (user.getPhone().equals(updateUserRequest.phone().toString())) {
-            userMapper.updateUserFromUpdateRequest(updateUserRequest,user);
-            return userMapper.toResponse(userRepository.save(user));
-        }
-        if (uniqueUserCheck(updateUserRequest)) {
+
+        if (uniqueUserCheck(updateUserRequest, user.getPhone())) {
             throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "user", updateUserRequest.phone()));
         }
-        userMapper.updateUserFromUpdateRequest(updateUserRequest,user);
+
+        userMapper.updateUserFromUpdateRequest(updateUserRequest, user);
         return userMapper.toResponse(userRepository.save(user));
     }
 
@@ -65,14 +63,14 @@ public class UserServiceImpl implements UserService {
                 .toList();
     }
 
-    @Override
-    public boolean uniqueUserCheck(UserCreateRequest createUserRequest) {
+    private boolean uniqueUserCheck(UserCreateRequest createUserRequest) {
         return userRepository.existsByPhone(createUserRequest.phone());
     }
 
-    @Override
-    public boolean uniqueUserCheck(UserUpdateRequest updateUserRequest) {
-        return userRepository.existsByPhone(updateUserRequest.phone());
+    private boolean uniqueUserCheck(UserUpdateRequest updateUserRequest, String existingPhone) {
+        return updateUserRequest.phone() != null &&
+                !updateUserRequest.phone().equals(existingPhone) &&
+                userRepository.existsByPhone(updateUserRequest.phone());
     }
 
     private User findUserByIdOrThrow(Long id) {
