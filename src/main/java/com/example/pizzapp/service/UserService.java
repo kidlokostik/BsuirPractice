@@ -3,7 +3,6 @@ package com.example.pizzapp.service;
 import com.example.pizzapp.dto.request.create.UserCreateRequest;
 import com.example.pizzapp.dto.request.update.UserUpdateRequest;
 import com.example.pizzapp.dto.response.UserResponse;
-import com.example.pizzapp.model.User;
 
 import java.util.List;
 
