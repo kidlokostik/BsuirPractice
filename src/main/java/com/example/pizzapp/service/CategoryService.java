@@ -18,7 +18,4 @@ public interface CategoryService {
 
     List<CategoryResponse> getAllCategories();
 
-    boolean uniqueCategoryCheck(CategoryCreateRequest createCategoryRequest);
-
-    boolean uniqueCategoryCheck(CategoryUpdateRequest updateCategoryRequest);
 }
