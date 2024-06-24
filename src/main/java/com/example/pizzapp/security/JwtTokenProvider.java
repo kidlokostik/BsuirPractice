@@ -12,6 +12,9 @@ import io.jsonwebtoken.security.Keys;
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.AccessDeniedException;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
@@ -25,7 +28,6 @@ public class JwtTokenProvider {
     private final JwtProperties jwtProperties;
     private final UserDetailsService userDetailsService;
     private final UserService userService;
-    private final UserMapper userMapper;
     private Key key;
 
     @PostConstruct
@@ -33,9 +35,9 @@ public class JwtTokenProvider {
         this.key = Keys.hmacShaKeyFor(jwtProperties.getSecret().getBytes());
     }
 
-    public String createAccessToken(Long userId, String name, Role role){
+    public String createAccessToken(Long userId, String username, Role role){
         Claims claims = Jwts.claims()
-                .setSubject(name)
+                .setSubject(username)
                 .build();
         claims.put("id", userId);
         claims.put("role", role.toString());
@@ -53,9 +55,9 @@ public class JwtTokenProvider {
         ADMIN, CUSTOMER
     }
 
-    public String createRefreshToken(Long userId, String name){
+    public String createRefreshToken(Long userId, String username){
         Claims claims = Jwts.claims()
-                .setSubject(name)
+                .setSubject(username)
                 .build();
         claims.put("id", userId);
         Date now = new Date();
@@ -98,5 +100,20 @@ public class JwtTokenProvider {
                 .getBody()
                 .get("id")
                 .toString();
+    }
+
+    private String getUsernameFromToken(String token){
+        return Jwts.parser()
+                .setSigningKey(key)
+                .build()
+                .parseClaimsJws(token)
+                .getBody()
+                .getSubject();
+    }
+
+    public Authentication getAuthentication(String token){
+        String username = getUsernameFromToken(token);
+        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+        return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
 }
