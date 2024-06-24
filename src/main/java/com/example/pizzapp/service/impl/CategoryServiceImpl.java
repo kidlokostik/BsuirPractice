@@ -10,7 +10,6 @@ import com.example.pizzapp.model.Category;
 import com.example.pizzapp.repository.CategoryRepository;
 import com.example.pizzapp.service.CategoryService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

@@ -10,7 +10,6 @@ import com.example.pizzapp.model.User;
 import com.example.pizzapp.repository.UserRepository;
 import com.example.pizzapp.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
