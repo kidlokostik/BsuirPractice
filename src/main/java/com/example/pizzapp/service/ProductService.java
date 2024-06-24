@@ -1,9 +1,7 @@
 package com.example.pizzapp.service;
 
 import com.example.pizzapp.dto.request.create.ProductCreateRequest;
-import com.example.pizzapp.dto.request.create.UserCreateRequest;
 import com.example.pizzapp.dto.request.update.ProductUpdateRequest;
-import com.example.pizzapp.dto.request.update.UserUpdateRequest;
 import com.example.pizzapp.dto.response.ProductResponse;
 
 import java.util.List;
