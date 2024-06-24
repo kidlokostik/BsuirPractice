@@ -13,10 +13,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
-import static com.example.pizzapp.util.ErrorMessages.DUPLICATE_FOUND;
-import static com.example.pizzapp.util.ErrorMessages.NOT_FOUND_MESSAGE;
 import java.util.List;
 
+import static com.example.pizzapp.util.ErrorMessages.*;
 
 
 @Service
@@ -29,7 +28,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public CategoryResponse createCategory(CategoryCreateRequest createCategoryRequest) {
         if (uniqueCategoryCheck(createCategoryRequest)) {
-            throw new DuplicateKeyException(String.format(DUPLICATE_FOUND, "category", createCategoryRequest.name()));
+            throw new DuplicateKeyException(String.format(DUPLICATE_FOUND_MESSAGE, "category", createCategoryRequest.name()));
         }
         Category category = categoryMapper.createRequestToEntity(createCategoryRequest);
         return categoryMapper.toResponse(categoryRepository.save(category));
@@ -39,7 +38,7 @@ public class CategoryServiceImpl implements CategoryService {
     public CategoryResponse updateCategory(Long id, CategoryUpdateRequest updateCategoryRequest) {
         Category category = findCategoryByIdOrThrow(id);
         if (uniqueCategoryCheck(updateCategoryRequest)) {
-            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND, "category", updateCategoryRequest.name()));
+            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "category", updateCategoryRequest.name()));
         }
         categoryMapper.updateCategoryFromUpdateRequest(updateCategoryRequest,category);
         return categoryMapper.toResponse(categoryRepository.save(category));

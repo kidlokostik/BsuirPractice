@@ -13,10 +13,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
-import static com.example.pizzapp.util.ErrorMessages.DUPLICATE_FOUND;
-import static com.example.pizzapp.util.ErrorMessages.NOT_FOUND_MESSAGE;
-
 import java.util.List;
+
+import static com.example.pizzapp.util.ErrorMessages.*;
 
 @Service
 @RequiredArgsConstructor
@@ -28,7 +27,7 @@ public class ProductServiceImpl implements ProductService {
     @Override
     public ProductResponse createProduct(ProductCreateRequest createProductRequest) {
         if (uniqueProductCheck(createProductRequest)) {
-            throw new DuplicateKeyException(String.format(DUPLICATE_FOUND, "product", createProductRequest.name()));
+            throw new DuplicateKeyException(String.format(DUPLICATE_FOUND_MESSAGE, "product", createProductRequest.name()));
         }
         Product product = productMapper.createRequestToEntity(createProductRequest);
         return productMapper.toResponse(productRepository.save(product));
@@ -42,7 +41,7 @@ public class ProductServiceImpl implements ProductService {
             return productMapper.toResponse(productRepository.save(product));
         }
         if (uniqueProductCheck(updateProductRequest)) {
-            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND, "product", updateProductRequest.name()));
+            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "product", updateProductRequest.name()));
         }
         productMapper.updateProductFromUpdateRequest(updateProductRequest,product);
         return productMapper.toResponse(productRepository.save(product));

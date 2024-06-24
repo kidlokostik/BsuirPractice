@@ -27,7 +27,7 @@ public class CategoryController {
             @PathVariable Long id,
             @RequestBody @Valid CategoryUpdateRequest categoryUpdateRequest
     ) {
-        return categoryService.updateCategory(id,categoryUpdateRequest);
+        return categoryService.updateCategory(id, categoryUpdateRequest);
     }
 
     @GetMapping("/{id}")

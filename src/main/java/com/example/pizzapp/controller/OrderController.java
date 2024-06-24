@@ -28,7 +28,7 @@ public class OrderController {
             @PathVariable Long id,
             @RequestBody @Valid OrderUpdateRequest orderUpdateRequest
     ) {
-        return orderService.updateOrder(id,orderUpdateRequest);
+        return orderService.updateOrder(id, orderUpdateRequest);
     }
 
     @GetMapping("/{id}")
