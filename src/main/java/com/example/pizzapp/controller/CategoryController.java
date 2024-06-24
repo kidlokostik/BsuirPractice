@@ -26,7 +26,7 @@ public class CategoryController {
     public CategoryResponse updateCategory(
             @PathVariable Long id,
             @RequestBody @Valid CategoryUpdateRequest categoryUpdateRequest
-            ) {
+    ) {
         return categoryService.updateCategory(id,categoryUpdateRequest);
     }
 
