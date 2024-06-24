@@ -62,13 +62,11 @@ public class CategoryServiceImpl implements CategoryService {
                .toList();
     }
 
-    @Override
-    public boolean uniqueCategoryCheck(CategoryCreateRequest createCategoryRequest) {
+    private boolean uniqueCategoryCheck(CategoryCreateRequest createCategoryRequest) {
         return categoryRepository.existsByName(createCategoryRequest.name());
     }
 
-    @Override
-    public boolean uniqueCategoryCheck(CategoryUpdateRequest updateCategoryRequest) {
+    private boolean uniqueCategoryCheck(CategoryUpdateRequest updateCategoryRequest) {
         return categoryRepository.existsByName(updateCategoryRequest.name());
     }
 
