@@ -1,8 +1,6 @@
 package com.example.pizzapp.service.impl;
 
-import com.example.pizzapp.dto.request.create.CategoryCreateRequest;
 import com.example.pizzapp.dto.request.create.ProductCreateRequest;
-import com.example.pizzapp.dto.request.update.CategoryUpdateRequest;
 import com.example.pizzapp.dto.request.update.ProductUpdateRequest;
 import com.example.pizzapp.dto.response.ProductResponse;
 import com.example.pizzapp.exception.DuplicateFoundException;
@@ -12,7 +10,6 @@ import com.example.pizzapp.model.Product;
 import com.example.pizzapp.repository.ProductRepository;
 import com.example.pizzapp.service.ProductService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.dao.DuplicateKeyException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
