@@ -15,4 +15,14 @@ public final class ErrorMessages {
     public static final String HTTP_MESSAGE_NOT_READABLE_MESSAGE = "Request body is missing or could not be read";
 
     public static final String INTERNAL_SERVER_ERROR_MESSAGE = "An unexpected error occurred.";
+
+    public static final String NOT_FOUND_MESSAGE = "%s not found%s.";
+  
+    public static final String PASSWORDS_DO_NOT_MATCH = "Passwords do not match";
+  
+    public static final String ALREADY_USED_MESSAGE = "Duplicate or already used value: %s";
+
+    public static String formatNotFoundMessage(String resourceName, Long id) {
+        return String.format(NOT_FOUND_MESSAGE, resourceName, id != null ? " with id = " + id : "");
+    }
 }

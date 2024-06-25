@@ -21,4 +21,10 @@
         <tagDatabase tag="v_1.0.2"/>
     </changeSet>
 
+    <include file="v4/v4-accumulate.xml" relativeToChangelogFile="true"/>
+
+    <changeSet author="Katya Pechko" id="4">
+        <tagDatabase tag="v_1.0.3"/>
+    </changeSet>
+
 </databaseChangeLog>

@@ -5,12 +5,18 @@ import com.example.pizzapp.dto.request.update.UserUpdateRequest;
 import com.example.pizzapp.dto.response.UserResponse;
 import com.example.pizzapp.exception.DuplicateFoundException;
 import com.example.pizzapp.exception.ResourceNotFoundException;
+import com.example.pizzapp.exception.ValidationException;
 import com.example.pizzapp.mapper.UserMapper;
+import com.example.pizzapp.model.Role;
+import com.example.pizzapp.model.RoleType;
 import com.example.pizzapp.model.User;
+import com.example.pizzapp.repository.RoleRepository;
 import com.example.pizzapp.repository.UserRepository;
 import com.example.pizzapp.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -22,21 +28,25 @@ public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
     private final UserMapper userMapper;
+    private final PasswordEncoder passwordEncoder;
+    private final RoleRepository roleRepository;
 
     @Override
+    @Transactional
     public UserResponse createUser(UserCreateRequest createUserRequest) {
-        checkUniqueUserPhone(createUserRequest);
-
+        checkCreateUserData(createUserRequest);
+        Role customerRole = roleRepository.findByName(RoleType.CUSTOMER)
+                .orElseThrow(() -> new ResourceNotFoundException(String.format(NOT_FOUND_MESSAGE, "Role", null)));
         User user = userMapper.createRequestToEntity(createUserRequest);
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setRole(customerRole);
         return userMapper.toResponse(userRepository.save(user));
     }
 
     @Override
     public UserResponse updateUser(Long id, UserUpdateRequest updateUserRequest) {
         User user = findUserByIdOrThrow(id);
-
-        checkUniqueUserPhone(updateUserRequest, user.getPhone());
-
+        checkUpdateUserData(updateUserRequest, user);
         userMapper.updateUserFromUpdateRequest(updateUserRequest, user);
         return userMapper.toResponse(userRepository.save(user));
     }
@@ -59,25 +69,29 @@ public class UserServiceImpl implements UserService {
                 .toList();
     }
 
-    private boolean uniqueUserCheck(UserCreateRequest createUserRequest) {
-        return userRepository.existsByPhone(createUserRequest.phone());
-    }
-
-    private boolean uniqueUserCheck(UserUpdateRequest updateUserRequest, String existingPhone) {
-        return updateUserRequest.phone() != null &&
-                !updateUserRequest.phone().equals(existingPhone) &&
-                userRepository.existsByPhone(updateUserRequest.phone());
-    }
-
-    private void checkUniqueUserPhone(UserCreateRequest createUserRequest) {
-        if (uniqueUserCheck(createUserRequest)) {
-            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "user", createUserRequest.phone()));
+    private void checkCreateUserData(UserCreateRequest createUserRequest){
+        validatePassword(createUserRequest.password(), createUserRequest.confirmPassword());
+        if (userRepository.existsByLogin(createUserRequest.login())) {
+            throw new DuplicateFoundException(String.format(ALREADY_USED_MESSAGE, createUserRequest.login()));
+        }
+        if (userRepository.existsByEmail(createUserRequest.email())) {
+            throw new DuplicateFoundException(String.format(ALREADY_USED_MESSAGE, createUserRequest.email()));
+        }
+        if (userRepository.existsByPhone(createUserRequest.phone())) {
+            throw new DuplicateFoundException(String.format(ALREADY_USED_MESSAGE, createUserRequest.phone()));
         }
     }
 
-    private void checkUniqueUserPhone(UserUpdateRequest updateUserRequest, String existingName) {
-        if (uniqueUserCheck(updateUserRequest, existingName)) {
-            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "user", updateUserRequest.phone()));
+    private void checkUpdateUserData(UserUpdateRequest updateUserRequest, User existingUser) {
+        validatePassword(updateUserRequest.password(), updateUserRequest.confirmPassword());
+        if (!updateUserRequest.login().equals(existingUser.getLogin()) && userRepository.existsByLogin(updateUserRequest.login())) {
+            throw new DuplicateFoundException(String.format(ALREADY_USED_MESSAGE, updateUserRequest.login()));
+        }
+        if (!updateUserRequest.email().equals(existingUser.getEmail()) && userRepository.existsByEmail(updateUserRequest.email())) {
+            throw new DuplicateFoundException(String.format(ALREADY_USED_MESSAGE, updateUserRequest.email()));
+        }
+        if (!updateUserRequest.phone().equals(existingUser.getPhone()) && userRepository.existsByPhone(updateUserRequest.phone())) {
+            throw new DuplicateFoundException(String.format(ALREADY_USED_MESSAGE, updateUserRequest.phone()));
         }
     }
 
@@ -86,5 +100,11 @@ public class UserServiceImpl implements UserService {
                 .orElseThrow(
                         () -> new ResourceNotFoundException(String.format(NOT_FOUND_MESSAGE, "User", id))
                 );
+    }
+
+    private void validatePassword(String password, String confirmPassword) {
+        if (!password.equals(confirmPassword)) {
+            throw new ValidationException(PASSWORDS_DO_NOT_MATCH);
+        }
     }
 }
