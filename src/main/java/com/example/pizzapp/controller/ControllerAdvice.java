@@ -1,5 +1,6 @@
 package com.example.pizzapp.controller;
 
+import com.example.pizzapp.exception.DuplicateFoundException;
 import com.example.pizzapp.exception.ResourceNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.ErrorResponse;
@@ -27,4 +28,15 @@ public class ControllerAdvice {
                         "An unexpected error occurred")
                         .build();
     }
+
+    @ExceptionHandler(DuplicateFoundException.class)
+    @ResponseStatus(HttpStatus.NOT_ACCEPTABLE)
+    public ErrorResponse handlerDuplicateFound(DuplicateFoundException e) {
+        return ErrorResponse.builder(e,
+                        HttpStatus.NOT_ACCEPTABLE,
+                        e.getMessage())
+                .build();
+    }
+
+
 }
