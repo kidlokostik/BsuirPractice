@@ -1,22 +1,34 @@
 package com.example.pizzapp.config;
 
 import com.example.pizzapp.security.JwtTokenFilter;
-import com.example.pizzapp.security.JwtTokenProvider;
+import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
-import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.LogoutHandler;
+
+import static com.example.pizzapp.model.RoleType.ADMIN;
+import static org.springframework.http.HttpMethod.*;
+import static org.springframework.security.config.http.SessionCreationPolicy.STATELESS;
 
 @Configuration
+@RequiredArgsConstructor
 public class SecurityConfig {
+
+    private final LogoutHandler logoutHandler;
+
+    private final AuthenticationProvider authenticationProvider;
+
+    private final JwtTokenFilter jwtTokenFilter;
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -32,45 +44,22 @@ public class SecurityConfig {
         httpSecurity
                 .csrf(AbstractHttpConfigurer::disable)
                 .cors(AbstractHttpConfigurer::disable)
-                .httpBasic(AbstractHttpConfigurer::disable)
-                .sessionManagement(sessionManagement ->
-                        sessionManagement
-                                .sessionCreationPolicy(
-                                        SessionCreationPolicy.STATELESS
-                                )
+                .authorizeHttpRequests(request -> request
+                        .requestMatchers("api/v1/auth/**").permitAll()
+                        .requestMatchers(GET,"/api/v1/users").hasAnyRole(ADMIN.name())
+                        .requestMatchers(POST).hasAnyRole(ADMIN.name())
+                        .requestMatchers(PUT).hasAnyRole(ADMIN.name())
+                        .requestMatchers(DELETE).hasAnyRole(ADMIN.name())
+                        .anyRequest().authenticated()
                 )
-                .exceptionHandling(configurer ->
-                        configurer.authenticationEntryPoint(
-                                        (request, response, exception) -> {
-                                            response.setStatus(
-                                                    HttpStatus.UNAUTHORIZED
-                                                            .value()
-                                            );
-                                            response.getWriter()
-                                                    .write("Unauthorized.");
-                                        })
-                                .accessDeniedHandler(
-                                        (request, response, exception) -> {
-                                            response.setStatus(
-                                                    HttpStatus.FORBIDDEN
-                                                            .value()
-                                            );
-                                            response.getWriter()
-                                                    .write("Unauthorized.");
-                                        }))
-                .authorizeHttpRequests(configurer ->
-                        configurer.requestMatchers("/api/v1/auth/**")
-                                .permitAll()
-                                .requestMatchers("/swagger-ui/**")
-                                .permitAll()
-                                .requestMatchers("/v3/api-docs/**")
-                                .permitAll()
-                                .requestMatchers("/graphiql")
-                                .permitAll()
-                                .anyRequest().authenticated())
-                .anonymous(AbstractHttpConfigurer::disable)
-                .addFilterBefore(new JwtTokenFilter(tokenProvider),
-                        UsernamePasswordAuthenticationFilter.class);
+                .sessionManagement(session -> session.sessionCreationPolicy(STATELESS))
+                .authenticationProvider(authenticationProvider)
+                .addFilterBefore(jwtTokenFilter, UsernamePasswordAuthenticationFilter.class)
+                .logout(logout ->
+                        logout.logoutUrl("/api/v1/auth/logout")
+                                .addLogoutHandler(logoutHandler)
+                                .logoutSuccessHandler((request, response, authentication) -> SecurityContextHolder.clearContext())
+                );
 
         return httpSecurity.build();
     }
