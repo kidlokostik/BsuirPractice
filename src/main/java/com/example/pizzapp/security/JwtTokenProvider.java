@@ -1,6 +1,5 @@
 package com.example.pizzapp.security;
 
-import com.example.pizzapp.dto.Role;
 import com.example.pizzapp.dto.response.UserResponse;
 import com.example.pizzapp.exception.AccessDeniedException;
 import com.example.pizzapp.security.dto.JwtResponse;
@@ -37,12 +36,12 @@ public class JwtTokenProvider {
 
     }
 
-    public String createAccessToken(Long userId, String username, Role role){
+    public String createAccessToken(Long userId, String username, String role){
         Claims claims = Jwts.claims()
                 .subject(username)
                 .build();
         claims.put("id", userId);
-        claims.put("role", role.toString());
+        claims.put("role", role);
         Date now = new Date();
         Date validity = new Date(now.getTime() + jwtProperties.getAccess());
         return Jwts.builder()
