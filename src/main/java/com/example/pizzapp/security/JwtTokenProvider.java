@@ -36,9 +36,9 @@ public class JwtTokenProvider {
 
     }
 
-    public String createAccessToken(Long userId, String username, String role){
+    public String createAccessToken(Long userId, String login, String role){
         Claims claims = Jwts.claims()
-                .subject(username)
+                .subject(login)
                 .build();
         claims.put("id", userId);
         claims.put("role", role);
@@ -52,9 +52,9 @@ public class JwtTokenProvider {
                 .compact();
     }
 
-    public String createRefreshToken(Long userId, String username){
+    public String createRefreshToken(Long userId, String login){
         Claims claims = Jwts.claims()
-                .subject(username)
+                .subject(login)
                 .build();
         claims.put("id", userId);
         Date now = new Date();
@@ -75,9 +75,9 @@ public class JwtTokenProvider {
         Long userId = Long.valueOf(getIdFromToken(refreshToken));
         UserResponse userResponse = userService.getUserById(userId);
         jwtResponse.setId(userId);
-        jwtResponse.setUsername(userResponse.name());
-        jwtResponse.setAccessToken(createAccessToken(userId, userResponse.name(), userResponse.role()));
-        jwtResponse.setRefreshToken(createRefreshToken(userId, userResponse.name()));
+        jwtResponse.setLogin(userResponse.login());
+        jwtResponse.setAccessToken(createAccessToken(userId, userResponse.login(), userResponse.role()));
+        jwtResponse.setRefreshToken(createRefreshToken(userId, userResponse.login()));
         return jwtResponse;
     }
 
@@ -99,7 +99,7 @@ public class JwtTokenProvider {
                 .toString();
     }
 
-    private String getUsernameFromToken(String token){
+    private String getLoginFromToken(String token){
         return Jwts.parser()
                 .verifyWith(key)
                 .build()
@@ -109,8 +109,8 @@ public class JwtTokenProvider {
     }
 
     public Authentication getAuthentication(String token){
-        String username = getUsernameFromToken(token);
-        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+        String login = getLoginFromToken(token);
+        UserDetails userDetails = userDetailsService.loadUserByUsername(login);
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
 }
