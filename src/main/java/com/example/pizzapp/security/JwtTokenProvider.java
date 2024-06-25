@@ -80,7 +80,7 @@ public class JwtTokenProvider {
         return jwtResponse;
     }
 
-    private boolean validateToken(String token){
+    public boolean validateToken(String token){
         Jws<Claims> claims = Jwts.parser()
                 .setSigningKey(key)
                 .build()
