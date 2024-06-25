@@ -32,7 +32,7 @@ public class ControllerAdvice {
     public ErrorResponse handleGenericException(Exception e) {
         return ErrorResponse.builder(e,
                         HttpStatus.INTERNAL_SERVER_ERROR,
-                        "An unexpected error occurred")
+                        INTERNAL_SERVER_ERROR_MESSAGE)
                         .build();
     }
 
@@ -70,6 +70,4 @@ public class ControllerAdvice {
                         e.getMessage())
                 .build();
     }
-
-
 }
