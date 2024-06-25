@@ -18,8 +18,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import static com.example.pizzapp.util.ErrorMessages.NOT_FOUND_MESSAGE;
-
 import java.util.List;
 
 import static com.example.pizzapp.util.ErrorMessages.*;
@@ -73,12 +71,28 @@ public class UserServiceImpl implements UserService {
 
     private void checkCreateUserData(UserCreateRequest createUserRequest){
         validatePassword(createUserRequest.password(), createUserRequest.confirmPassword());
-        validateUniqueFields(createUserRequest.login(), createUserRequest.email(), createUserRequest.phone(), null);
+        if (userRepository.existsByLogin(createUserRequest.login())) {
+            throw new DuplicateFoundException(String.format(ALREADY_USED_MESSAGE, createUserRequest.login()));
+        }
+        if (userRepository.existsByEmail(createUserRequest.email())) {
+            throw new DuplicateFoundException(String.format(ALREADY_USED_MESSAGE, createUserRequest.email()));
+        }
+        if (userRepository.existsByPhone(createUserRequest.phone())) {
+            throw new DuplicateFoundException(String.format(ALREADY_USED_MESSAGE, createUserRequest.phone()));
+        }
     }
 
     private void checkUpdateUserData(UserUpdateRequest updateUserRequest, User existingUser) {
         validatePassword(updateUserRequest.password(), updateUserRequest.confirmPassword());
-        validateUniqueFields(updateUserRequest.login(), updateUserRequest.email(), updateUserRequest.phone(), existingUser);
+        if (!updateUserRequest.login().equals(existingUser.getLogin()) && userRepository.existsByLogin(updateUserRequest.login())) {
+            throw new DuplicateFoundException(String.format(ALREADY_USED_MESSAGE, updateUserRequest.login()));
+        }
+        if (!updateUserRequest.email().equals(existingUser.getEmail()) && userRepository.existsByEmail(updateUserRequest.email())) {
+            throw new DuplicateFoundException(String.format(ALREADY_USED_MESSAGE, updateUserRequest.email()));
+        }
+        if (!updateUserRequest.phone().equals(existingUser.getPhone()) && userRepository.existsByPhone(updateUserRequest.phone())) {
+            throw new DuplicateFoundException(String.format(ALREADY_USED_MESSAGE, updateUserRequest.phone()));
+        }
     }
 
     private User findUserByIdOrThrow(Long id) {
@@ -91,18 +105,6 @@ public class UserServiceImpl implements UserService {
     private void validatePassword(String password, String confirmPassword) {
         if (!password.equals(confirmPassword)) {
             throw new ValidationException(PASSWORDS_DO_NOT_MATCH);
-        }
-    }
-
-    private void validateUniqueFields(String login, String email, String phone, User existingUser) {
-        if ((existingUser == null || !login.equals(existingUser.getLogin())) && userRepository.existsByLogin(login)) {
-            throw new DuplicateFoundException(String.format(ALREADY_USED, login));
-        }
-        if ((existingUser == null || !email.equals(existingUser.getEmail())) && userRepository.existsByEmail(email)) {
-            throw new DuplicateFoundException(String.format(ALREADY_USED, email));
-        }
-        if ((existingUser == null || !phone.equals(existingUser.getPhone())) && userRepository.existsByPhone(phone)) {
-            throw new DuplicateFoundException(String.format(ALREADY_USED, phone));
         }
     }
 }
