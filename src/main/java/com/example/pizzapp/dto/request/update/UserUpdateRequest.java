@@ -23,7 +23,7 @@ public record UserUpdateRequest(
         String confirmPassword,
 
         @NotBlank(message = "{field.required}")
-                String login,
+        String login,
 
         @NotBlank(message = "{field.required}")
         @Email(message = "{field.email}")
@@ -35,4 +35,4 @@ public record UserUpdateRequest(
         @NotNull(message = "{field.required}")
         @Past(message = "{field.past}")
         LocalDate birthDate
-        ){}
+        ) {}

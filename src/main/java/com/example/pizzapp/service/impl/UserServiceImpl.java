@@ -36,11 +36,9 @@ public class UserServiceImpl implements UserService {
     @Override
     @Transactional
     public UserResponse createUser(UserCreateRequest createUserRequest) {
-        checkUniqueUserPhone(createUserRequest);
-        validatePassword(createUserRequest.password(), createUserRequest.confirmPassword());
-        validateUniqueFields(createUserRequest.login(), createUserRequest.email());
+        checkCreateUserData(createUserRequest);
         Role customerRole = roleRepository.findByName(RoleType.CUSTOMER)
-                .orElseThrow(() -> new ResourceNotFoundException(ROLE_NOT_FOUND));
+                .orElseThrow(() -> new ResourceNotFoundException(String.format(NOT_FOUND_MESSAGE, "Role", null)));
         User user = userMapper.createRequestToEntity(createUserRequest);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(customerRole);
@@ -50,9 +48,7 @@ public class UserServiceImpl implements UserService {
     @Override
     public UserResponse updateUser(Long id, UserUpdateRequest updateUserRequest) {
         User user = findUserByIdOrThrow(id);
-
-        checkUniqueUserPhone(updateUserRequest, user.getPhone());
-
+        checkUpdateUserData(updateUserRequest, user);
         userMapper.updateUserFromUpdateRequest(updateUserRequest, user);
         return userMapper.toResponse(userRepository.save(user));
     }
@@ -75,26 +71,14 @@ public class UserServiceImpl implements UserService {
                 .toList();
     }
 
-    private boolean uniqueUserCheck(UserCreateRequest createUserRequest) {
-        return userRepository.existsByPhone(createUserRequest.phone());
+    private void checkCreateUserData(UserCreateRequest createUserRequest){
+        validatePassword(createUserRequest.password(), createUserRequest.confirmPassword());
+        validateUniqueFields(createUserRequest.login(), createUserRequest.email(), createUserRequest.phone(), null);
     }
 
-    private boolean uniqueUserCheck(UserUpdateRequest updateUserRequest, String existingPhone) {
-        return updateUserRequest.phone() != null &&
-                !updateUserRequest.phone().equals(existingPhone) &&
-                userRepository.existsByPhone(updateUserRequest.phone());
-    }
-
-    private void checkUniqueUserPhone(UserCreateRequest createUserRequest) {
-        if (uniqueUserCheck(createUserRequest)) {
-            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "user", createUserRequest.phone()));
-        }
-    }
-
-    private void checkUniqueUserPhone(UserUpdateRequest updateUserRequest, String existingName) {
-        if (uniqueUserCheck(updateUserRequest, existingName)) {
-            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "user", updateUserRequest.phone()));
-        }
+    private void checkUpdateUserData(UserUpdateRequest updateUserRequest, User existingUser) {
+        validatePassword(updateUserRequest.password(), updateUserRequest.confirmPassword());
+        validateUniqueFields(updateUserRequest.login(), updateUserRequest.email(), updateUserRequest.phone(), existingUser);
     }
 
     private User findUserByIdOrThrow(Long id) {
@@ -106,16 +90,19 @@ public class UserServiceImpl implements UserService {
 
     private void validatePassword(String password, String confirmPassword) {
         if (!password.equals(confirmPassword)) {
-            throw new ValidationException("Passwords do not match");
+            throw new ValidationException(PASSWORDS_DO_NOT_MATCH);
         }
     }
 
-    private void validateUniqueFields(String login, String email) {
-        if (userRepository.existsByLogin(login)) {
-            throw new IllegalArgumentException(String.format(ALREADY_USED, login));
+    private void validateUniqueFields(String login, String email, String phone, User existingUser) {
+        if ((existingUser == null || !login.equals(existingUser.getLogin())) && userRepository.existsByLogin(login)) {
+            throw new DuplicateFoundException(String.format(ALREADY_USED, login));
         }
-        if (userRepository.existsByEmail(email)) {
-            throw new IllegalArgumentException(String.format(ALREADY_USED, email));
+        if ((existingUser == null || !email.equals(existingUser.getEmail())) && userRepository.existsByEmail(email)) {
+            throw new DuplicateFoundException(String.format(ALREADY_USED, email));
+        }
+        if ((existingUser == null || !phone.equals(existingUser.getPhone())) && userRepository.existsByPhone(phone)) {
+            throw new DuplicateFoundException(String.format(ALREADY_USED, phone));
         }
     }
 }
