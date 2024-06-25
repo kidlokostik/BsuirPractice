@@ -1,52 +1,37 @@
 package com.example.pizzapp.controller;
 
-import com.example.pizzapp.security.JwtTokenProvider;
+import com.example.pizzapp.dto.request.create.UserCreateRequest;
+import com.example.pizzapp.security.dto.JwtRequest;
 import com.example.pizzapp.security.dto.JwtResponse;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
+import com.example.pizzapp.service.AuthenticationService;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.HashMap;
-import java.util.Map;
-
 @RestController
-@RequestMapping("/auth")
+@RequestMapping("/api/v1/auth")
+@RequiredArgsConstructor
 public class AuthController {
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final AuthenticationService authenticationService;
 
-    @Autowired
-    private UserDetailsService userDetailsService;
+    @PostMapping("/registration")
+    public JwtResponse registration(@RequestBody UserCreateRequest userCreateRequest) {
+        return authenticationService.registration(userCreateRequest);
+    }
 
-    @Autowired
-    private JwtTokenProvider jwtTokenProvider;
-
-    @PostMapping("/login")
-    public Map<String, String> login(@RequestParam String login, @RequestParam String password) {
-        authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(login, password));
-
-        UserDetails userDetails = userDetailsService.loadUserByUsername(login);
-
-        String accessToken = jwtTokenProvider.createAccessToken(userDetails.getId(), userDetails.getUsername(), userDetails.getAuthorities().toString());
-        String refreshToken = jwtTokenProvider.createRefreshToken(userDetails.getId(), userDetails.getUsername());
-
-        Map<String, String> tokens = new HashMap<>();
-        tokens.put("accessToken", accessToken);
-        tokens.put("refreshToken", refreshToken);
-        return tokens;
+    @PostMapping("/authentication")
+    public JwtResponse authenticate(@RequestBody JwtRequest jwtRequest) {
+        return authenticationService.authentication(jwtRequest);
     }
 
     @PostMapping("/refresh")
-    public Map<String, String> refresh(@RequestParam String refreshToken) {
-        JwtResponse jwtResponse = jwtTokenProvider.refreshUserTokens(refreshToken);
-
-        Map<String, String> tokens = new HashMap<>();
-        tokens.put("accessToken", jwtResponse.getAccessToken());
-        tokens.put("refreshToken", jwtResponse.getRefreshToken());
-        return tokens;
+    public void refreshToken(
+            HttpServletRequest httpServletRequest,
+            HttpServletResponse httpServletResponse
+    ){
+        authenticationService.refreshToken(httpServletRequest, httpServletResponse);
     }
 }
