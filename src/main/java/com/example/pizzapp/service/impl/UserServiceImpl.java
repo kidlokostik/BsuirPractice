@@ -102,6 +102,20 @@ public class UserServiceImpl implements UserService {
                 );
     }
 
+    private User findUserByLoginOrThrow(String login) {
+        return userRepository.findByLogin(login)
+                .orElseThrow(
+                        () -> new ResourceNotFoundException(String.format(NOT_FOUND_MESSAGE, "User", login))
+                );
+    }
+
+    private User findUserByEmailOrThrow(String email) {
+        return userRepository.findByEmail(email)
+                .orElseThrow(
+                        () -> new ResourceNotFoundException(String.format(NOT_FOUND_MESSAGE, "User", email))
+                );
+    }
+
     private void validatePassword(String password, String confirmPassword) {
         if (!password.equals(confirmPassword)) {
             throw new ValidationException(PASSWORDS_DO_NOT_MATCH);
