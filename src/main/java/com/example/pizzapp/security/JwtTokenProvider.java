@@ -18,7 +18,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
-import java.security.Key;
+import javax.crypto.SecretKey;
 import java.util.Date;
 
 @Service
@@ -28,40 +28,42 @@ public class JwtTokenProvider {
     private final JwtProperties jwtProperties;
     private final UserDetailsService userDetailsService;
     private final UserService userService;
-    private Key key;
+    private SecretKey key;
 
     @PostConstruct
     public void init(){
+
         this.key = Keys.hmacShaKeyFor(jwtProperties.getSecret().getBytes());
+
     }
 
     public String createAccessToken(Long userId, String username, Role role){
         Claims claims = Jwts.claims()
-                .setSubject(username)
+                .subject(username)
                 .build();
         claims.put("id", userId);
         claims.put("role", role.toString());
         Date now = new Date();
         Date validity = new Date(now.getTime() + jwtProperties.getAccess());
         return Jwts.builder()
-                .setClaims(claims)
-                .setIssuedAt(now)
-                .setExpiration(validity)
+                .claims(claims)
+                .issuedAt(now)
+                .expiration(validity)
                 .signWith(key)
                 .compact();
     }
 
     public String createRefreshToken(Long userId, String username){
         Claims claims = Jwts.claims()
-                .setSubject(username)
+                .subject(username)
                 .build();
         claims.put("id", userId);
         Date now = new Date();
         Date validity = new Date(now.getTime() + jwtProperties.getRefresh());
         return Jwts.builder()
-                .setClaims(claims)
-                .setIssuedAt(now)
-                .setExpiration(validity)
+                .claims(claims)
+                .issuedAt(now)
+                .expiration(validity)
                 .signWith(key)
                 .compact();
     }
@@ -82,28 +84,28 @@ public class JwtTokenProvider {
 
     public boolean validateToken(String token){
         Jws<Claims> claims = Jwts.parser()
-                .setSigningKey(key)
+                .verifyWith(key)
                 .build()
-                .parseClaimsJws(token);
-        return !claims.getBody().getExpiration().before(new Date());
+                .parseSignedClaims(token);
+        return !claims.getPayload().getExpiration().before(new Date());
     }
 
     private String getIdFromToken(String token){
         return Jwts.parser()
-                .setSigningKey(key)
+                .verifyWith(key)
                 .build()
-                .parseClaimsJws(token)
-                .getBody()
+                .parseSignedClaims(token)
+                .getPayload()
                 .get("id")
                 .toString();
     }
 
     private String getUsernameFromToken(String token){
         return Jwts.parser()
-                .setSigningKey(key)
+                .verifyWith(key)
                 .build()
-                .parseClaimsJws(token)
-                .getBody()
+                .parseSignedClaims(token)
+                .getPayload()
                 .getSubject();
     }
 
