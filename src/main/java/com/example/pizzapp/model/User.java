@@ -43,7 +43,7 @@ public class User {
 
     @Column(nullable = false)
     @Temporal(TemporalType.DATE)
-    private LocalDate birthDate;
+    private LocalDate dateOfBirth;
 
     @ManyToOne
     @JoinColumn(name = "role_id", nullable = false)
@@ -51,5 +51,4 @@ public class User {
 
     @OneToMany(mappedBy = "user")
     private List<Order> orders = new ArrayList<>();
-
 }

@@ -34,5 +34,5 @@ public record UserCreateRequest(
 
         @NotNull(message = "{field.required}")
         @Past(message = "{field.past}")
-        LocalDate birthDate
+        LocalDate dateOfBirth
 ){}

@@ -11,12 +11,13 @@ import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface UserMapper {
+
     @Mapping(target = "role", ignore = true)
     User createRequestToEntity(UserCreateRequest userCreateRequest);
 
     void updateUserFromUpdateRequest(UserUpdateRequest userUpdateRequest, @MappingTarget User user);
 
-    @Mapping(source = "role.name", target = "role")
+    @Mapping(source = "role.roleName", target = "role")
     UserResponse toResponse(User user);
 }
 

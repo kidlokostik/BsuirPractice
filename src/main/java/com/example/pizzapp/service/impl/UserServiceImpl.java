@@ -35,7 +35,7 @@ public class UserServiceImpl implements UserService {
     @Transactional
     public UserResponse createUser(UserCreateRequest createUserRequest) {
         checkCreateUserData(createUserRequest);
-        Role customerRole = roleRepository.findByName(RoleType.CUSTOMER)
+        Role customerRole = roleRepository.findByRoleName(RoleType.ADMIN)
                 .orElseThrow(() -> new ResourceNotFoundException(String.format(NOT_FOUND_MESSAGE, "Role", null)));
         User user = userMapper.createRequestToEntity(createUserRequest);
         user.setPassword(passwordEncoder.encode(user.getPassword()));

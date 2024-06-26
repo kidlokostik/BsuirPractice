@@ -29,10 +29,10 @@ public record UserUpdateRequest(
         @Email(message = "{field.email}")
         String email,
 
-        @NotBlank(message = "{field.required}")
+        @NotNull(message = "{field.required}")
         Gender gender,
 
         @NotNull(message = "{field.required}")
         @Past(message = "{field.past}")
-        LocalDate birthDate
+        LocalDate dateOfBirth
         ) {}
