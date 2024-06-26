@@ -1,14 +1,11 @@
 package com.example.pizzapp.service.impl;
 
-import com.example.pizzapp.dto.request.create.UserCreateRequest;
 import com.example.pizzapp.model.User;
 import com.example.pizzapp.security.JwtTokenProvider;
 import com.example.pizzapp.security.dto.JwtRequest;
 import com.example.pizzapp.security.dto.JwtResponse;
 import com.example.pizzapp.service.AuthenticationService;
 import com.example.pizzapp.service.UserService;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -21,7 +18,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final AuthenticationManager authenticationManager;
     private final UserService userService;
     private final JwtTokenProvider jwtTokenProvider;
-
 
     public JwtResponse loginByEmail(
             final JwtRequest loginRequest
@@ -67,20 +63,5 @@ public class AuthenticationServiceImpl implements AuthenticationService {
             final String refreshToken
     ) {
         return jwtTokenProvider.refreshUserTokens(refreshToken);
-    }
-
-    @Override
-    public JwtResponse registration(UserCreateRequest userCreateRequest) {
-        return null;
-    }
-
-    @Override
-    public JwtResponse authentication(JwtRequest jwtRequest) {
-        return null;
-    }
-
-    @Override
-    public void refreshToken(HttpServletRequest request, HttpServletResponse response) {
-
     }
 }

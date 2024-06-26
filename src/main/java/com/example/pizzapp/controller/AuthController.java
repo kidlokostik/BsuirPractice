@@ -1,13 +1,11 @@
 package com.example.pizzapp.controller;
 
-import com.example.pizzapp.dto.request.create.UserCreateRequest;
 import com.example.pizzapp.security.dto.JwtRequest;
 import com.example.pizzapp.security.dto.JwtResponse;
 import com.example.pizzapp.service.AuthenticationService;
-import jakarta.servlet.http.HttpServletRequest;
-import jakarta.servlet.http.HttpServletResponse;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -17,21 +15,21 @@ public class AuthController {
 
     private final AuthenticationService authenticationService;
 
-    @PostMapping("/registration")
-    public JwtResponse registration(@RequestBody UserCreateRequest userCreateRequest) {
-        return authenticationService.registration(userCreateRequest);
+    @PostMapping("/login/email")
+    public ResponseEntity<JwtResponse> loginByEmail(@RequestBody @Valid JwtRequest loginRequest) {
+        JwtResponse jwtResponse = authenticationService.loginByEmail(loginRequest);
+        return ResponseEntity.ok(jwtResponse);
     }
 
-    @PostMapping("/authentication")
-    public JwtResponse authenticate(@RequestBody JwtRequest jwtRequest) {
-        return authenticationService.authentication(jwtRequest);
+    @PostMapping("/login/name")
+    public ResponseEntity<JwtResponse> loginByName(@RequestBody @Valid JwtRequest loginRequest) {
+        JwtResponse jwtResponse = authenticationService.loginByName(loginRequest);
+        return ResponseEntity.ok(jwtResponse);
     }
 
     @PostMapping("/refresh")
-    public void refreshToken(
-            HttpServletRequest httpServletRequest,
-            HttpServletResponse httpServletResponse
-    ){
-        authenticationService.refreshToken(httpServletRequest, httpServletResponse);
+    public ResponseEntity<JwtResponse> refreshToken(@RequestParam @Valid String refreshToken) {
+        JwtResponse jwtResponse = authenticationService.refreshToken(refreshToken);
+        return ResponseEntity.ok(jwtResponse);
     }
 }

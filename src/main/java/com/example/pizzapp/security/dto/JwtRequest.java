@@ -10,5 +10,8 @@ public class JwtRequest {
     String email;
 
     @NotBlank(message = "{field.required}")
+    String login;
+
+    @NotBlank(message = "{field.required}")
     String password;
 }
