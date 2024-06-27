@@ -7,55 +7,32 @@ import com.example.pizzapp.security.dto.JwtResponse;
 import com.example.pizzapp.service.AuthenticationService;
 import com.example.pizzapp.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
 @Service
 @RequiredArgsConstructor
 public class AuthenticationServiceImpl implements AuthenticationService {
 
-    private final AuthenticationManager authenticationManager;
     private final UserService userService;
     private final JwtTokenProvider jwtTokenProvider;
 
-    public JwtResponse loginByEmail(
-            final JwtRequest loginRequest
-    ) {
+    @Override
+    public JwtResponse authenticate(final JwtRequest jwtRequest) {
         JwtResponse jwtResponse = new JwtResponse();
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        loginRequest.getEmail(), loginRequest.getPassword())
-        );
-        User user = userService.getByEmail(loginRequest.getEmail());
+
+        User user = userService.findUserByEmailOrThrow(jwtRequest.getEmail());
+
+        String accessToken = jwtTokenProvider.createAccessToken(user.getId(), user.getLogin(), user.getPassword());
+        String refreshToken = jwtTokenProvider.createRefreshToken(user.getId(), user.getLogin());
+
+        Authentication authentication = jwtTokenProvider.getAuthentication(accessToken);
+
         jwtResponse.setId(user.getId());
         jwtResponse.setLogin(user.getLogin());
-        jwtResponse.setAccessToken(jwtTokenProvider.createAccessToken(
-                user.getId(), user.getLogin(), user.getPassword())
-        );
-        jwtResponse.setRefreshToken(jwtTokenProvider.createRefreshToken(
-                user.getId(), user.getLogin())
-        );
-        return jwtResponse;
-    }
+        jwtResponse.setAccessToken(accessToken);
+        jwtResponse.setRefreshToken(refreshToken);
 
-    public JwtResponse loginByName(
-            final JwtRequest loginRequest
-    ) {
-        JwtResponse jwtResponse = new JwtResponse();
-        authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(
-                        loginRequest.getEmail(), loginRequest.getPassword())
-        );
-        User user = userService.getByUsername(loginRequest.getEmail());
-        jwtResponse.setId(user.getId());
-        jwtResponse.setLogin(user.getName());
-        jwtResponse.setAccessToken(jwtTokenProvider.createAccessToken(
-                user.getId(), user.getName(), user.getPassword())
-        );
-        jwtResponse.setRefreshToken(jwtTokenProvider.createRefreshToken(
-                user.getId(), user.getName())
-        );
         return jwtResponse;
     }
 

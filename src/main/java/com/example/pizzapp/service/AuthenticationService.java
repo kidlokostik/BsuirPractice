@@ -5,9 +5,7 @@ import com.example.pizzapp.security.dto.JwtResponse;
 
 public interface AuthenticationService {
 
-    JwtResponse loginByEmail(JwtRequest loginRequest);
-
-    JwtResponse loginByName(JwtRequest loginRequest);
+    JwtResponse authenticate(JwtRequest jwtRequest);
 
     JwtResponse refreshToken(String refreshToken);
 }
