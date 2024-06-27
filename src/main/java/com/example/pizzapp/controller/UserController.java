@@ -45,7 +45,6 @@ public class UserController {
     }
 
     @GetMapping
-    @PreAuthorize("CustomSecurityExpression.canAccessUser(id)")
     public List<UserResponse> getAllUsers() {
         return userService.getAllUsers();
     }
