@@ -28,7 +28,7 @@
             <column name="confirm_password" type="varchar(100)">
                 <constraints nullable="false"/>
             </column>
-            <column name="role_id" type="bigint">
+            <column name="role_id" type="integer">
                 <constraints nullable="false"/>
             </column>
             <column name="login" type="varchar(50)">
