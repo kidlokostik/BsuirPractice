@@ -7,6 +7,9 @@ import lombok.Data;
 public class JwtRequest {
 
     @NotBlank(message = "{field.required}")
+    String email;
+
+    @NotBlank(message = "{field.required}")
     String login;
 
     @NotBlank(message = "{field.required}")
