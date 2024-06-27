@@ -29,7 +29,7 @@ public record UserCreateRequest(
         @Email(message = "{field.email}")
         String email,
 
-        @NotBlank(message = "{field.required}")
+        @NotNull(message = "{field.required}")
         Gender gender,
 
         @NotNull(message = "{field.required}")
