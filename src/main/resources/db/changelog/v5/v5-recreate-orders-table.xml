@@ -6,9 +6,11 @@
     <changeSet id="v5-1" author="Pavlov, Urbanait Konstantin">
         <preConditions onFail="MARK_RAN">
             <not>
-                <tableExists tableName="Orders"/>
+                <tableExists tableName="orders"/>
             </not>
         </preConditions>
+
+        <dropTable tableName="orders"/>
 
         <createTable tableName="orders">
             <column name="id" type="integer">

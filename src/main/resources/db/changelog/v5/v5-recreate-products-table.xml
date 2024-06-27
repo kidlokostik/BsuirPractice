@@ -10,6 +10,8 @@
             </not>
         </preConditions>
 
+        <dropTable tableName="products"/>
+
         <createTable tableName="products">
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true"/>
