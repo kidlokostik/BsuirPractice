@@ -5,12 +5,12 @@
 
     <changeSet id="v5-1" author="Pavlov, Urbanait">
         <preConditions onFail="MARK_RAN">
-            <tableIsEmpty tableName="orderItems"/>
+            <tableIsEmpty tableName="order_items"/>
         </preConditions>
 
-        <dropTable tableName="orderItems"/>
+        <dropTable tableName="order_items"/>
 
-        <createTable tableName="orderItems">
+        <createTable tableName="order_items">
             <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
@@ -23,7 +23,7 @@
             <column name="quantity" type="integer"/>
         </createTable>
 
-        <insert tableName="orderItems">
+        <insert tableName="order_items">
             <column name="order_id" value ="1"/>
             <column name="product_id" value ="1"/>
             <column name="quantity" value="1"/>
@@ -109,7 +109,7 @@
             <column name="quantity" value="1"/>
         </insert>
 
-        <addForeignKeyConstraint baseTableName="orderItems"
+        <addForeignKeyConstraint baseTableName="order_items"
                                  baseColumnNames="order_id"
                                  constraintName="fk_orderItems_orders"
                                  referencedTableName="orders"
@@ -117,7 +117,7 @@
                                  onDelete="CASCADE"
                                  onUpdate="CASCADE"/>
 
-        <addForeignKeyConstraint baseTableName="orderItems"
+        <addForeignKeyConstraint baseTableName="order_items"
                                  baseColumnNames="product_id"
                                  constraintName="fk_orderItems_products"
                                  referencedTableName="products"

@@ -27,4 +27,10 @@
         <tagDatabase tag="v_1.0.3"/>
     </changeSet>
 
+    <include file="v5/v5-accumulate.xml" relativeToChangelogFile="true"/>
+
+    <changeSet author="Pavlov Urbanait" id="5">
+        <tagDatabase tag="v_1.0.4"/>
+    </changeSet>
+
 </databaseChangeLog>

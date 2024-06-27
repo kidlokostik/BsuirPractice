@@ -313,9 +313,9 @@
     <changeSet id="v5-2" author="Urbanait, Pavlov">
         <addForeignKeyConstraint baseTableName="products"
                                  baseColumnNames="category_id"
-                                 constraintName="fk_products_categories"
-                                 referencedTableName="categories"
-                                 referencedColumnNames="category_id"
+                                 constraintName="fk_products_category"
+                                 referencedTableName="category"
+                                 referencedColumnNames="id"
                                  onDelete="CASCADE"
                                  onUpdate="CASCADE"/>
     </changeSet>

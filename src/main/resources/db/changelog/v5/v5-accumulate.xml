@@ -5,9 +5,9 @@
 
     <include file="v5-recreate-roles-table.xml" relativeToChangelogFile="true"/>
     <include file="v5-recreate-users-table.xml" relativeToChangelogFile="true"/>
-    <include file="v5-recreate-users-table.xml" relativeToChangelogFile="true"/>
-    <include file="v5-recreate-users-table.xml" relativeToChangelogFile="true"/>
-    <include file="v5-recreate-users-table.xml" relativeToChangelogFile="true"/>
-    <include file="v5-recreate-users-table.xml" relativeToChangelogFile="true"/>
+    <include file="v5-recreate-products-table.xml" relativeToChangelogFile="true"/>
+    <include file="v5-recreate-orders-table.xml" relativeToChangelogFile="true"/>
+    <include file="v5-recreate-orderItems-table.xml" relativeToChangelogFile="true"/>
+    <include file="v5-recreate-categories-table.xml" relativeToChangelogFile="true"/>
 
 </databaseChangeLog>
