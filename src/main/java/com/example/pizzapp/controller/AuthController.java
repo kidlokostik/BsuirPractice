@@ -13,7 +13,7 @@ public class AuthController {
 
     private final AuthenticationService authenticationService;
 
-    @PostMapping("/auth")
+    @PostMapping
     public ResponseEntity<JwtResponse> authentication(@RequestBody @Valid JwtRequest jwtRequest) {
         JwtResponse jwtResponse = authenticationService.authenticate(jwtRequest);
         return ResponseEntity.ok(jwtResponse);
