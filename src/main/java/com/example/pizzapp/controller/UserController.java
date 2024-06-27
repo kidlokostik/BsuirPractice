@@ -6,6 +6,7 @@ import com.example.pizzapp.dto.response.UserResponse;
 import com.example.pizzapp.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -23,6 +24,7 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("CustomSecurityExpression.canAccessUser(id)")
     public UserResponse updateUser(
             @PathVariable Long id,
             @RequestBody @Valid UserUpdateRequest userUpdateRequest
@@ -31,16 +33,19 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("CustomSecurityExpression.canAccessUser(id)")
     public UserResponse getById(@PathVariable Long id) {
         return userService.getUserById(id);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("CustomSecurityExpression.canAccessUser(id)")
     public void deleteUser(@PathVariable Long id) {
        userService.deleteUser(id);
     }
 
     @GetMapping
+    @PreAuthorize("CustomSecurityExpression.canAccessUser(id)")
     public List<UserResponse> getAllUsers() {
         return userService.getAllUsers();
     }
