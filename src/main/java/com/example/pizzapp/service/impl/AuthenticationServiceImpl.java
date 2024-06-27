@@ -7,6 +7,7 @@ import com.example.pizzapp.security.dto.JwtResponse;
 import com.example.pizzapp.service.AuthenticationService;
 import com.example.pizzapp.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     private final UserService userService;
     private final JwtTokenProvider jwtTokenProvider;
+    private final AuthenticationManager authenticationManager;
 
     @Override
     public JwtResponse authenticate(final JwtRequest jwtRequest) {
@@ -27,6 +29,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         String refreshToken = jwtTokenProvider.createRefreshToken(user.getId(), user.getLogin());
 
         Authentication authentication = jwtTokenProvider.getAuthentication(accessToken);
+        authenticationManager.authenticate(authentication);
 
         jwtResponse.setId(user.getId());
         jwtResponse.setLogin(user.getLogin());
