@@ -116,6 +116,16 @@ public class UserServiceImpl implements UserService {
                 );
     }
 
+    @Override
+    public User getByEmail(String email) {
+        return null;
+    }
+
+    @Override
+    public User getByUsername(String username) {
+        return null;
+    }
+
     private void validatePassword(String password, String confirmPassword) {
         if (!password.equals(confirmPassword)) {
             throw new ValidationException(PASSWORDS_DO_NOT_MATCH);
