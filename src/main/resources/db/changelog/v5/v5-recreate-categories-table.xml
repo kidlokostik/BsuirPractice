@@ -1,0 +1,52 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="v5-1" author="Pavlov, Urbanait">
+        <preConditions onFail="MARK_RAN">
+            <tableIsEmpty tableName="category"/>
+        </preConditions>
+        <dropTable tableName="category"/>
+
+        <createTable tableName="category">
+            <column name="id" type="integer" autoIncrement="true">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <insert tableName="category">
+            <column name="name" value ="Пицца"/>
+        </insert>
+        <insert tableName="category">
+            <column name="name" value ="Закуски"/>
+        </insert>
+        <insert tableName="category">
+            <column name="name" value ="Напитки"/>
+        </insert>
+        <insert tableName="category">
+            <column name="name" value ="Коктейли"/>
+        </insert>
+        <insert tableName="category">
+            <column name="name" value ="Десерты"/>
+        </insert>
+        <insert tableName="category">
+            <column name="name" value ="Соусы"/>
+        </insert>
+
+        <addUniqueConstraint columnNames="id" constraintName="unique_id_constraint" tableName="Сategories"/>
+
+        <addAutoIncrement catalogName="tables"
+                          columnDataType="int"
+                          columnName="id"
+                          incrementBy="1"
+                          schemaName="public"
+                          startWith="1"
+                          tableName="category"/>
+    </changeSet>
+
+
+</databaseChangeLog>
