@@ -75,7 +75,7 @@ public class JwtTokenProvider {
         Long userId = Long.valueOf(getIdFromToken(refreshToken));
         UserResponse userResponse = userService.getUserById(userId);
         jwtResponse.setId(userId);
-        jwtResponse.setLogin(userResponse.login());
+        jwtResponse.setUsername(userResponse.login());
         jwtResponse.setAccessToken(createAccessToken(userId, userResponse.login(), userResponse.role()));
         jwtResponse.setRefreshToken(createRefreshToken(userId, userResponse.login()));
         return jwtResponse;
@@ -110,7 +110,9 @@ public class JwtTokenProvider {
 
     public Authentication getAuthentication(String token){
         String login = getLoginFromToken(token);
+        
         UserDetails userDetails = userDetailsService.loadUserByUsername(login);
+
         return new UsernamePasswordAuthenticationToken(userDetails, "", userDetails.getAuthorities());
     }
 }

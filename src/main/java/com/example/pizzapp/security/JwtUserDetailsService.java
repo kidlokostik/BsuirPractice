@@ -1,5 +1,6 @@
 package com.example.pizzapp.security;
 
+import com.example.pizzapp.component.EmailValidatorComponent;
 import com.example.pizzapp.model.User;
 import com.example.pizzapp.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -13,10 +14,18 @@ import org.springframework.stereotype.Service;
 public class JwtUserDetailsService implements UserDetailsService {
 
     private final UserService userService;
+    private final EmailValidatorComponent emailValidatorComponent;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        User user = userService.findUserByLoginOrThrow(username);
+    public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
+        User user;
+
+        if(emailValidatorComponent.isValid(login)) {
+            user = userService.findUserByEmailOrThrow(login);
+        } else {
+            user = userService.findUserByLoginOrThrow(login);
+        }
+
         return JwtEntityFactory.create(user);
     }
 }
