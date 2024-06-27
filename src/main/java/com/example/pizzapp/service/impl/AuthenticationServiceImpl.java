@@ -1,5 +1,6 @@
 package com.example.pizzapp.service.impl;
 
+import com.example.pizzapp.component.EmailValidatorComponent;
 import com.example.pizzapp.model.User;
 import com.example.pizzapp.security.JwtTokenProvider;
 import com.example.pizzapp.security.dto.JwtRequest;
@@ -18,21 +19,28 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final UserService userService;
     private final JwtTokenProvider jwtTokenProvider;
     private final AuthenticationManager authenticationManager;
+    private final EmailValidatorComponent emailValidatorComponent;
 
     @Override
     public JwtResponse authenticate(final JwtRequest jwtRequest) {
         JwtResponse jwtResponse = new JwtResponse();
+        User user;
 
-        User user = userService.findUserByEmailOrThrow(jwtRequest.getEmail());
+        if (emailValidatorComponent.isValid(jwtRequest.getLogin())){
+            user = userService.findUserByEmailOrThrow(jwtRequest.getLogin());
+        } else{
+            user = userService.findUserByLoginOrThrow(jwtRequest.getLogin());
+        }
 
-        String accessToken = jwtTokenProvider.createAccessToken(user.getId(), user.getLogin(), user.getPassword());
+        String accessToken = jwtTokenProvider.createAccessToken(user.getId(), user.getLogin(), user.getRole().getName().name());
         String refreshToken = jwtTokenProvider.createRefreshToken(user.getId(), user.getLogin());
 
         Authentication authentication = jwtTokenProvider.getAuthentication(accessToken);
         authenticationManager.authenticate(authentication);
 
         jwtResponse.setId(user.getId());
-        jwtResponse.setLogin(user.getLogin());
+        jwtResponse.setUsername(user.getLogin());
+        jwtResponse.setEmail(user.getEmail());
         jwtResponse.setAccessToken(accessToken);
         jwtResponse.setRefreshToken(refreshToken);
 
