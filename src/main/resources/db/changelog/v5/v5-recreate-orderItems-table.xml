@@ -27,83 +27,103 @@
             <column name="order_id" value ="1"/>
             <column name="product_id" value ="1"/>
             <column name="quantity" value="1"/>
-
+        </insert>
+        <insert tableName="order_items">
             <column name="order_id" value ="1"/>
             <column name="product_id" value ="1"/>
             <column name="quantity" value="1"/>
-
+        </insert>
+        <insert tableName="order_items">
             <column name="order_id" value ="1"/>
             <column name="product_id" value ="1"/>
             <column name="quantity" value="1"/>
-
+        </insert>
+        <insert tableName="order_items">
             <column name="product_id" value ="57"/>
             <column name="order_id" value="1"/>
             <column name="quantity" value="1"/>
-
+        </insert>
+        <insert tableName="order_items">
             <column name="product_id" value="64"/>
             <column name="order_id" value="1"/>
             <column name="quantity" value="1"/>
-
+        </insert>
+        <insert tableName="order_items">
             <column name="product_id" value="48"/>
             <column name="order_id" value="1"/>
             <column name="quantity" value="1"/>
-
+        </insert>
+        <insert tableName="order_items">
             <column name="product_id" value="30"/>
             <column name="order_id" value="1"/>
             <column name="quantity" value="1"/>
-
+        </insert>
+        <insert tableName="order_items">
             <column name="product_id" value="19"/>
             <column name="order_id" value="2"/>
             <column name="quantity" value="1"/>
-
+        </insert>
+        <insert tableName="order_items">
             <column name="product_id" value="24"/>
             <column name="order_id" value="2"/>
             <column name="quantity" value="1"/>
-
+        </insert>
+        <insert tableName="order_items">
             <column name="product_id" value="25"/>
             <column name="order_id" value="2"/>
             <column name="quantity" value="1"/>
-
+        </insert>
+        <insert tableName="order_items">
             <column name="product_id" value="26"/>
             <column name="order_id" value="2"/>
             <column name="quantity" value="1"/>
-
+        </insert>
+        <insert tableName="order_items">
             <column name="product_id" value="41"/>
             <column name="order_id" value="2"/>
             <column name="quantity" value="1"/>
-
+        </insert>
+        <insert tableName="order_items">
             <column name="product_id" value="37"/>
             <column name="order_id" value="2"/>
             <column name="quantity" value="1"/>
-
+        </insert>
+        <insert tableName="order_items">
             <column name="product_id" value="15"/>
             <column name="order_id" value="3"/>
             <column name="quantity" value="1"/>
-
+        </insert>
+        <insert tableName="order_items">
             <column name="product_id" value="63"/>
             <column name="order_id" value="3"/>
             <column name="quantity" value="1"/>
-
+        </insert>
+        <insert tableName="order_items">
             <column name="product_id" value="1"/>
             <column name="order_id" value="3"/>
             <column name="quantity" value="1"/>
-
+        </insert>
+        <insert tableName="order_items">
             <column name="product_id" value="7"/>
             <column name="order_id" value="3"/>
             <column name="quantity" value="1"/>
-
+        </insert>
+        <insert tableName="order_items">
             <column name="product_id" value="27"/>
             <column name="order_id" value="3"/>
             <column name="quantity" value="1"/>
-
+        </insert>
+        <insert tableName="order_items">
             <column name="product_id" value="37"/>
             <column name="order_id" value="3"/>
             <column name="quantity" value="1"/>
-
+        </insert>
+        <insert tableName="order_items">
             <column name="product_id" value="33"/>
             <column name="order_id" value="3"/>
             <column name="quantity" value="1"/>
-
+        </insert>
+        <insert tableName="order_items">
             <column name="product_id" value="29"/>
             <column name="order_id" value="3"/>
             <column name="quantity" value="1"/>

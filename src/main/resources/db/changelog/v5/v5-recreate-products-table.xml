@@ -31,279 +31,348 @@
             <column name="category_id" value="1"/>
             <column name="name" value ="4 Сыра"/>
             <column name="price" value="16.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="1"/>
             <column name="name" value ="Карбонара"/>
             <column name="price" value="21.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="1"/>
             <column name="name" value ="4 Сезона"/>
             <column name="price" value="24.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="1"/>
             <column name="name" value ="Острая"/>
             <column name="price" value="22.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="1"/>
             <column name="name" value ="Ветчина и сыр"/>
             <column name="price" value="18.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="1"/>
             <column name="name" value ="Мясная"/>
             <column name="price" value="21.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="1"/>
             <column name="name" value ="Домашняя"/>
             <column name="price" value="20.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="1"/>
             <column name="name" value ="Деревенская"/>
             <column name="price" value="17.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="1"/>
             <column name="name" value ="С овощами и грибами"/>
             <column name="price" value="16.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="1"/>
             <column name="name" value ="Итальянская"/>
             <column name="price" value="18.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="1"/>
             <column name="name" value ="Песто"/>
             <column name="price" value="21.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="1"/>
             <column name="name" value ="Маргарита"/>
             <column name="price" value="19.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="1"/>
             <column name="name" value ="Дьябло"/>
             <column name="price" value="24.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="1"/>
             <column name="name" value ="Микс 4ех"/>
             <column name="price" value="24.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="1"/>
             <column name="name" value ="Студенческая"/>
             <column name="price" value="9.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="2"/>
             <column name="name" value ="Картофель из печи"/>
             <column name="price" value="10.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="2"/>
             <column name="name" value ="Куриные Крылья"/>
             <column name="price" value="13.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="2"/>
             <column name="name" value ="Куриные наггетсы"/>
             <column name="price" value="10"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="2"/>
             <column name="name" value ="Блинчики с сыром и грибами"/>
             <column name="price" value="8.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="2"/>
             <column name="name" value ="Блинчики с ветчиной и сыром"/>
             <column name="price" value="10.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="2"/>
             <column name="name" value ="Паста Карбонара"/>
             <column name="price" value="11.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="2"/>
             <column name="name" value ="Паста Песто"/>
             <column name="price" value="11.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="2"/>
             <column name="name" value ="Паста Мясная"/>
             <column name="price" value="11.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="2"/>
             <column name="name" value ="Салат Греческий"/>
             <column name="price" value="8.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="2"/>
             <column name="name" value ="Салат Цезарь"/>
             <column name="price" value="8.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="2"/>
             <column name="name" value ="Салат Оливье"/>
             <column name="price" value="8.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="3"/>
             <column name="name" value ="Pepsi 0,5"/>
             <column name="price" value="2"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="3"/>
             <column name="name" value ="Fanta 0,5"/>
             <column name="price" value="2"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="3"/>
             <column name="name" value ="Coca-Cola 0,5"/>
             <column name="price" value="2"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="3"/>
             <column name="name" value ="Черный чай"/>
             <column name="price" value="4"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="3"/>
             <column name="name" value ="Зеленый чай"/>
             <column name="price" value="4"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="3"/>
             <column name="name" value ="Лидский Квас светлый"/>
             <column name="price" value="3"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="3"/>
             <column name="name" value ="Лидский Квас темный"/>
             <column name="price" value="3"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="3"/>
             <column name="name" value ="Домашний Узвар"/>
             <column name="price" value="6"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="3"/>
             <column name="name" value ="Брусничный Морс"/>
             <column name="price" value="5"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="3"/>
             <column name="name" value ="Клюквенный морс"/>
             <column name="price" value="5"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="3"/>
             <column name="name" value ="Кофе (на выбор)"/>
             <column name="price" value="5"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="3"/>
             <column name="name" value ="Какао"/>
             <column name="price" value="4"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="3"/>
             <column name="name" value ="Лимонад Кабзеги"/>
             <column name="price" value="6"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="3"/>
             <column name="name" value ="Мацони Домашний"/>
             <column name="price" value="6"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="3"/>
             <column name="name" value ="Лимонад Тархун"/>
             <column name="price" value="6"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="3"/>
             <column name="name" value ="Натахтари"/>
             <column name="price" value="6"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="4"/>
             <column name="name" value ="Пина Колада"/>
             <column name="price" value="6"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="4"/>
             <column name="name" value ="Молочный Коктейль"/>
             <column name="price" value="5"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="4"/>
             <column name="name" value ="Шоколадный молочный коктейль"/>
             <column name="price" value="5"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="4"/>
             <column name="name" value ="Клубничный молочный коктейль"/>
             <column name="price" value="5"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="4"/>
             <column name="name" value ="Молочный коктейль с кусочками Орео"/>
             <column name="price" value="5"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="4"/>
             <column name="name" value ="Грейпфрутовый лимонад"/>
             <column name="price" value="6"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="4"/>
             <column name="name" value ="Малиновый лимонад"/>
             <column name="price" value="6"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="4"/>
             <column name="name" value ="Тропический лимонад"/>
             <column name="price" value="6"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="4"/>
             <column name="name" value ="Клубничный лимонад"/>
             <column name="price" value="6"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="4"/>
             <column name="name" value ="Ягодный лимонад"/>
             <column name="price" value="6"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="4"/>
             <column name="name" value ="Классический лимонад"/>
             <column name="price" value="6"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="5"/>
             <column name="name" value ="Мороженое Пломбир"/>
             <column name="price" value="4"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="5"/>
             <column name="name" value ="Мороженое Соленая карамель"/>
             <column name="price" value="4"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="5"/>
             <column name="name" value ="Мороженое Шоколадное"/>
             <column name="price" value="4"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="5"/>
             <column name="name" value ="Мороженое Клубничное"/>
             <column name="price" value="4"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="5"/>
             <column name="name" value ="Классический Чизкейк"/>
             <column name="price" value="5.5"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="5"/>
             <column name="name" value ="Банановый Чизкейк"/>
             <column name="price" value="5.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="5"/>
             <column name="name" value ="Чизкейк с кокосом"/>
             <column name="price" value="5.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="5"/>
             <column name="name" value ="Торт Наполеон"/>
             <column name="price" value="6.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="5"/>
             <column name="name" value ="Венский Пирог"/>
             <column name="price" value="5.9"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="5"/>
             <column name="name" value ="Медовик"/>
             <column name="price" value="4.5"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="5"/>
             <column name="name" value ="Сырники"/>
             <column name="price" value="6"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="6"/>
             <column name="name" value ="Сырный соус"/>
             <column name="price" value="1"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="6"/>
             <column name="name" value ="Кисло-сладкий соус"/>
             <column name="price" value="1"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="6"/>
             <column name="name" value ="Чесночный соус"/>
             <column name="price" value="1"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="6"/>
             <column name="name" value ="Соус Барбекю"/>
             <column name="price" value="1"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="6"/>
             <column name="name" value ="Соус Табаско"/>
             <column name="price" value="1"/>
-
+        </insert>
+        <insert tableName="products">
             <column name="category_id" value="6"/>
             <column name="name" value ="Соус Тартар"/>
             <column name="price" value="1"/>
