@@ -4,11 +4,6 @@
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <changeSet id="v5-1" author="Pavlov">
-<!--        <preConditions onFail="MARK_RAN">-->
-<!--            <not>-->
-<!--                <tableExists tableName="users"/>-->
-<!--            </not>-->
-<!--        </preConditions>-->
 
         <dropTable tableName="users" cascadeConstraints="true"/>
 
