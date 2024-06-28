@@ -1,0 +1,141 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="v5-1" author="Pavlov">
+
+        <dropTable tableName="users" cascadeConstraints="true"/>
+
+        <createTable tableName="users">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="phone" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="name" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="password" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="confirm_password" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="role_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="login" type="varchar(50)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="email" type="varchar(100)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="gender" type="varchar(20)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="date_of_birth" type="date">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <insert tableName="users">
+            <column name="phone" value="+375257879632"/>
+            <column name="name" value="Костя"/>
+            <column name="password" value="525252"/>
+            <column name="confirm_password" value="525252"/>
+            <column name="role_id" value="1"/>
+            <column name="login" value="12"/>
+            <column name="email" value="kostya@gmail.com"/>
+            <column name="gender" value="MALE"/>
+            <column name="date_of_birth" value="2004-05-12"/>
+        </insert>
+        <insert tableName="users">
+            <column name="phone" value="+375291233211"/>
+            <column name="name" value="Kirill"/>
+            <column name="password" value="535353"/>
+            <column name="confirm_password" value="535353"/>
+            <column name="role_id" value="1"/>
+            <column name="login" value="123"/>
+            <column name="email" value="kirill@gmail.com"/>
+            <column name="gender" value="MALE"/>
+            <column name="date_of_birth" value="2004-02-26"/>
+        </insert>
+        <insert tableName="users">
+            <column name="phone" value="+375291233212"/>
+            <column name="name" value="Katya"/>
+            <column name="password" value="545454"/>
+            <column name="confirm_password" value="545454"/>
+            <column name="role_id" value="2"/>
+            <column name="login" value="1234"/>
+            <column name="email" value="katya@gmail.com"/>
+            <column name="gender" value="FEMALE"/>
+            <column name="date_of_birth" value="2003-04-11"/>
+        </insert>
+        <insert tableName="users">
+            <column name="phone" value="+375291233213"/>
+            <column name="name" value="Roman"/>
+            <column name="password" value="555555"/>
+            <column name="confirm_password" value="555555"/>
+            <column name="login" value="12345"/>
+            <column name="role_id" value="2"/>
+            <column name="email" value="roma@gmail.com"/>
+            <column name="gender" value="MALE"/>
+            <column name="date_of_birth" value="2004-02-14"/>
+        </insert>
+        <insert tableName="users">
+            <column name="phone" value="+375291233214"/>
+            <column name="name" value="Julia"/>
+            <column name="password" value="565656"/>
+            <column name="confirm_password" value="565656"/>
+            <column name="role_id" value="2"/>
+            <column name="login" value="123456"/>
+            <column name="email" value="julia@gmail.com"/>
+            <column name="gender" value="FEMALE"/>
+            <column name="date_of_birth" value="2004-07-17"/>
+        </insert>
+        <insert tableName="users">
+            <column name="phone" value="+375291233215"/>
+            <column name="name" value="Romeo"/>
+            <column name="password" value="575757"/>
+            <column name="confirm_password" value="575757"/>
+            <column name="role_id" value="2"/>
+            <column name="login" value="1234567"/>
+            <column name="email" value="romeo@gmail.com"/>
+            <column name="gender" value="MALE"/>
+            <column name="date_of_birth" value="2003-10-23"/>
+        </insert>
+        <insert tableName="users">
+            <column name="phone" value="+375291233216"/>
+            <column name="name" value="Daniil"/>
+            <column name="password" value="585858"/>
+            <column name="confirm_password" value="585858"/>
+            <column name="role_id" value="2"/>
+            <column name="login" value="12345678"/>
+            <column name="email" value="danil@gmail.com"/>
+            <column name="gender" value="MALE"/>
+            <column name="date_of_birth" value="2004-06-02"/>
+        </insert>
+        <insert tableName="users">
+            <column name="phone" value="+375291233211"/>
+            <column name="name" value="Boris"/>
+            <column name="password" value="595959"/>
+            <column name="confirm_password" value="595959"/>
+            <column name="role_id" value="2"/>
+            <column name="login" value="123456789"/>
+            <column name="email" value="boris@gmail.com"/>
+            <column name="gender" value="MALE"/>
+            <column name="date_of_birth" value="2003-11-10"/>
+        </insert>
+
+        <addForeignKeyConstraint baseTableName="users"
+                                 baseColumnNames="role_id"
+                                 constraintName="fk_Users_roles"
+                                 referencedTableName="roles"
+                                 referencedColumnNames="id"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"/>
+
+    </changeSet>
+</databaseChangeLog>

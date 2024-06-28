@@ -33,4 +33,7 @@
         </insert>
     </changeSet>
 
+    <changeSet id="v4-3" author="Pavlov, Urbanaitis">
+        <renameColumn tableName="roles" oldColumnName="role" newColumnName="name"/>
+    </changeSet>
 </databaseChangeLog>

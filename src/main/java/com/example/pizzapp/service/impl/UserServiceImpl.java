@@ -36,7 +36,7 @@ public class UserServiceImpl implements UserService {
     public UserResponse createUser(UserCreateRequest createUserRequest) {
         checkCreateUserData(createUserRequest);
         Role customerRole = roleRepository.findByName(RoleType.CUSTOMER)
-                .orElseThrow(() -> new ResourceNotFoundException(String.format(NOT_FOUND_MESSAGE, "Role", null)));
+                .orElseThrow(() -> new ResourceNotFoundException(String.format(NOT_FOUND_MESSAGE, "Role", createUserRequest.name())));
         User user = userMapper.createRequestToEntity(createUserRequest);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(customerRole);

@@ -71,13 +71,13 @@ public class ProductServiceImpl implements ProductService {
 
     private void checkUniqueProductName(ProductCreateRequest createProductRequest) {
         if (uniqueProductCheck(createProductRequest)) {
-            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "product", createProductRequest.name()));
+            throw new DuplicateFoundException(String.format(ALREADY_USED_MESSAGE, "product", createProductRequest.name()));
         }
     }
 
     private void checkUniqueProductName(ProductUpdateRequest updateProductRequest, String existingName) {
         if (uniqueProductCheck(updateProductRequest, existingName)) {
-            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "product", updateProductRequest.name()));
+            throw new DuplicateFoundException(String.format(ALREADY_USED_MESSAGE, "product", updateProductRequest.name()));
         }
     }
 

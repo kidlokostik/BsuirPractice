@@ -91,4 +91,40 @@
                                  onUpdate="CASCADE"/>
     </changeSet>
 
+    <changeSet id="v4-4" author="Pavlov Kirill">
+        <update tableName="users">
+            <column name="gender" value="MALE"/>
+            <where>id = 1</where>
+        </update>
+        <update tableName="users">
+            <column name="gender" value="MALE"/>
+            <where>id = 2</where>
+        </update>
+        <update tableName="users">
+            <column name="gender" value="FEMALE"/>
+            <where>id = 3</where>
+        </update>
+        <update tableName="users">
+            <column name="gender" value="MALE"/>
+            <where>id = 4</where>
+        </update>
+        <update tableName="users">
+            <column name="gender" value="FEMALE"/>
+            <where>id = 5</where>
+        </update>
+        <update tableName="users">
+            <column name="gender" value="MALE"/>
+            <where>id = 6</where>
+        </update>
+        <update tableName="users">
+            <column name="gender" value="MALE"/>
+            <where>id = 7</where>
+        </update>
+        <update tableName="users">
+            <column name="gender" value="MALE"/>
+            <where>id = 8</where>
+        </update>
+        <modifyDataType tableName="users" columnName="password" newDataType="varchar(100)"/>
+        <modifyDataType tableName="users" columnName="confirm_password" newDataType="varchar(100)"/>
+    </changeSet>
 </databaseChangeLog>

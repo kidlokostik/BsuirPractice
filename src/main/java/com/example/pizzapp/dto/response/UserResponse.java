@@ -10,6 +10,6 @@ public record UserResponse(
         String login,
         String email,
         Gender gender,
-        LocalDate birthDate,
+        LocalDate dateOfBirth,
         String role
 ){}
