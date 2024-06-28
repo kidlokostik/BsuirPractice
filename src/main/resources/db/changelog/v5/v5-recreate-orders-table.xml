@@ -13,7 +13,7 @@
         <dropTable tableName="orders" cascadeConstraints="true"/>
 
         <createTable tableName="orders">
-            <column name="id" type="integer">
+            <column name="id" type="integer" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
             <column name="user_id" type="integer">
@@ -36,25 +36,29 @@
             <column name="address" value="Красноармейская д.21"/>
             <column name="price" value="46.6"/>
 
-            <column name="user_id" value ="4"/>
+            <column name="user_id" value ="3"/>
             <column name="address" value="Гикало д.19"/>
             <column name="price" value="36.6"/>
 
-            <column name="user_id" value ="5"/>
+            <column name="user_id" value ="4"/>
             <column name="address" value="Дзержинского д.14"/>
             <column name="price" value="37.5"/>
 
-            <column name="user_id" value ="6"/>
+            <column name="user_id" value ="5"/>
             <column name="address" value="Независимости д.173"/>
             <column name="price" value="44.7"/>
 
-            <column name="user_id" value ="7"/>
+            <column name="user_id" value ="6"/>
             <column name="address" value="Б.Хмельницкого д.52"/>
             <column name="price" value="79.8"/>
 
-            <column name="user_id" value ="8"/>
+            <column name="user_id" value ="7"/>
             <column name="address" value="Дерюго д.111"/>
             <column name="price" value="36.7"/>
+
+            <column name="user_id" value ="8"/>
+            <column name="address" value="ул.Ботаническая д.12"/>
+            <column name="price" value="13.4"/>
         </insert>
 
         <addForeignKeyConstraint
@@ -64,6 +68,6 @@
                 referencedColumnNames="id"
                 referencedTableName="users"/>
 
-        <addUniqueConstraint columnNames="id" constraintName="unique_order_id_constraint" tableName="Orders"/>
+        <addUniqueConstraint columnNames="id" constraintName="unique_order_id_constraint" tableName="orders"/>
     </changeSet>
 </databaseChangeLog>

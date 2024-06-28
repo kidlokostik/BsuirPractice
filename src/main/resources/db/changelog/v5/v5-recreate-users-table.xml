@@ -14,7 +14,7 @@
 
         <createTable tableName="users">
             <column name="id" type="integer" autoIncrement="true">
-                <constraints primaryKey="true"/>
+                <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="phone" type="varchar(40)">
                 <constraints nullable="false"/>
@@ -55,7 +55,8 @@
             <column name="email" value="kostya@gmail.com"/>
             <column name="gender" value="MALE"/>
             <column name="date_of_birth" value="2004-05-12"/>
-
+        </insert>
+        <insert tableName="users">
             <column name="phone" value="+375291233211"/>
             <column name="name" value="Kirill"/>
             <column name="password" value="535353"/>
@@ -65,7 +66,8 @@
             <column name="email" value="kirill@gmail.com"/>
             <column name="gender" value="MALE"/>
             <column name="date_of_birth" value="2004-02-26"/>
-
+        </insert>
+        <insert tableName="users">
             <column name="phone" value="+375291233212"/>
             <column name="name" value="Katya"/>
             <column name="password" value="545454"/>
@@ -75,16 +77,19 @@
             <column name="email" value="katya@gmail.com"/>
             <column name="gender" value="FEMALE"/>
             <column name="date_of_birth" value="2003-04-11"/>
-
+        </insert>
+        <insert tableName="users">
             <column name="phone" value="+375291233213"/>
             <column name="name" value="Roman"/>
             <column name="password" value="555555"/>
             <column name="confirm_password" value="555555"/>
             <column name="login" value="12345"/>
+            <column name="role_id" value="2"/>
             <column name="email" value="roma@gmail.com"/>
             <column name="gender" value="MALE"/>
             <column name="date_of_birth" value="2004-02-14"/>
-
+        </insert>
+        <insert tableName="users">
             <column name="phone" value="+375291233214"/>
             <column name="name" value="Julia"/>
             <column name="password" value="565656"/>
@@ -94,7 +99,8 @@
             <column name="email" value="julia@gmail.com"/>
             <column name="gender" value="FEMALE"/>
             <column name="date_of_birth" value="2004-07-17"/>
-
+        </insert>
+        <insert tableName="users">
             <column name="phone" value="+375291233215"/>
             <column name="name" value="Romeo"/>
             <column name="password" value="575757"/>
@@ -104,7 +110,8 @@
             <column name="email" value="romeo@gmail.com"/>
             <column name="gender" value="MALE"/>
             <column name="date_of_birth" value="2003-10-23"/>
-
+        </insert>
+        <insert tableName="users">
             <column name="phone" value="+375291233216"/>
             <column name="name" value="Daniil"/>
             <column name="password" value="585858"/>
@@ -114,7 +121,8 @@
             <column name="email" value="danil@gmail.com"/>
             <column name="gender" value="MALE"/>
             <column name="date_of_birth" value="2004-06-02"/>
-
+        </insert>
+        <insert tableName="users">
             <column name="phone" value="+375291233211"/>
             <column name="name" value="Boris"/>
             <column name="password" value="595959"/>

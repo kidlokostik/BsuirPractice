@@ -14,7 +14,7 @@
 
         <createTable tableName="products">
             <column name="id" type="integer" autoIncrement="true">
-                <constraints primaryKey="true"/>
+                <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="category_id" type="integer">
                 <constraints nullable="false"/>
