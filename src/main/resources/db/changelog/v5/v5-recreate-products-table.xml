@@ -22,7 +22,7 @@
             <column name="name" type="varchar(40)">
                 <constraints nullable="false"/>
             </column>
-            <column name="product_price" type="double">
+            <column name="price" type="double">
                 <constraints nullable="false"/>
             </column>
         </createTable>
@@ -30,283 +30,283 @@
         <insert tableName="products">
             <column name="category_id" value="1"/>
             <column name="name" value ="4 Сыра"/>
-            <column name="product_price" value="16.9"/>
+            <column name="price" value="16.9"/>
 
             <column name="category_id" value="1"/>
-            <column name="product_name" value ="Карбонара"/>
-            <column name="product_price" value="21.9"/>
+            <column name="name" value ="Карбонара"/>
+            <column name="price" value="21.9"/>
 
             <column name="category_id" value="1"/>
-            <column name="product_name" value ="4 Сезона"/>
-            <column name="product_price" value="24.9"/>
+            <column name="name" value ="4 Сезона"/>
+            <column name="price" value="24.9"/>
 
             <column name="category_id" value="1"/>
-            <column name="product_name" value ="Острая"/>
-            <column name="product_price" value="22.9"/>
+            <column name="name" value ="Острая"/>
+            <column name="price" value="22.9"/>
 
             <column name="category_id" value="1"/>
-            <column name="product_name" value ="Ветчина и сыр"/>
-            <column name="product_price" value="18.9"/>
+            <column name="name" value ="Ветчина и сыр"/>
+            <column name="price" value="18.9"/>
 
             <column name="category_id" value="1"/>
-            <column name="product_name" value ="Мясная"/>
-            <column name="product_price" value="21.9"/>
+            <column name="name" value ="Мясная"/>
+            <column name="price" value="21.9"/>
 
             <column name="category_id" value="1"/>
-            <column name="product_name" value ="Домашняя"/>
-            <column name="product_price" value="20.9"/>
+            <column name="name" value ="Домашняя"/>
+            <column name="price" value="20.9"/>
 
             <column name="category_id" value="1"/>
-            <column name="product_name" value ="Деревенская"/>
-            <column name="product_price" value="17.9"/>
+            <column name="name" value ="Деревенская"/>
+            <column name="price" value="17.9"/>
 
             <column name="category_id" value="1"/>
-            <column name="product_name" value ="С овощами и грибами"/>
-            <column name="product_price" value="16.9"/>
+            <column name="name" value ="С овощами и грибами"/>
+            <column name="price" value="16.9"/>
 
             <column name="category_id" value="1"/>
-            <column name="product_name" value ="Итальянская"/>
-            <column name="product_price" value="18.9"/>
+            <column name="name" value ="Итальянская"/>
+            <column name="price" value="18.9"/>
 
             <column name="category_id" value="1"/>
-            <column name="product_name" value ="Песто"/>
-            <column name="product_price" value="21.9"/>
+            <column name="name" value ="Песто"/>
+            <column name="price" value="21.9"/>
 
             <column name="category_id" value="1"/>
-            <column name="product_name" value ="Маргарита"/>
-            <column name="product_price" value="19.9"/>
+            <column name="name" value ="Маргарита"/>
+            <column name="price" value="19.9"/>
 
             <column name="category_id" value="1"/>
-            <column name="product_name" value ="Дьябло"/>
-            <column name="product_price" value="24.9"/>
+            <column name="name" value ="Дьябло"/>
+            <column name="price" value="24.9"/>
 
             <column name="category_id" value="1"/>
-            <column name="product_name" value ="Микс 4ех"/>
-            <column name="product_price" value="24.9"/>
+            <column name="name" value ="Микс 4ех"/>
+            <column name="price" value="24.9"/>
 
             <column name="category_id" value="1"/>
-            <column name="product_name" value ="Студенческая"/>
-            <column name="product_price" value="9.9"/>
+            <column name="name" value ="Студенческая"/>
+            <column name="price" value="9.9"/>
 
             <column name="category_id" value="2"/>
-            <column name="product_name" value ="Картофель из печи"/>
-            <column name="product_price" value="10.9"/>
+            <column name="name" value ="Картофель из печи"/>
+            <column name="price" value="10.9"/>
 
             <column name="category_id" value="2"/>
-            <column name="product_name" value ="Куриные Крылья"/>
-            <column name="product_price" value="13.9"/>
+            <column name="name" value ="Куриные Крылья"/>
+            <column name="price" value="13.9"/>
 
             <column name="category_id" value="2"/>
-            <column name="product_name" value ="Куриные наггетсы"/>
-            <column name="product_price" value="10"/>
+            <column name="name" value ="Куриные наггетсы"/>
+            <column name="price" value="10"/>
 
             <column name="category_id" value="2"/>
-            <column name="product_name" value ="Блинчики с сыром и грибами"/>
-            <column name="product_price" value="8.9"/>
+            <column name="name" value ="Блинчики с сыром и грибами"/>
+            <column name="price" value="8.9"/>
 
             <column name="category_id" value="2"/>
-            <column name="product_name" value ="Блинчики с ветчиной и сыром"/>
-            <column name="product_price" value="10.9"/>
+            <column name="name" value ="Блинчики с ветчиной и сыром"/>
+            <column name="price" value="10.9"/>
 
             <column name="category_id" value="2"/>
-            <column name="product_name" value ="Паста Карбонара"/>
-            <column name="product_price" value="11.9"/>
+            <column name="name" value ="Паста Карбонара"/>
+            <column name="price" value="11.9"/>
 
             <column name="category_id" value="2"/>
-            <column name="product_name" value ="Паста Песто"/>
-            <column name="product_price" value="11.9"/>
+            <column name="name" value ="Паста Песто"/>
+            <column name="price" value="11.9"/>
 
             <column name="category_id" value="2"/>
-            <column name="product_name" value ="Паста Мясная"/>
-            <column name="product_price" value="11.9"/>
+            <column name="name" value ="Паста Мясная"/>
+            <column name="price" value="11.9"/>
 
             <column name="category_id" value="2"/>
-            <column name="product_name" value ="Салат Греческий"/>
-            <column name="product_price" value="8.9"/>
+            <column name="name" value ="Салат Греческий"/>
+            <column name="price" value="8.9"/>
 
             <column name="category_id" value="2"/>
-            <column name="product_name" value ="Салат Цезарь"/>
-            <column name="product_price" value="8.9"/>
+            <column name="name" value ="Салат Цезарь"/>
+            <column name="price" value="8.9"/>
 
             <column name="category_id" value="2"/>
-            <column name="product_name" value ="Салат Оливье"/>
-            <column name="product_price" value="8.9"/>
+            <column name="name" value ="Салат Оливье"/>
+            <column name="price" value="8.9"/>
 
             <column name="category_id" value="3"/>
-            <column name="product_name" value ="Pepsi 0,5"/>
-            <column name="product_price" value="2"/>
+            <column name="name" value ="Pepsi 0,5"/>
+            <column name="price" value="2"/>
 
             <column name="category_id" value="3"/>
-            <column name="product_name" value ="Fanta 0,5"/>
-            <column name="product_price" value="2"/>
+            <column name="name" value ="Fanta 0,5"/>
+            <column name="price" value="2"/>
 
             <column name="category_id" value="3"/>
-            <column name="product_name" value ="Coca-Cola 0,5"/>
-            <column name="product_price" value="2"/>
+            <column name="name" value ="Coca-Cola 0,5"/>
+            <column name="price" value="2"/>
 
             <column name="category_id" value="3"/>
-            <column name="product_name" value ="Черный чай"/>
-            <column name="product_price" value="4"/>
+            <column name="name" value ="Черный чай"/>
+            <column name="price" value="4"/>
 
             <column name="category_id" value="3"/>
-            <column name="product_name" value ="Зеленый чай"/>
-            <column name="product_price" value="4"/>
+            <column name="name" value ="Зеленый чай"/>
+            <column name="price" value="4"/>
 
             <column name="category_id" value="3"/>
-            <column name="product_name" value ="Лидский Квас светлый"/>
-            <column name="product_price" value="3"/>
+            <column name="name" value ="Лидский Квас светлый"/>
+            <column name="price" value="3"/>
 
             <column name="category_id" value="3"/>
-            <column name="product_name" value ="Лидский Квас темный"/>
-            <column name="product_price" value="3"/>
+            <column name="name" value ="Лидский Квас темный"/>
+            <column name="price" value="3"/>
 
             <column name="category_id" value="3"/>
-            <column name="product_name" value ="Домашний Узвар"/>
-            <column name="product_price" value="6"/>
+            <column name="name" value ="Домашний Узвар"/>
+            <column name="price" value="6"/>
 
             <column name="category_id" value="3"/>
-            <column name="product_name" value ="Брусничный Морс"/>
-            <column name="product_price" value="5"/>
+            <column name="name" value ="Брусничный Морс"/>
+            <column name="price" value="5"/>
 
             <column name="category_id" value="3"/>
-            <column name="product_name" value ="Клюквенный морс"/>
-            <column name="product_price" value="5"/>
+            <column name="name" value ="Клюквенный морс"/>
+            <column name="price" value="5"/>
 
             <column name="category_id" value="3"/>
-            <column name="product_name" value ="Кофе (на выбор)"/>
-            <column name="product_price" value="5"/>
+            <column name="name" value ="Кофе (на выбор)"/>
+            <column name="price" value="5"/>
 
             <column name="category_id" value="3"/>
-            <column name="product_name" value ="Какао"/>
-            <column name="product_price" value="4"/>
+            <column name="name" value ="Какао"/>
+            <column name="price" value="4"/>
 
             <column name="category_id" value="3"/>
-            <column name="product_name" value ="Лимонад Кабзеги"/>
-            <column name="product_price" value="6"/>
+            <column name="name" value ="Лимонад Кабзеги"/>
+            <column name="price" value="6"/>
 
             <column name="category_id" value="3"/>
-            <column name="product_name" value ="Мацони Домашний"/>
-            <column name="product_price" value="6"/>
+            <column name="name" value ="Мацони Домашний"/>
+            <column name="price" value="6"/>
 
             <column name="category_id" value="3"/>
-            <column name="product_name" value ="Лимонад Тархун"/>
-            <column name="product_price" value="6"/>
+            <column name="name" value ="Лимонад Тархун"/>
+            <column name="price" value="6"/>
 
             <column name="category_id" value="3"/>
-            <column name="product_name" value ="Натахтари"/>
-            <column name="product_price" value="6"/>
+            <column name="name" value ="Натахтари"/>
+            <column name="price" value="6"/>
 
             <column name="category_id" value="4"/>
-            <column name="product_name" value ="Пина Колада"/>
-            <column name="product_price" value="6"/>
+            <column name="name" value ="Пина Колада"/>
+            <column name="price" value="6"/>
 
             <column name="category_id" value="4"/>
-            <column name="product_name" value ="Молочный Коктейль"/>
-            <column name="product_price" value="5"/>
+            <column name="name" value ="Молочный Коктейль"/>
+            <column name="price" value="5"/>
 
             <column name="category_id" value="4"/>
-            <column name="product_name" value ="Шоколадный молочный коктейль"/>
-            <column name="product_price" value="5"/>
+            <column name="name" value ="Шоколадный молочный коктейль"/>
+            <column name="price" value="5"/>
 
             <column name="category_id" value="4"/>
-            <column name="product_name" value ="Клубничный молочный коктейль"/>
-            <column name="product_price" value="5"/>
+            <column name="name" value ="Клубничный молочный коктейль"/>
+            <column name="price" value="5"/>
 
             <column name="category_id" value="4"/>
-            <column name="product_name" value ="Молочный коктейль с кусочками Орео"/>
-            <column name="product_price" value="5"/>
+            <column name="name" value ="Молочный коктейль с кусочками Орео"/>
+            <column name="price" value="5"/>
 
             <column name="category_id" value="4"/>
-            <column name="product_name" value ="Грейпфрутовый лимонад"/>
-            <column name="product_price" value="6"/>
+            <column name="name" value ="Грейпфрутовый лимонад"/>
+            <column name="price" value="6"/>
 
             <column name="category_id" value="4"/>
-            <column name="product_name" value ="Малиновый лимонад"/>
-            <column name="product_price" value="6"/>
+            <column name="name" value ="Малиновый лимонад"/>
+            <column name="price" value="6"/>
 
             <column name="category_id" value="4"/>
-            <column name="product_name" value ="Тропический лимонад"/>
-            <column name="product_price" value="6"/>
+            <column name="name" value ="Тропический лимонад"/>
+            <column name="price" value="6"/>
 
             <column name="category_id" value="4"/>
-            <column name="product_name" value ="Клубничный лимонад"/>
-            <column name="product_price" value="6"/>
+            <column name="name" value ="Клубничный лимонад"/>
+            <column name="price" value="6"/>
 
             <column name="category_id" value="4"/>
-            <column name="product_name" value ="Ягодный лимонад"/>
-            <column name="product_price" value="6"/>
+            <column name="name" value ="Ягодный лимонад"/>
+            <column name="price" value="6"/>
 
             <column name="category_id" value="4"/>
-            <column name="product_name" value ="Классический лимонад"/>
-            <column name="product_price" value="6"/>
+            <column name="name" value ="Классический лимонад"/>
+            <column name="price" value="6"/>
 
             <column name="category_id" value="5"/>
-            <column name="product_name" value ="Мороженое Пломбир"/>
-            <column name="product_price" value="4"/>
+            <column name="name" value ="Мороженое Пломбир"/>
+            <column name="price" value="4"/>
 
             <column name="category_id" value="5"/>
-            <column name="product_name" value ="Мороженое Соленая карамель"/>
-            <column name="product_price" value="4"/>
+            <column name="name" value ="Мороженое Соленая карамель"/>
+            <column name="price" value="4"/>
 
             <column name="category_id" value="5"/>
-            <column name="product_name" value ="Мороженое Шоколадное"/>
-            <column name="product_price" value="4"/>
+            <column name="name" value ="Мороженое Шоколадное"/>
+            <column name="price" value="4"/>
 
             <column name="category_id" value="5"/>
-            <column name="product_name" value ="Мороженое Клубничное"/>
-            <column name="product_price" value="4"/>
+            <column name="name" value ="Мороженое Клубничное"/>
+            <column name="price" value="4"/>
 
             <column name="category_id" value="5"/>
-            <column name="product_name" value ="Классический Чизкейк"/>
-            <column name="product_price" value="5.5"/>
+            <column name="name" value ="Классический Чизкейк"/>
+            <column name="price" value="5.5"/>
 
             <column name="category_id" value="5"/>
-            <column name="product_name" value ="Банановый Чизкейк"/>
-            <column name="product_price" value="5.9"/>
+            <column name="name" value ="Банановый Чизкейк"/>
+            <column name="price" value="5.9"/>
 
             <column name="category_id" value="5"/>
-            <column name="product_name" value ="Чизкейк с кокосом"/>
-            <column name="product_price" value="5.9"/>
+            <column name="name" value ="Чизкейк с кокосом"/>
+            <column name="price" value="5.9"/>
 
             <column name="category_id" value="5"/>
-            <column name="product_name" value ="Торт Наполеон"/>
-            <column name="product_price" value="6.9"/>
+            <column name="name" value ="Торт Наполеон"/>
+            <column name="price" value="6.9"/>
 
             <column name="category_id" value="5"/>
-            <column name="product_name" value ="Венский Пирог"/>
-            <column name="product_price" value="5.9"/>
+            <column name="name" value ="Венский Пирог"/>
+            <column name="price" value="5.9"/>
 
             <column name="category_id" value="5"/>
-            <column name="product_name" value ="Медовик"/>
-            <column name="product_price" value="4.5"/>
+            <column name="name" value ="Медовик"/>
+            <column name="price" value="4.5"/>
 
             <column name="category_id" value="5"/>
-            <column name="product_name" value ="Сырники"/>
-            <column name="product_price" value="6"/>
+            <column name="name" value ="Сырники"/>
+            <column name="price" value="6"/>
 
             <column name="category_id" value="6"/>
-            <column name="product_name" value ="Сырный соус"/>
-            <column name="product_price" value="1"/>
+            <column name="name" value ="Сырный соус"/>
+            <column name="price" value="1"/>
 
             <column name="category_id" value="6"/>
-            <column name="product_name" value ="Кисло-сладкий соус"/>
-            <column name="product_price" value="1"/>
+            <column name="name" value ="Кисло-сладкий соус"/>
+            <column name="price" value="1"/>
 
             <column name="category_id" value="6"/>
-            <column name="product_name" value ="Чесночный соус"/>
-            <column name="product_price" value="1"/>
+            <column name="name" value ="Чесночный соус"/>
+            <column name="price" value="1"/>
 
             <column name="category_id" value="6"/>
-            <column name="product_name" value ="Соус Барбекю"/>
-            <column name="product_price" value="1"/>
+            <column name="name" value ="Соус Барбекю"/>
+            <column name="price" value="1"/>
 
             <column name="category_id" value="6"/>
-            <column name="product_name" value ="Соус Табаско"/>
-            <column name="product_price" value="1"/>
+            <column name="name" value ="Соус Табаско"/>
+            <column name="price" value="1"/>
 
             <column name="category_id" value="6"/>
-            <column name="product_name" value ="Соус Тартар"/>
-            <column name="product_price" value="1"/>
+            <column name="name" value ="Соус Тартар"/>
+            <column name="price" value="1"/>
         </insert>
     </changeSet>
 
