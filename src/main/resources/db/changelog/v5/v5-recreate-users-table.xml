@@ -4,13 +4,13 @@
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
 
     <changeSet id="v5-1" author="Pavlov">
-        <preConditions onFail="MARK_RAN">
-            <not>
-                <tableExists tableName="users"/>
-            </not>
-        </preConditions>
+<!--        <preConditions onFail="MARK_RAN">-->
+<!--            <not>-->
+<!--                <tableExists tableName="users"/>-->
+<!--            </not>-->
+<!--        </preConditions>-->
 
-        <dropTable tableName="users"/>
+        <dropTable tableName="users" cascadeConstraints="true"/>
 
         <createTable tableName="users">
             <column name="id" type="integer" autoIncrement="true">
@@ -94,7 +94,6 @@
             <column name="email" value="julia@gmail.com"/>
             <column name="gender" value="FEMALE"/>
             <column name="date_of_birth" value="2004-07-17"/>
-
 
             <column name="phone" value="+375291233215"/>
             <column name="name" value="Romeo"/>
