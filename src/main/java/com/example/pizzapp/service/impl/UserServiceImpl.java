@@ -7,6 +7,7 @@ import com.example.pizzapp.exception.DuplicateFoundException;
 import com.example.pizzapp.exception.ResourceNotFoundException;
 import com.example.pizzapp.exception.ValidationException;
 import com.example.pizzapp.mapper.UserMapper;
+import com.example.pizzapp.model.Order;
 import com.example.pizzapp.model.Role;
 import com.example.pizzapp.model.RoleType;
 import com.example.pizzapp.model.User;
@@ -120,5 +121,15 @@ public class UserServiceImpl implements UserService {
         if (!password.equals(confirmPassword)) {
             throw new ValidationException(PASSWORDS_DO_NOT_MATCH);
         }
+    }
+
+    private boolean isOrderOwner(Long id, Long orderId) {
+        User user = findUserByIdOrThrow(id);
+        List<Order> userOrders = user.getOrders();
+
+        for (Order userOrder: userOrders) {
+            if (userOrder.getId() == orderId) return true;
+        }
+        return false;
     }
 }
