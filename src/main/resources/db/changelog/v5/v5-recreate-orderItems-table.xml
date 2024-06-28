@@ -11,7 +11,7 @@
         <dropTable tableName="order_items" cascadeConstraints="true"/>
 
         <createTable tableName="order_items">
-            <column name="id" type="integer" autoIncrement="true">
+            <column name="id" type="serial" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="order_id" type="integer">

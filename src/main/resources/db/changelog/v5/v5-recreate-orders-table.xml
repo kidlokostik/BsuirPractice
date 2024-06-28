@@ -13,7 +13,7 @@
         <dropTable tableName="orders" cascadeConstraints="true"/>
 
         <createTable tableName="orders">
-            <column name="id" type="integer" autoIncrement="true">
+            <column name="id" type="serial" autoIncrement="true">
                 <constraints primaryKey="true"/>
             </column>
             <column name="user_id" type="integer">

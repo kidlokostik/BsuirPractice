@@ -11,7 +11,7 @@
         <dropTable tableName="category" cascadeConstraints="true"/>
 
         <createTable tableName="category">
-            <column name="id" type="integer" autoIncrement="true">
+            <column name="id" type="serial" autoIncrement="true">
                 <constraints primaryKey="true" nullable="false"/>
             </column>
             <column name="name" type="varchar(40)">
