@@ -21,4 +21,6 @@ public interface UserService {
 
     User findUserByLoginOrThrow(String login);
     User findUserByEmailOrThrow(String email);
+
+    boolean isOrderOwner(Long id, Long orderId);
 }

@@ -7,6 +7,7 @@ import com.example.pizzapp.dto.response.OrderResponse;
 import com.example.pizzapp.service.OrderService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class OrderController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("CustomSecurityExpression.canAccessOrder(id)")
     public OrderResponse updateOrder(
             @PathVariable Long id,
             @RequestBody @Valid OrderUpdateRequest orderUpdateRequest
@@ -32,11 +34,13 @@ public class OrderController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("CustomSecurityExpression.canAccessOrder(id)")
     public OrderResponse getById(@PathVariable Long id) {
         return orderService.getOrderById(id);
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("CustomSecurityExpression.canAccessOrder(id)")
     public void deleteOrder(@PathVariable Long id) {
         orderService.deleteOrder(id);
     }
@@ -52,7 +56,7 @@ public class OrderController {
     }
 
     @PostMapping("/{orderId}")
-    public void addOrderItems(Long orderId, List<OrderItemCreateRequest> orderItemCreateRequests) {
+    public void addOrderItems(@PathVariable Long orderId, List<OrderItemCreateRequest> orderItemCreateRequests) {
         orderService.addOrderItems(orderId, orderItemCreateRequests);
     }
 }

@@ -42,6 +42,6 @@ public class CustomSecurityExpression {
 
         Long userId = user.getId();
 
-        return true;        //Нужен метод isOrderOwner()
+        return userService.isOrderOwner(userId, orderId);
     }
 }
