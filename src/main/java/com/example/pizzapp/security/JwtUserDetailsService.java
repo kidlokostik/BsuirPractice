@@ -14,13 +14,13 @@ import org.springframework.stereotype.Service;
 public class JwtUserDetailsService implements UserDetailsService {
 
     private final UserService userService;
-    private final EmailValidatorComponent emailValidatorComponent;
+    private final EmailValidatorComponent emailValidator;
 
     @Override
     public UserDetails loadUserByUsername(String login) throws UsernameNotFoundException {
         User user;
 
-        if(emailValidatorComponent.isValid(login)) {
+        if(emailValidator.isValid(login)) {
             user = userService.findUserByEmailOrThrow(login);
         } else {
             user = userService.findUserByLoginOrThrow(login);
