@@ -1,5 +1,7 @@
 package com.example.pizzapp.config;
 
+import com.example.pizzapp.component.EmailValidatorComponent;
+import org.hibernate.validator.internal.constraintvalidators.bv.EmailValidator;
 import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -21,5 +23,10 @@ public class ValidationConfig {
         LocalValidatorFactoryBean bean = new LocalValidatorFactoryBean();
         bean.setValidationMessageSource(messageSource());
         return bean;
+    }
+
+    @Bean
+    public EmailValidatorComponent emailValidatorComponent(){
+        return new EmailValidatorComponent(new EmailValidator());
     }
 }
