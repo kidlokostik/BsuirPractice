@@ -9,7 +9,6 @@ import com.example.pizzapp.security.dto.JwtResponse;
 import com.example.pizzapp.service.AuthenticationService;
 import com.example.pizzapp.service.UserService;
 import lombok.RequiredArgsConstructor;
-import org.hibernate.validator.internal.constraintvalidators.bv.EmailValidator;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
