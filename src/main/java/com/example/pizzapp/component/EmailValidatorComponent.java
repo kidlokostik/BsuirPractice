@@ -1,5 +1,6 @@
 package com.example.pizzapp.component;
 
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.internal.constraintvalidators.bv.EmailValidator;
 import org.springframework.stereotype.Component;
@@ -8,10 +9,10 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class EmailValidatorComponent {
 
-    public EmailValidator emailValidator;
+    private final EmailValidator emailValidator;
 
-    public EmailValidatorComponent (EmailValidator emailValidator){
-        emailValidator = new EmailValidator();
+    @PostConstruct
+    private void init(){
         emailValidator.initialize(null);
     }
 
