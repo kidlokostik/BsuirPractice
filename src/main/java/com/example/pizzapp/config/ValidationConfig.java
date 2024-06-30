@@ -26,7 +26,7 @@ public class ValidationConfig {
     }
 
     @Bean
-    public EmailValidatorComponent emailValidatorComponent(){
-        return new EmailValidatorComponent(new EmailValidator());
+    public EmailValidatorComponent emailValidatorComponent(EmailValidator emailValidator){
+        return new EmailValidatorComponent(emailValidator);
     }
 }
