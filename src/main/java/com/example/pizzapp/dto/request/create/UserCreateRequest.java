@@ -1,6 +1,7 @@
 package com.example.pizzapp.dto.request.create;
 
 import com.example.pizzapp.model.Gender;
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
@@ -29,7 +30,7 @@ public record UserCreateRequest(
         @Email(message = "{field.email}")
         String email,
 
-        @NotBlank(message = "{field.required}")
+        @NotNull(message = "{field.required}")
         Gender gender,
 
         @NotNull(message = "{field.required}")
