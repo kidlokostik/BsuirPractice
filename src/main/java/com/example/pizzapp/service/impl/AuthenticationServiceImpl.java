@@ -1,7 +1,5 @@
 package com.example.pizzapp.service.impl;
 
-import com.example.pizzapp.exception.AccessDeniedException;
-import com.example.pizzapp.exception.ResourceNotFoundException;
 import com.example.pizzapp.model.User;
 import com.example.pizzapp.security.JwtTokenProvider;
 import com.example.pizzapp.security.dto.JwtRequest;
@@ -12,11 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.internal.constraintvalidators.bv.EmailValidator;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import static com.example.pizzapp.util.ErrorMessages.NOT_FOUND_MESSAGE;
 
 @Service
 @RequiredArgsConstructor
