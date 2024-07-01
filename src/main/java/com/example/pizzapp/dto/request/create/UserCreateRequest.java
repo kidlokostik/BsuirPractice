@@ -1,7 +1,6 @@
 package com.example.pizzapp.dto.request.create;
 
 import com.example.pizzapp.model.Gender;
-import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.constraints.*;
 
 import java.time.LocalDate;
