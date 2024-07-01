@@ -1,5 +1,10 @@
 package com.example.pizzapp.controller;
 
+import com.example.pizzapp.dto.request.create.UserCreateRequest;
+import com.example.pizzapp.dto.response.UserResponse;
+import com.example.pizzapp.mapper.UserMapper;
+import com.example.pizzapp.model.User;
+import com.example.pizzapp.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,11 +17,19 @@ import com.example.pizzapp.service.AuthenticationService;
 public class AuthController {
 
     private final AuthenticationService authenticationService;
+    private final UserService userService;
+    private final UserMapper userMapper;
 
-    @PostMapping
+    @PostMapping("/signin")
     public ResponseEntity<JwtResponse> authentication(@RequestBody @Valid JwtRequest jwtRequest) {
         JwtResponse jwtResponse = authenticationService.authenticate(jwtRequest);
         return ResponseEntity.ok(jwtResponse);
+    }
+
+    @PostMapping("/register")
+    public ResponseEntity<UserResponse> register(@RequestBody @Valid UserCreateRequest userCreateRequest){
+        UserResponse userResponse = userService.createUser(userCreateRequest);
+        return ResponseEntity.ok(userResponse);
     }
 
     @PostMapping("/refresh")
