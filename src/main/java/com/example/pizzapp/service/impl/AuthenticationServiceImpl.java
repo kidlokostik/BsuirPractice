@@ -1,19 +1,21 @@
 package com.example.pizzapp.service.impl;
 
 import com.example.pizzapp.exception.AccessDeniedException;
+import com.example.pizzapp.exception.ResourceNotFoundException;
 import com.example.pizzapp.model.User;
 import com.example.pizzapp.security.JwtTokenProvider;
 import com.example.pizzapp.security.dto.JwtRequest;
 import com.example.pizzapp.security.dto.JwtResponse;
 import com.example.pizzapp.service.AuthenticationService;
 import com.example.pizzapp.service.UserService;
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import org.hibernate.validator.internal.constraintvalidators.bv.EmailValidator;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
+
+import static com.example.pizzapp.util.ErrorMessages.NOT_FOUND_MESSAGE;
 
 @Service
 @RequiredArgsConstructor
@@ -32,8 +34,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
         if (emailValidator.isValid(jwtRequest.getLogin(), null)){
             user = userService.findUserByEmailOrThrow(jwtRequest.getLogin());
-        } else{
+        } else if (!emailValidator.isValid(jwtRequest.getLogin(), null)){
             user = userService.findUserByLoginOrThrow(jwtRequest.getLogin());
+        } else {
+            throw new ResourceNotFoundException(String.format(NOT_FOUND_MESSAGE, "User", jwtRequest.getLogin()));
         }
 
         if (passwordEncoder.matches(jwtRequest.getPassword(), user.getPassword())){
@@ -52,7 +56,6 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         } else {
             throw new AccessDeniedException();
         }
-
         return jwtResponse;
     }
 
