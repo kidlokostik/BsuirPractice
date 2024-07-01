@@ -1,6 +1,5 @@
 package com.example.pizzapp.service.impl;
 
-import com.example.pizzapp.component.EmailValidatorComponent;
 import com.example.pizzapp.exception.AccessDeniedException;
 import com.example.pizzapp.model.User;
 import com.example.pizzapp.security.JwtTokenProvider;
@@ -8,7 +7,9 @@ import com.example.pizzapp.security.dto.JwtRequest;
 import com.example.pizzapp.security.dto.JwtResponse;
 import com.example.pizzapp.service.AuthenticationService;
 import com.example.pizzapp.service.UserService;
+import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import org.hibernate.validator.internal.constraintvalidators.bv.EmailValidator;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -21,7 +22,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final UserService userService;
     private final JwtTokenProvider jwtTokenProvider;
     private final AuthenticationManager authenticationManager;
-    private final EmailValidatorComponent emailValidator;
+    private final EmailValidator emailValidator;
     private final PasswordEncoder passwordEncoder;
 
     @Override
@@ -29,7 +30,7 @@ public class AuthenticationServiceImpl implements AuthenticationService {
         JwtResponse jwtResponse = new JwtResponse();
         User user;
 
-        if (emailValidator.isValid(jwtRequest.getLogin())){
+        if (emailValidator.isValid(jwtRequest.getLogin(), null)){
             user = userService.findUserByEmailOrThrow(jwtRequest.getLogin());
         } else{
             user = userService.findUserByLoginOrThrow(jwtRequest.getLogin());
