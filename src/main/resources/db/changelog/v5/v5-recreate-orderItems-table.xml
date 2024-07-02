@@ -142,4 +142,12 @@
                                  onDelete="CASCADE"
                                  onUpdate="CASCADE"/>
     </changeSet>
+
+    <changeSet  author="Urbanait"  id="v5-2">
+        <modifyDataType  catalogName="tables"
+                         columnName="id"
+                         newDataType="bigint"
+                         schemaName="public"
+                         tableName="order_items"/>
+    </changeSet>
 </databaseChangeLog>
