@@ -7,7 +7,11 @@ spring:
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
     password: 12052004Urb
-
   liquibase:
     change-log: classpath:db/changelog/main-changelog.xml
 
+security:
+  jwt:
+    secret: UGl6ekFwcGxpY2F0aW9uU2VjcmV0Q29kZUZvckp3dFRva2Vuc3F3ZXJhc2RmcmVxYWZsYmVsaXViaWI7cHNpdXZyYml1
+    access: PT1H
+    refresh: P30D

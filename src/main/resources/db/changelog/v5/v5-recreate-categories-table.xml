@@ -34,7 +34,14 @@
         <insert tableName="category">
             <column name="name" value ="Соусы"/>
         </insert>
+    </changeSet>
 
+    <changeSet  author="Urbanait"  id="v5-2">
+        <modifyDataType  catalogName="tables"
+                         columnName="id"
+                         newDataType="bigint"
+                         schemaName="public"
+                         tableName="category"/>
     </changeSet>
 
 </databaseChangeLog>
