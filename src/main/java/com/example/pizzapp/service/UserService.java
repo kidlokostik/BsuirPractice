@@ -19,8 +19,5 @@ public interface UserService {
 
     List<UserResponse> getAllUsers();
 
-    User findUserByLoginOrThrow(String login);
-    User findUserByEmailOrThrow(String email);
-
     boolean isOrderOwner(Long id, Long orderId);
 }
