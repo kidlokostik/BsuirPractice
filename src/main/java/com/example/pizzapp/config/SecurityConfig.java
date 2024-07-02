@@ -21,12 +21,30 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import static com.example.pizzapp.model.RoleType.ADMIN;
+import static com.example.pizzapp.model.RoleType.CUSTOMER;
+import static org.springframework.http.HttpMethod.*;
+
 @Configuration
 @EnableMethodSecurity
 @RequiredArgsConstructor(onConstructor = @__(@Lazy))
 public class SecurityConfig {
 
     private final JwtTokenProvider tokenProvider;
+
+
+    private static final String[] ADMIN_URL = {
+            "/api/v1/category/**",
+            "/api/v1/products/**",
+            "/api/v1/orders/**",
+            "/api/v1/users/**"
+    };
+
+    private static final String[] CUSTOMER_URL = {
+            "/api/v1/category/**",
+            "/api/v1/product/**"
+    };
+
     @Bean
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
@@ -74,10 +92,13 @@ public class SecurityConfig {
                                             response.getWriter()
                                                     .write("Unauthorized.");
                                         }))
-                .authorizeHttpRequests(configurer ->
-                        configurer.requestMatchers("/api/v1/auth/**")
-                                .permitAll()
-                                .anyRequest().authenticated()
+                .authorizeHttpRequests(req -> req
+                        .requestMatchers("/api/v1/auth/**").permitAll()
+                        .requestMatchers(POST, ADMIN_URL).hasRole(ADMIN.name())
+                        .requestMatchers(PUT, ADMIN_URL).hasRole(ADMIN.name())
+                        .requestMatchers(DELETE, ADMIN_URL).hasRole(ADMIN.name())
+                        .requestMatchers(GET, CUSTOMER_URL).hasAnyRole()
+                        .anyRequest().authenticated()
                 )
                 .anonymous(AbstractHttpConfigurer::disable)
                 .addFilterBefore(new JwtTokenFilter(tokenProvider),
