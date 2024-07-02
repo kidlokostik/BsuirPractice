@@ -28,7 +28,6 @@ public class SecurityConfig {
 
     private final JwtTokenProvider tokenProvider;
 
-
     private static final String[] ADMIN_URL = {
             "/api/v1/orders",
             "/api/v1/users"
