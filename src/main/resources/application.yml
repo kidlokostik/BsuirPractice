@@ -6,14 +6,14 @@ spring:
     driver-class-name: org.postgresql.Driver
     url: jdbc:postgresql://localhost:5432/postgres
     username: postgres
-    password: 12052004Urb
+    password: 1234
   liquibase:
     change-log: classpath:db/changelog/main-changelog.xml
 
 security:
   jwt:
     secret: UGl6ekFwcGxpY2F0aW9uU2VjcmV0Q29kZUZvckp3dFRva2Vuc3F3ZXJhc2RmcmVxYWZsYmVsaXViaWI7cHNpdXZyYml1
-    access: 360000
+    access: 3600000
     refresh: 2592000000
 
 
