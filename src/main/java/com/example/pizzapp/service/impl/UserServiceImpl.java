@@ -7,7 +7,6 @@ import com.example.pizzapp.exception.DuplicateFoundException;
 import com.example.pizzapp.exception.ResourceNotFoundException;
 import com.example.pizzapp.exception.ValidationException;
 import com.example.pizzapp.mapper.UserMapper;
-import com.example.pizzapp.model.Order;
 import com.example.pizzapp.model.Role;
 import com.example.pizzapp.model.RoleType;
 import com.example.pizzapp.model.User;
