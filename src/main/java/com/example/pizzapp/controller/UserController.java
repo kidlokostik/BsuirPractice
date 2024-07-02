@@ -19,7 +19,7 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping
+    @PostMapping("/new")
     public UserResponse createUser(@RequestBody @Valid UserCreateRequest userCreateRequest) {
         return userService.createUser(userCreateRequest);
     }

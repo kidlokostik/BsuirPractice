@@ -20,7 +20,7 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    @PostMapping
+    @PostMapping("/new")
     public OrderResponse createOrder(@RequestBody @Valid OrderCreateRequest orderCreateRequest) {
         return orderService.createOrder(orderCreateRequest);
     }
