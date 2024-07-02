@@ -8,6 +8,8 @@ import jakarta.servlet.ServletRequest;
 import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import lombok.AllArgsConstructor;
+import org.apache.tomcat.util.http.parser.Authorization;
+import org.springframework.http.HttpHeaders;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.GenericFilterBean;
@@ -27,7 +29,7 @@ public class JwtTokenFilter extends GenericFilterBean {
     )
             throws IOException, ServletException {
 
-        String bearerToken = ((HttpServletRequest) servletRequest).getHeader("Authorization");
+        String bearerToken = ((HttpServletRequest) servletRequest).getHeader(HttpHeaders.AUTHORIZATION);
         if (bearerToken != null && bearerToken.startsWith("Bearer ")){
             bearerToken = bearerToken.substring(7);
         }
