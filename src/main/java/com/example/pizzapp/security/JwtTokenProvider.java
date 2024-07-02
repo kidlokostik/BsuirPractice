@@ -22,6 +22,8 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.example.pizzapp.util.ErrorMessages.ACCESS_DENIED_MESSAGE;
+
 @Service
 @RequiredArgsConstructor
 public class JwtTokenProvider {
@@ -76,7 +78,7 @@ public class JwtTokenProvider {
     public JwtResponse refreshUserTokens(String refreshToken){
         JwtResponse jwtResponse = new JwtResponse();
         if (!validateToken(refreshToken)){
-            throw new AccessDeniedException();
+            throw new AccessDeniedException(String.format(ACCESS_DENIED_MESSAGE));
         }
         Long userId = Long.valueOf(getIdFromToken(refreshToken));
         UserResponse userResponse = userService.getUserById(userId);
