@@ -20,7 +20,7 @@ public class OrderController {
 
     private final OrderService orderService;
 
-    @PostMapping("/new")
+    @PostMapping("/resource")
     @PreAuthorize("@E.canAccessUser(#req.userId())")
     public OrderResponse createOrder(@RequestBody @Valid @P("req") OrderCreateRequest orderCreateRequest) {
         return orderService.createOrder(orderCreateRequest);
