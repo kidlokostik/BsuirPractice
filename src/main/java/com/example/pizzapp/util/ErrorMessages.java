@@ -20,6 +20,8 @@ public final class ErrorMessages {
 
     public static final String ALREADY_USED_MESSAGE = "Duplicate or already used value: %s";
 
+    public static final String ACCESS_DENIED_MESSAGE = "Access denied";
+
     public static String formatNotFoundMessage(String resourceName, Long id) {
         return String.format(NOT_FOUND_MESSAGE, resourceName, id != null ? " with id = " + id : "");
     }
