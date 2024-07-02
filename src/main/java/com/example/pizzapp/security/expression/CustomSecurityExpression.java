@@ -1,6 +1,8 @@
 package com.example.pizzapp.security.expression;
 
+import com.example.pizzapp.model.Order;
 import com.example.pizzapp.model.RoleType;
+import com.example.pizzapp.repository.OrderRepository;
 import com.example.pizzapp.security.JwtEntity;
 import com.example.pizzapp.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -14,6 +16,7 @@ import org.springframework.stereotype.Component;
 public class CustomSecurityExpression {
 
     private final UserService userService;
+    private final OrderRepository orderRepository;
 
     public boolean canAccessUser(Long id){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
@@ -37,11 +40,19 @@ public class CustomSecurityExpression {
 
     public boolean canAccessOrder(Long orderId){
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        Order order;
 
-        JwtEntity user = (JwtEntity) authentication.getPrincipal();
+        JwtEntity jwtEntity = (JwtEntity) authentication.getPrincipal();
 
-        Long userId = user.getId();
+        if(orderRepository.findById(orderId).isPresent()){
+            order = orderRepository.findById(orderId).get();
+        } else {
+            return false;
+        }
 
-        return userService.isOrderOwner(userId, orderId);
+        Long jwtEntityId = jwtEntity.getId();
+        Long userId = order.getUser().getId();
+
+        return jwtEntityId.equals(userId);
     }
 }
