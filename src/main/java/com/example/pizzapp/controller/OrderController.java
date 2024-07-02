@@ -21,15 +21,15 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping
-    @PreAuthorize("@E.canAccessUser(#req.userId())")
-    public OrderResponse createOrder(@RequestBody @Valid @P("req") OrderCreateRequest orderCreateRequest) {
+    @PreAuthorize("@E.canAccessUser(#orderCreateRequest.userId())")
+    public OrderResponse createOrder(@RequestBody @Valid OrderCreateRequest orderCreateRequest) {
         return orderService.createOrder(orderCreateRequest);
     }
 
     @PutMapping("/{id}")
     @PreAuthorize("@E.canAccessOrder(#id)")
     public OrderResponse updateOrder(
-            @PathVariable @P("id") Long id,
+            @PathVariable Long id,
             @RequestBody @Valid OrderUpdateRequest orderUpdateRequest
     ) {
         return orderService.updateOrder(id, orderUpdateRequest);
@@ -37,13 +37,13 @@ public class OrderController {
 
     @GetMapping("/{id}")
     @PreAuthorize("@E.canAccessOrder(#id)")
-    public OrderResponse getById(@PathVariable @P("id") Long id) {
+    public OrderResponse getById(@PathVariable Long id) {
         return orderService.getOrderById(id);
     }
 
     @DeleteMapping("/{id}")
     @PreAuthorize("@E.canAccessOrder(#id)")
-    public void deleteOrder(@PathVariable @P("id") Long id) {
+    public void deleteOrder(@PathVariable Long id) {
         orderService.deleteOrder(id);
     }
 

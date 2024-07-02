@@ -19,7 +19,7 @@ public class UserController {
 
     private final UserService userService;
 
-    @PostMapping("/new")
+    @PostMapping
     public UserResponse createUser(@RequestBody @Valid UserCreateRequest userCreateRequest) {
         return userService.createUser(userCreateRequest);
     }
@@ -27,7 +27,7 @@ public class UserController {
     @PutMapping("/{id}")
     @PreAuthorize("@E.canAccessUser(#id)")
     public UserResponse updateUser(
-            @PathVariable @P("id") Long id,
+            @PathVariable Long id,
             @RequestBody @Valid UserUpdateRequest userUpdateRequest
     ) {
         return userService.updateUser(id, userUpdateRequest);
@@ -35,13 +35,13 @@ public class UserController {
 
     @GetMapping("/{id}")
     @PreAuthorize("@E.canAccessUser(#id)")
-    public UserResponse getById(@PathVariable @P("id") Long id) {
+    public UserResponse getById(@PathVariable Long id) {
         return userService.getUserById(id);
     }
 
     @DeleteMapping("/{id}")
     @PreAuthorize("@E.canAccessUser(#id)")
-    public void deleteUser(@PathVariable @P("id") Long id) {
+    public void deleteUser(@PathVariable Long id) {
        userService.deleteUser(id);
     }
 
