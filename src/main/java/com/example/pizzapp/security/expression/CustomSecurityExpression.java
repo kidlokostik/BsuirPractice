@@ -4,7 +4,6 @@ import com.example.pizzapp.model.Order;
 import com.example.pizzapp.model.RoleType;
 import com.example.pizzapp.repository.OrderRepository;
 import com.example.pizzapp.security.JwtEntity;
-import com.example.pizzapp.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -15,7 +14,6 @@ import org.springframework.stereotype.Component;
 @RequiredArgsConstructor
 public class CustomSecurityExpression {
 
-    private final UserService userService;
     private final OrderRepository orderRepository;
 
     public boolean canAccessUser(Long id){
