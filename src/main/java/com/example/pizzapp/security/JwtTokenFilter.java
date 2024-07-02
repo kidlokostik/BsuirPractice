@@ -1,5 +1,6 @@
 package com.example.pizzapp.security;
 
+import com.example.pizzapp.exception.AccessDeniedException;
 import com.example.pizzapp.exception.ResourceNotFoundException;
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
@@ -12,6 +13,8 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.filter.GenericFilterBean;
 
 import java.io.IOException;
+
+import static com.example.pizzapp.util.ErrorMessages.ACCESS_DENIED_MESSAGE;
 
 @AllArgsConstructor
 public class JwtTokenFilter extends GenericFilterBean {
@@ -30,6 +33,7 @@ public class JwtTokenFilter extends GenericFilterBean {
         if (bearerToken != null && bearerToken.startsWith("Bearer ")){
             bearerToken = bearerToken.substring(7);
         }
+
         if (bearerToken != null && jwtTokenProvider.validateToken(bearerToken)){
             try {
                 Authentication authentication = jwtTokenProvider.getAuthentication(bearerToken);
@@ -38,6 +42,7 @@ public class JwtTokenFilter extends GenericFilterBean {
                 }
             } catch (ResourceNotFoundException ignored) {}
         }
+
         filterChain.doFilter(servletRequest, servletResponse);
     }
 }
