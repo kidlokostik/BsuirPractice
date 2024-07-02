@@ -34,15 +34,15 @@ public class SecurityConfig {
 
 
     private static final String[] ADMIN_URL = {
-            "/api/v1/category/**",
-            "/api/v1/products/**",
-            "/api/v1/orders/**",
-            "/api/v1/users/**"
+            "/api/v1/categories/",
+            "/api/v1/products/",
+            "/api/v1/orders/",
+            "/api/v1/users/"
     };
 
     private static final String[] CUSTOMER_URL = {
-            "/api/v1/category/**",
-            "/api/v1/product/**"
+            "/api/v1/categories/",
+            "/api/v1/product/"
     };
 
     @Bean
@@ -97,7 +97,7 @@ public class SecurityConfig {
                         .requestMatchers(POST, ADMIN_URL).hasRole(ADMIN.name())
                         .requestMatchers(PUT, ADMIN_URL).hasRole(ADMIN.name())
                         .requestMatchers(DELETE, ADMIN_URL).hasRole(ADMIN.name())
-                        .requestMatchers(GET, CUSTOMER_URL).hasAnyRole()
+                        .requestMatchers(GET, CUSTOMER_URL).hasAnyRole("ADMIN", "CUSTOMER")
                         .anyRequest().authenticated()
                 )
                 .anonymous(AbstractHttpConfigurer::disable)
