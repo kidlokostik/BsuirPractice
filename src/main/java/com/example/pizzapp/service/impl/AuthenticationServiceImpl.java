@@ -23,31 +23,26 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     @Override
     public JwtResponse authenticate(final JwtRequest jwtRequest) {
-        JwtResponse jwtResponse = new JwtResponse();
 
         authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                jwtRequest.getLogin(), jwtRequest.getPassword()
+                jwtRequest.login(), jwtRequest.password()
             )
         );
 
         User user;
 
-        if (emailValidator.isValid(jwtRequest.getLogin(), null)){
-            user = userService.findUserByEmailOrThrow(jwtRequest.getLogin());
+        if (emailValidator.isValid(jwtRequest.login(), null)){
+            user = userService.findUserByEmailOrThrow(jwtRequest.login());
         } else {
-            user = userService.findUserByLoginOrThrow(jwtRequest.getLogin());
+            user = userService.findUserByLoginOrThrow(jwtRequest.login());
         }
 
+        Long id = user.getId();
+        String login = user.getLogin();
         String accessToken = jwtTokenProvider.createAccessToken(user.getId(), user.getLogin(), user.getRole().getName().name());
         String refreshToken = jwtTokenProvider.createRefreshToken(user.getId(), user.getLogin());
 
-        jwtResponse.setId(user.getId());
-        jwtResponse.setUsername(user.getLogin());
-        jwtResponse.setEmail(user.getEmail());
-        jwtResponse.setAccessToken(accessToken);
-        jwtResponse.setRefreshToken(refreshToken);
-
-        return jwtResponse;
+        return new JwtResponse(id, login, accessToken, refreshToken);
     }
 
     public JwtResponse refreshToken(

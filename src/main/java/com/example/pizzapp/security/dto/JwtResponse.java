@@ -1,12 +1,8 @@
 package com.example.pizzapp.security.dto;
 
-import lombok.Data;
-
-@Data
-public class JwtResponse {
-    private Long id;
-    private String email;
-    private String username;
-    private String accessToken;
-    private String refreshToken;
-}
+public record JwtResponse (
+        Long id,
+        String login,
+        String accessToken,
+        String refreshToken
+) {}
