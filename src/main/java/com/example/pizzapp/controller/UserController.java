@@ -7,6 +7,7 @@ import com.example.pizzapp.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.access.prepost.PreAuthorize;
+import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,23 +25,23 @@ public class UserController {
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("CustomSecurityExpression.canAccessUser(id)")
+    @PreAuthorize("@E.canAccessUser(#id)")
     public UserResponse updateUser(
-            @PathVariable Long id,
+            @PathVariable @P("id") Long id,
             @RequestBody @Valid UserUpdateRequest userUpdateRequest
     ) {
         return userService.updateUser(id, userUpdateRequest);
     }
 
     @GetMapping("/{id}")
-    @PreAuthorize("CustomSecurityExpression.canAccessUser(id)")
-    public UserResponse getById(@PathVariable Long id) {
+    @PreAuthorize("@E.canAccessUser(#id)")
+    public UserResponse getById(@PathVariable @P("id") Long id) {
         return userService.getUserById(id);
     }
 
     @DeleteMapping("/{id}")
-    @PreAuthorize("CustomSecurityExpression.canAccessUser(id)")
-    public void deleteUser(@PathVariable Long id) {
+    @PreAuthorize("@E.canAccessUser(#id)")
+    public void deleteUser(@PathVariable @P("id") Long id) {
        userService.deleteUser(id);
     }
 
