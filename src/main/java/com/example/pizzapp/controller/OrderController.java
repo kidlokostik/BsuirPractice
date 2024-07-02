@@ -21,14 +21,15 @@ public class OrderController {
     private final OrderService orderService;
 
     @PostMapping("/new")
-    public OrderResponse createOrder(@RequestBody @Valid OrderCreateRequest orderCreateRequest) {
+    @PreAuthorize("@E.canAccessUser(#req.userId())")
+    public OrderResponse createOrder(@RequestBody @Valid @P("req") OrderCreateRequest orderCreateRequest) {
         return orderService.createOrder(orderCreateRequest);
     }
 
     @PutMapping("/{id}")
-    @PreAuthorize("E.canAccessOrder(id)")
+    @PreAuthorize("@E.canAccessOrder(#id)")
     public OrderResponse updateOrder(
-            @PathVariable Long id,
+            @PathVariable @P("id") Long id,
             @RequestBody @Valid OrderUpdateRequest orderUpdateRequest
     ) {
         return orderService.updateOrder(id, orderUpdateRequest);
