@@ -18,6 +18,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.stereotype.Service;
 
 import javax.crypto.SecretKey;
+import java.time.Instant;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.Map;
@@ -44,31 +45,31 @@ public class JwtTokenProvider {
         claims.put("id", userId);
         claims.put("role", role);
 
-        Date now = new Date();
-        Date validity = new Date(now.getTime() + jwtProperties.getAccess());
+        Instant now = Instant.now();
+        Instant validity = now.plus(jwtProperties.getAccess());
 
         return Jwts.builder()
                 .subject(login)
                 .claims(claims)
-                .issuedAt(now)
-                .expiration(validity)
+                .issuedAt(Date.from(now))
+                .expiration(Date.from(validity))
                 .signWith(key)
                 .compact();
     }
 
-    public String createRefreshToken(Long userId, String login){
+    public String createRefreshToken(Long userId, String login) {
         Map<String, Object> claims = new HashMap<>();
 
         claims.put("id", userId);
 
-        Date now = new Date();
-        Date validity = new Date(now.getTime() + jwtProperties.getRefresh());
+        Instant now = Instant.now();
+        Instant validity = now.plus(jwtProperties.getRefresh());
 
         return Jwts.builder()
                 .subject(login)
                 .claims(claims)
-                .issuedAt(now)
-                .expiration(validity)
+                .issuedAt(Date.from(now))
+                .expiration(Date.from(validity))
                 .signWith(key)
                 .compact();
     }

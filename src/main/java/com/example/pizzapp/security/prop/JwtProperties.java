@@ -2,7 +2,10 @@ package com.example.pizzapp.security.prop;
 
 import lombok.Data;
 import org.springframework.boot.context.properties.ConfigurationProperties;
+import org.springframework.boot.convert.DurationUnit;
 import org.springframework.stereotype.Component;
+
+import java.time.Duration;
 
 @Component
 @Data
@@ -11,8 +14,7 @@ public class JwtProperties {
 
     private String secret;
 
-    private Long access;
+    private Duration access;
 
-    private Long refresh;
-
+    private Duration refresh;
 }
