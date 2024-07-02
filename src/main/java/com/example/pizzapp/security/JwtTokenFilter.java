@@ -14,8 +14,6 @@ import org.springframework.web.filter.GenericFilterBean;
 
 import java.io.IOException;
 
-import static com.example.pizzapp.util.ErrorMessages.ACCESS_DENIED_MESSAGE;
-
 @AllArgsConstructor
 public class JwtTokenFilter extends GenericFilterBean {
 
