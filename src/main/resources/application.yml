@@ -15,7 +15,3 @@ security:
     secret: UGl6ekFwcGxpY2F0aW9uU2VjcmV0Q29kZUZvckp3dFRva2Vuc3F3ZXJhc2RmcmVxYWZsYmVsaXViaWI7cHNpdXZyYml1
     access: 3600000
     refresh: 2592000000
-
-
-
-
