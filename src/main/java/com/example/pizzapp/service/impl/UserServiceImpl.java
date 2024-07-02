@@ -108,14 +108,4 @@ public class UserServiceImpl implements UserService {
             throw new ValidationException(PASSWORDS_DO_NOT_MATCH);
         }
     }
-
-    public boolean isOrderOwner(Long id, Long orderId) {
-        User user = findUserByIdOrThrow(id);
-        List<Order> userOrders = user.getOrders();
-
-        for (Order userOrder: userOrders) {
-            if (userOrder.getId().intValue() == orderId.intValue()) return true;
-        }
-        return false;
-    }
 }

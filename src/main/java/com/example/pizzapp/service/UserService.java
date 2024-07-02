@@ -17,6 +17,4 @@ public interface UserService {
     UserResponse getUserById(Long id);
 
     List<UserResponse> getAllUsers();
-
-    boolean isOrderOwner(Long id, Long orderId);
 }
