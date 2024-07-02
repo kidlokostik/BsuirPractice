@@ -72,13 +72,13 @@ public class CategoryServiceImpl implements CategoryService {
 
     private void checkUniqueCategoryName(CategoryCreateRequest createCategoryRequest) {
         if (uniqueCategoryCheck(createCategoryRequest)) {
-            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "category", createCategoryRequest.name()));
+            throw new DuplicateFoundException(String.format(ALREADY_USED_MESSAGE, "category", createCategoryRequest.name()));
         }
     }
 
     private void checkUniqueCategoryName(CategoryUpdateRequest updateCategoryRequest, String existingName) {
         if (uniqueCategoryCheck(updateCategoryRequest, existingName)) {
-            throw new DuplicateFoundException(String.format(DUPLICATE_FOUND_MESSAGE, "category", updateCategoryRequest.name()));
+            throw new DuplicateFoundException(String.format(ALREADY_USED_MESSAGE, "category", updateCategoryRequest.name()));
         }
     }
 

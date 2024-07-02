@@ -1,0 +1,145 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="v5-1" author="Pavlov, Urbanait">
+
+        <dropTable tableName="order_items" cascadeConstraints="true"/>
+
+        <createTable tableName="order_items">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="order_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="product_id" type="integer">
+                <constraints nullable="false"/>
+            </column>
+            <column name="quantity" type="integer"/>
+        </createTable>
+
+        <insert tableName="order_items">
+            <column name="order_id" value ="1"/>
+            <column name="product_id" value ="1"/>
+            <column name="quantity" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="order_id" value ="1"/>
+            <column name="product_id" value ="1"/>
+            <column name="quantity" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="order_id" value ="1"/>
+            <column name="product_id" value ="1"/>
+            <column name="quantity" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="product_id" value ="57"/>
+            <column name="order_id" value="1"/>
+            <column name="quantity" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="product_id" value="64"/>
+            <column name="order_id" value="1"/>
+            <column name="quantity" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="product_id" value="48"/>
+            <column name="order_id" value="1"/>
+            <column name="quantity" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="product_id" value="30"/>
+            <column name="order_id" value="1"/>
+            <column name="quantity" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="product_id" value="19"/>
+            <column name="order_id" value="2"/>
+            <column name="quantity" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="product_id" value="24"/>
+            <column name="order_id" value="2"/>
+            <column name="quantity" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="product_id" value="25"/>
+            <column name="order_id" value="2"/>
+            <column name="quantity" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="product_id" value="26"/>
+            <column name="order_id" value="2"/>
+            <column name="quantity" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="product_id" value="41"/>
+            <column name="order_id" value="2"/>
+            <column name="quantity" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="product_id" value="37"/>
+            <column name="order_id" value="2"/>
+            <column name="quantity" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="product_id" value="15"/>
+            <column name="order_id" value="3"/>
+            <column name="quantity" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="product_id" value="63"/>
+            <column name="order_id" value="3"/>
+            <column name="quantity" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="product_id" value="1"/>
+            <column name="order_id" value="3"/>
+            <column name="quantity" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="product_id" value="7"/>
+            <column name="order_id" value="3"/>
+            <column name="quantity" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="product_id" value="27"/>
+            <column name="order_id" value="3"/>
+            <column name="quantity" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="product_id" value="37"/>
+            <column name="order_id" value="3"/>
+            <column name="quantity" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="product_id" value="33"/>
+            <column name="order_id" value="3"/>
+            <column name="quantity" value="1"/>
+        </insert>
+        <insert tableName="order_items">
+            <column name="product_id" value="29"/>
+            <column name="order_id" value="3"/>
+            <column name="quantity" value="1"/>
+        </insert>
+
+        <addForeignKeyConstraint baseTableName="order_items"
+                                 baseColumnNames="order_id"
+                                 constraintName="fk_orderItems_orders"
+                                 referencedTableName="orders"
+                                 referencedColumnNames="id"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"/>
+
+        <addForeignKeyConstraint baseTableName="order_items"
+                                 baseColumnNames="product_id"
+                                 constraintName="fk_orderItems_products"
+                                 referencedTableName="products"
+                                 referencedColumnNames="id"
+                                 onDelete="CASCADE"
+                                 onUpdate="CASCADE"/>
+    </changeSet>
+</databaseChangeLog>

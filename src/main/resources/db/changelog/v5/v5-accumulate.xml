@@ -1,0 +1,13 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <include file="v5-recreate-roles-table.xml" relativeToChangelogFile="true"/>
+    <include file="v5-recreate-users-table.xml" relativeToChangelogFile="true"/>
+    <include file="v5-recreate-categories-table.xml" relativeToChangelogFile="true"/>
+    <include file="v5-recreate-products-table.xml" relativeToChangelogFile="true"/>
+    <include file="v5-recreate-orders-table.xml" relativeToChangelogFile="true"/>
+    <include file="v5-recreate-orderItems-table.xml" relativeToChangelogFile="true"/>
+
+</databaseChangeLog>

@@ -1,0 +1,50 @@
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+                   xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <changeSet id="v5-1" author="Pavlov, Urbanait Konstantin">
+
+        <dropTable tableName="orders" cascadeConstraints="true"/>
+
+        <createTable tableName="orders">
+            <column name="id" type="serial" autoIncrement="true">
+                <constraints primaryKey="true"/>
+            </column>
+            <column name="user_id" type="integer">
+                <constraints nullable="true"/>
+            </column>
+            <column name="price" type="double precision">
+                <constraints nullable="false"/>
+            </column>
+            <column name="address" type="varchar(40)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+
+        <insert tableName="orders">
+            <column name="user_id" value ="1"/>
+            <column name="address" value="Ботаническая д.17"/>
+            <column name="price" value="50.0"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="user_id" value ="2"/>
+            <column name="address" value="Красноармейская д.21"/>
+            <column name="price" value="46.6"/>
+        </insert>
+        <insert tableName="orders">
+            <column name="user_id" value ="3"/>
+            <column name="address" value="Гикало д.19"/>
+            <column name="price" value="36.6"/>
+        </insert>
+
+        <addForeignKeyConstraint
+                baseColumnNames="user_id"
+                baseTableName="orders"
+                constraintName="fk_Orders_to_users"
+                referencedColumnNames="id"
+                referencedTableName="users"/>
+
+        <addUniqueConstraint columnNames="id" constraintName="unique_order_id_constraint" tableName="orders"/>
+    </changeSet>
+</databaseChangeLog>

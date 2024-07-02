@@ -20,14 +20,4 @@
         <renameTable catalogName="tables" schemaName="public" oldTableName="Category" newTableName="category"/>
     </changeSet>
 
-    <changeSet author="liquibase-docs" id="addAutoIncrement-example">
-        <addAutoIncrement catalogName="tables"
-                          columnDataType="int"
-                          columnName="id"
-                          incrementBy="1"
-                          schemaName="public"
-                          startWith="7"
-                          tableName="category"/>
-    </changeSet>
-
 </databaseChangeLog>

@@ -11,6 +11,7 @@ import org.mapstruct.MappingTarget;
 
 @Mapper(componentModel = MappingConstants.ComponentModel.SPRING)
 public interface UserMapper {
+
     @Mapping(target = "role", ignore = true)
     User createRequestToEntity(UserCreateRequest userCreateRequest);
 
