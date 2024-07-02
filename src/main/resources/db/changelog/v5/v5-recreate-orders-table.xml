@@ -55,4 +55,12 @@
                          schemaName="public"
                          tableName="orders"/>
     </changeSet>
+
+    <changeSet  author="Urbanait"  id="v5-3">
+        <modifyDataType  catalogName="tables"
+                         columnName="user_id"
+                         newDataType="bigint"
+                         schemaName="public"
+                         tableName="orders"/>
+    </changeSet>
 </databaseChangeLog>

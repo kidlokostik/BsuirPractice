@@ -146,4 +146,12 @@
                          schemaName="public"
                          tableName="users"/>
     </changeSet>
+
+    <changeSet  author="Urbanait"  id="v5-3">
+        <modifyDataType  catalogName="tables"
+                         columnName="role_id"
+                         newDataType="bigint"
+                         schemaName="public"
+                         tableName="users"/>
+    </changeSet>
 </databaseChangeLog>

@@ -150,4 +150,18 @@
                          schemaName="public"
                          tableName="order_items"/>
     </changeSet>
+
+    <changeSet  author="Urbanait"  id="v5-3">
+        <modifyDataType  catalogName="tables"
+                         columnName="order_id"
+                         newDataType="bigint"
+                         schemaName="public"
+                         tableName="order_items"/>
+
+        <modifyDataType  catalogName="tables"
+                         columnName="product_id"
+                         newDataType="bigint"
+                         schemaName="public"
+                         tableName="order_items"/>
+    </changeSet>
 </databaseChangeLog>

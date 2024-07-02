@@ -391,4 +391,12 @@
                          schemaName="public"
                          tableName="products"/>
     </changeSet>
+
+    <changeSet  author="Urbanait"  id="v5-4">
+        <modifyDataType  catalogName="tables"
+                         columnName="category_id"
+                         newDataType="bigint"
+                         schemaName="public"
+                         tableName="products"/>
+    </changeSet>
 </databaseChangeLog>
