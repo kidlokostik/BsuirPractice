@@ -11,12 +11,14 @@ import com.example.pizzapp.model.Order;
 import com.example.pizzapp.model.OrderItem;
 import com.example.pizzapp.repository.OrderItemRepository;
 import com.example.pizzapp.repository.OrderRepository;
+import com.example.pizzapp.repository.ProductRepository;
 import com.example.pizzapp.repository.UserRepository;
 import com.example.pizzapp.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import static com.example.pizzapp.util.ErrorMessages.NOT_FOUND_MESSAGE;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -29,11 +31,13 @@ public class OrderServiceImpl implements OrderService {
     private final OrderItemRepository orderItemRepository;
     private final OrderItemMapper orderItemMapper;
     private final UserRepository userRepository;
+    private final ProductRepository productRepository;
 
     @Override
     public OrderResponse createOrder(OrderCreateRequest createOrderRequest) {
         Order order = orderMapper.createRequestToEntity(createOrderRequest);
         order.setUser(userRepository.findById(createOrderRequest.userId()).get());
+        order.setPrice(new BigDecimal(0));
         return orderMapper.toResponse(orderRepository.save(order));
     }
 
@@ -48,8 +52,16 @@ public class OrderServiceImpl implements OrderService {
     public void addOrderItem(Long orderId, OrderItemCreateRequest orderItemCreateRequest) {
         Order order = findOrderByIdOrThrow(orderId);
         OrderItem orderItem = orderItemMapper.createRequestToEntity(orderItemCreateRequest);
-        order.addOrderItem(orderItem);
+
+        orderItem.setProduct(productRepository.findById(orderItemCreateRequest.productId()).get());
+        orderItem.setOrder(orderRepository.findById(orderId).get());
+
+        List<OrderItem> orderItemList = order.getOrderItems();
+        orderItemList.add(orderItem);
+        order.setOrderItems(orderItemList);
+
         orderRepository.save(order);
+        orderItemRepository.save(orderItem);
     }
 
     @Override
