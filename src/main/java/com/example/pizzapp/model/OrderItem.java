@@ -1,8 +1,8 @@
 package com.example.pizzapp.model;
 
 import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @Data
@@ -19,11 +19,9 @@ public class OrderItem {
     @JoinColumn(name = "product_id", nullable = false)
     private Product product;
 
-    @Column(nullable = false)
-    private Long quantity;
-
     @ManyToOne
     @JoinColumn(name = "order_id", nullable = false)
     private Order order;
 
+    private Long quantity;
 }
