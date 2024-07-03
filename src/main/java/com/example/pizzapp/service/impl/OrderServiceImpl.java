@@ -44,7 +44,7 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public OrderResponse updateOrder(Long id, OrderUpdateRequest orderUpdateRequest) {
         Order order = findOrderByIdOrThrow(id);
-        orderMapper.updateOrderFromUpdateRequest(orderUpdateRequest,order);
+        orderMapper.updateOrderFromUpdateRequest(orderUpdateRequest, order);
         return orderMapper.toResponse(orderRepository.save(order));
     }
 
@@ -60,8 +60,9 @@ public class OrderServiceImpl implements OrderService {
         orderItemList.add(orderItem);
         order.setOrderItems(orderItemList);
 
-        orderRepository.save(order);
-       // orderItemRepository.save(orderItem);
+        Order savedOrder = orderRepository.save(order);
+        updateOrderPrice(savedOrder);
+        orderRepository.save(savedOrder);
     }
 
     @Override
@@ -106,5 +107,12 @@ public class OrderServiceImpl implements OrderService {
                 .orElseThrow(
                         () -> new ResourceNotFoundException(String.format(NOT_FOUND_MESSAGE, "Order", id))
                 );
+    }
+
+    private void updateOrderPrice(Order order) {
+        BigDecimal totalPrice = order.getOrderItems().stream()
+                .map(orderItem -> orderItem.getProduct().getPrice().multiply(BigDecimal.valueOf(orderItem.getQuantity())))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+        order.setPrice(totalPrice);
     }
 }
