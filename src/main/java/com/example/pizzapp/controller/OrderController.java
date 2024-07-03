@@ -51,13 +51,15 @@ public class OrderController {
         return orderService.getAllOrders();
     }
 
-    @PutMapping("/{orderId}/items")
+    @PostMapping("/{orderId}")
+    @PreAuthorize("@E.canAccessOrder(#orderId)")
     public void addOrderItem(@PathVariable Long orderId,
                              @RequestBody OrderItemCreateRequest orderItemCreateRequest) {
         orderService.addOrderItem(orderId, orderItemCreateRequest);
     }
 
     @PostMapping("/{orderId}")
+    @PreAuthorize("@E.canAccessOrder(#orderId)")
     public void addOrderItems(@PathVariable Long orderId,
                               @RequestBody List<OrderItemCreateRequest> orderItemCreateRequests) {
         orderService.addOrderItems(orderId, orderItemCreateRequests);
