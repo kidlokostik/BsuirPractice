@@ -4,22 +4,27 @@ import com.example.pizzapp.dto.request.create.OrderCreateRequest;
 import com.example.pizzapp.dto.request.create.OrderItemCreateRequest;
 import com.example.pizzapp.dto.request.update.OrderUpdateRequest;
 import com.example.pizzapp.dto.response.OrderResponse;
+import com.example.pizzapp.exception.AccessDeniedException;
 import com.example.pizzapp.exception.ResourceNotFoundException;
 import com.example.pizzapp.mapper.OrderMapper;
 import com.example.pizzapp.mapper.OrderItemMapper;
 import com.example.pizzapp.model.Order;
 import com.example.pizzapp.model.OrderItem;
+import com.example.pizzapp.model.Product;
 import com.example.pizzapp.repository.OrderItemRepository;
 import com.example.pizzapp.repository.OrderRepository;
 import com.example.pizzapp.repository.ProductRepository;
 import com.example.pizzapp.repository.UserRepository;
 import com.example.pizzapp.service.OrderService;
+import jakarta.persistence.Access;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import static com.example.pizzapp.util.ErrorMessages.NOT_FOUND_MESSAGE;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -68,14 +73,21 @@ public class OrderServiceImpl implements OrderService {
     @Override
     public void addOrderItems(Long orderId, List<OrderItemCreateRequest> orderItemCreateRequests) {
         Order order = findOrderByIdOrThrow(orderId);
-        List<OrderItem> items = orderItemCreateRequests.stream()
-                .map(request -> buildOrderItem(order, request))
-                .collect(Collectors.toList());
-        order.getOrderItems().addAll(items);
-        orderRepository.save(order);
-        items.stream()
-                .map(orderItemMapper::toResponse)
-                .collect(Collectors.toList());
+        List<OrderItem> orderItems = new ArrayList<>();
+
+        for (OrderItemCreateRequest request : orderItemCreateRequests) {
+            if (request.productId() == null || request.productId() <= 0) {
+                throw new IllegalArgumentException("Invalid productId: " + request.productId());
+            }
+
+            OrderItem orderItem = buildOrderItem(order, request);
+            orderItems.add(orderItem);
+        }
+
+        order.getOrderItems().addAll(orderItems);
+        Order savedOrder = orderRepository.save(order);
+        updateOrderPrice(savedOrder);
+        orderRepository.save(savedOrder);
     }
 
     @Override
@@ -98,6 +110,12 @@ public class OrderServiceImpl implements OrderService {
 
     private OrderItem buildOrderItem(Order order, OrderItemCreateRequest request) {
         OrderItem orderItem = orderItemMapper.createRequestToEntity(request);
+        Optional<Product> productOptional = productRepository.findById(request.productId());
+        if (productOptional.isPresent()) {
+            orderItem.setProduct(productOptional.get());
+        } else {
+            throw new AccessDeniedException("");
+        }
         orderItem.setOrder(order);
         return orderItem;
     }
