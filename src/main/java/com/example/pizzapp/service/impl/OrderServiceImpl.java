@@ -11,6 +11,7 @@ import com.example.pizzapp.model.Order;
 import com.example.pizzapp.model.OrderItem;
 import com.example.pizzapp.repository.OrderItemRepository;
 import com.example.pizzapp.repository.OrderRepository;
+import com.example.pizzapp.repository.UserRepository;
 import com.example.pizzapp.service.OrderService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -27,10 +28,12 @@ public class OrderServiceImpl implements OrderService {
     private final OrderMapper orderMapper;
     private final OrderItemRepository orderItemRepository;
     private final OrderItemMapper orderItemMapper;
+    private final UserRepository userRepository;
 
     @Override
     public OrderResponse createOrder(OrderCreateRequest createOrderRequest) {
         Order order = orderMapper.createRequestToEntity(createOrderRequest);
+        order.setUser(userRepository.findById(createOrderRequest.userId()).get());
         return orderMapper.toResponse(orderRepository.save(order));
     }
 
