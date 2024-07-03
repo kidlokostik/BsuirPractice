@@ -51,7 +51,7 @@ public class OrderController {
         return orderService.getAllOrders();
     }
 
-    @PutMapping("/{orderId}")
+    @PutMapping("/{orderId}/items")
     public void addOrderItem(@PathVariable Long orderId,
                              @RequestBody OrderItemCreateRequest orderItemCreateRequest) {
         orderService.addOrderItem(orderId, orderItemCreateRequest);

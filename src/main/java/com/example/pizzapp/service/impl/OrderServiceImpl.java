@@ -61,7 +61,7 @@ public class OrderServiceImpl implements OrderService {
         order.setOrderItems(orderItemList);
 
         orderRepository.save(order);
-        orderItemRepository.save(orderItem);
+       // orderItemRepository.save(orderItem);
     }
 
     @Override
