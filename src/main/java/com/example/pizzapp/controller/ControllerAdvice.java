@@ -2,8 +2,10 @@ package com.example.pizzapp.controller;
 
 import com.example.pizzapp.dto.response.error.ErrorResponse;
 import com.example.pizzapp.dto.response.error.MultiErrorResponse;
+import com.example.pizzapp.exception.AccessDeniedException;
 import com.example.pizzapp.exception.DuplicateFoundException;
 import com.example.pizzapp.exception.ResourceNotFoundException;
+import com.example.pizzapp.util.ErrorMessages;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
@@ -68,6 +70,15 @@ public class ControllerAdvice {
         return ErrorResponse.builder()
                 .status(HttpStatus.NOT_ACCEPTABLE.value())
                 .message(e.getMessage())
+                .build();
+    }
+
+    @ExceptionHandler(AccessDeniedException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    public ErrorResponse handleAccessDeniedException(AccessDeniedException e) {
+        return ErrorResponse.builder()
+                .status(HttpStatus.FORBIDDEN.value())
+                .message(ErrorMessages.ACCESS_DENIED_MESSAGE)
                 .build();
     }
 }

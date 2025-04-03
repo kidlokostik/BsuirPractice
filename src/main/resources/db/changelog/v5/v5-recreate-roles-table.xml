@@ -23,4 +23,12 @@
             <column name="name" value ="CUSTOMER"/>
         </insert>
     </changeSet>
+
+    <changeSet  author="Urbanait"  id="v5-2">
+        <modifyDataType  catalogName="tables"
+                         columnName="id"
+                         newDataType="bigint"
+                         schemaName="public"
+                         tableName="roles"/>
+    </changeSet>
 </databaseChangeLog>
